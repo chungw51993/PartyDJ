@@ -1,0 +1,25 @@
+{
+  "name": "partydj",
+  "version": "1.0.0",
+  "description": "A web application where anyone can get on the playlist and add songs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chungw51993/PartyDJ.git"
+  },
+  "keywords": [
+    "DJ"
+  ],
+  "author": "Jin Chung",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chungw51993/PartyDJ/issues"
+  },
+  "homepage": "https://github.com/chungw51993/PartyDJ#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
