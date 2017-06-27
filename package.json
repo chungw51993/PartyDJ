@@ -4,7 +4,9 @@
   "description": "A web application where anyone can get on the playlist and add songs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc -p client/",
+    "build:watch": "tsc -p client/ -w",
+    "start": "nodemon server/server.js"
   },
   "repository": {
     "type": "git",
@@ -20,22 +22,22 @@
   },
   "homepage": "https://github.com/chungw51993/PartyDJ#readme",
   "dependencies": {
-    "@angular/animations": "^4.3.0-beta.0",
-    "@angular/common": "^4.3.0-beta.0",
-    "@angular/compiler": "^4.3.0-beta.0",
-    "@angular/compiler-cli": "^4.3.0-beta.0",
-    "@angular/core": "^4.3.0-beta.0",
-    "@angular/forms": "^4.3.0-beta.0",
-    "@angular/http": "^4.3.0-beta.0",
-    "@angular/platform-browser": "^4.3.0-beta.0",
-    "@angular/platform-browser-dynamic": "^4.3.0-beta.0",
-    "@angular/platform-server": "^4.3.0-beta.0",
-    "@angular/router": "^4.3.0-beta.0",
+    "@angular/common": "~4.0.0",
+    "@angular/compiler": "~4.0.0",
+    "@angular/core": "~4.0.0",
+    "@angular/forms": "~4.0.0",
+    "@angular/http": "~4.0.0",
+    "@angular/platform-browser": "~4.0.0",
+    "@angular/platform-browser-dynamic": "~4.0.0",
+    "@angular/router": "~4.0.0",
+    "angular-in-memory-web-api": "~0.3.0",
     "body-parser": "^1.17.2",
+    "core-js": "^2.4.1",
     "express": "^4.15.3",
     "morgan": "^1.8.2",
-    "rxjs": "^5.4.1",
-    "zone.js": "^0.8.12"
+    "rxjs": "5.0.1",
+    "systemjs": "^0.19.40",
+    "zone.js": "^0.8.4"
   },
   "devDependencies": {
     "concurrently": "^3.2.0",
