@@ -11,7 +11,7 @@
     // map tells the System loader where to look for things
     map: {
       // our app is within the app folder
-      'app': 'dist/component',
+      'app': 'client/dist/component',
 
       // angular bundles
       '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
@@ -33,7 +33,7 @@
         defaultExtension: 'js',
         meta: {
           './*.js': {
-            loader: 'systemjs-angular-loader.js'
+            loader: 'client/systemjs-angular-loader.js'
           }
         }
       },
