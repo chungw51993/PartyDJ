@@ -1,7 +1,6 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AppComponent } from './app.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 
 import { SelectivePreloadingStrategy } from './selective-preloading-strategy';

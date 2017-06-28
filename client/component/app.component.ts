@@ -8,7 +8,6 @@ import { Component } from '@angular/core';
       <a routerLink="/playlist">Playlist</a>
     </nav>
     <router-outlet></router-outlet>
-    <router-outlet name="popup"></router-outlet>
    `
 })
 
