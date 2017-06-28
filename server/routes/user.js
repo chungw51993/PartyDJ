@@ -17,7 +17,7 @@ const generateRandomString = function(length) {
 const stateKey = 'spotify_auth_state';
 const client_id = CLIENT.id;
 const client_secret = CLIENT.secret;
-const redirect_uri = 'http://localhost:8000';
+const redirect_uri = 'http://localhost:8000/api/user/callback';
 
 router.get('/login', (req, res) => {
   let state = generateRandomString(16);
@@ -32,6 +32,10 @@ router.get('/login', (req, res) => {
       redirect_uri: redirect_uri,
       state: state
     }));
+})
+
+router.get('/callback', (req, res) => {
+
 })
 
 module.exports = router;
