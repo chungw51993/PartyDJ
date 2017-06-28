@@ -1,18 +1,27 @@
 angular.module('partyDJ', [
-
+  'ngRoute',
 ])
 
-.config(($routeProvider, $locationProvider) {
+.config(function($routeProvider, $locationProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: '/view/landing.html'
-    }
+      templateUrl: '/client/view/landing.html',
+      controller: function($scope, $location) {
+        $scope.loginRedirect = () => {
+          $location.path('/login');
+        }
+
+        $scope.signupRedirect = () => {
+          $location.path('/signup');
+        }
+      }
+    })
     .when('/login', {
-      templateUrl: '/view/login.html',
+      templateUrl: '/client/view/login.html',
       controller: 'AuthCtrl'
     })
     .when('/signup', {
-      templateUrl: '/view/signup.html',
+      templateUrl: '/client/view/signup.html',
       controller: 'AuthCtrl'
     })
     .otherwise({
