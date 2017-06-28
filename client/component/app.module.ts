@@ -2,10 +2,11 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 
-import { AppComponent }  from './app.component';
-import { AppRoutingModule } from './app-routing.module';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { PlaylistItemComponent } from './playlist/playlist-item/playlist-item.component';
+import { LoginComponent } from './login.component';
+import { AppComponent }  from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   imports:      [
@@ -16,7 +17,8 @@ import { PlaylistItemComponent } from './playlist/playlist-item/playlist-item.co
   declarations: [
     AppComponent,
     PlaylistComponent,
-    PlaylistItemComponent
+    PlaylistItemComponent,
+    LoginComponent
   ],
   bootstrap: [ AppComponent ]
 })
