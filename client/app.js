@@ -5,8 +5,11 @@ angular.module('partyDJ', [
 .config(function($routeProvider, $locationProvider) {
   $routeProvider
     .when('/', {
-      templateUrl: '/client/view/landing.html',
-      controller: 'LandingCtrl'
+      templateUrl: '/client/view/landing.html'
+    })
+    .when('/playlist', {
+      templateUrl: '/client/view/playlist.html',
+      controller: 'PlaylistCtrl'
     })
     .otherwise({
       redirectTo: '/'
