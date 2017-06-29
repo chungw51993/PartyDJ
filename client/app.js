@@ -3,13 +3,20 @@ angular.module('partyDJ', [
 ])
 
 .config(function($routeProvider, $locationProvider) {
+  const authorized = function(Auth) {
+    return Auth.isAuthorized();
+  }
+
   $routeProvider
     .when('/', {
-      templateUrl: '/client/view/landing.html'
+      templateUrl: '/client/views/landing.html'
     })
     .when('/playlist', {
-      templateUrl: '/client/view/playlist.html',
-      controller: 'PlaylistCtrl'
+      templateUrl: '/client/views/playlist.html',
+      controller: 'PlaylistCtrl',
+      resolve: {
+        user: authorized
+      }
     })
     .otherwise({
       redirectTo: '/'

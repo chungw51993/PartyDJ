@@ -38,7 +38,6 @@ router.get('/login', (req, res) => {
 router.get('/callback', (req, res) => {
   // your application requests refresh and access tokens
   // after checking the state parameter
-  console.log(req.cookies);
   var code = req.query.code || null;
   var state = req.query.state || null;
   var storedState = req.cookies ? req.cookies[stateKey] : null;
@@ -49,6 +48,7 @@ router.get('/callback', (req, res) => {
         error: 'state_mismatch'
       }));
   } else {
+    console.log(res.cookie);
     res.clearCookie(stateKey);
     var authOptions = {
       url: 'https://accounts.spotify.com/api/token',
@@ -74,11 +74,9 @@ router.get('/callback', (req, res) => {
           headers: { 'Authorization': 'Bearer ' + access_token },
           json: true
         };
-
-        // use the access token to access the Spotify Web API
-        request.get(options, function(error, response, body) {
-          console.log(access_token, refresh_token);
-        });
+        console.log('>>' ,body, '<<<');
+        console.log('>>>>>>>>>>>>.',req.cookie);
+        console.log(res.cookie, '<<<<<<<<<<<<<<<<');
 
         // we can also pass the token to the browser to make requests from there
         res.redirect('/playlist');
@@ -90,6 +88,10 @@ router.get('/callback', (req, res) => {
       }
     });
   }
+})
+
+router.get('/authorized', (req, res) => {
+
 })
 
 module.exports = router;

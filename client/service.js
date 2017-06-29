@@ -2,10 +2,13 @@ angular.module('partyDJ')
 
 .factory('Auth', function($http) {
   return {
-    login: function() {
+    isAuthorized: function() {
       return $http({
         method: 'GET',
-        url: '/api/user/login'
+        url: '/api/user/authorized'
+      })
+      .then((data) => {
+        console.log(JSON.parse(data));
       })
     }
   }
