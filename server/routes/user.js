@@ -48,7 +48,6 @@ router.get('/callback', (req, res) => {
         error: 'state_mismatch'
       }));
   } else {
-    console.log(res.cookie);
     res.clearCookie(stateKey);
     var authOptions = {
       url: 'https://accounts.spotify.com/api/token',
