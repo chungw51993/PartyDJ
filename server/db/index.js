@@ -36,9 +36,46 @@ const Playlist = sequelize.define('Playlist', {
   },
   name: {
     type: Sequelize.STRING
+  },
+  user_id: {
+    type: Sequelize.STRING
+  }
+});
+
+Playlist.belongsTo(User, { foreignKey: 'user_id', targetKey: 'spotify_id' });
+User.hasMany(Playlist, { foreignKey: 'user_id', sourceKey: 'spotify_id' });
+
+const Track = sequelize.define('Track', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  name: {
+    type: Sequelize.STRING
+  },
+  uri: {
+    type: Sequelize.STRING,
+    unique: true
+  },
+  artist_id: {
+    type: Sequelize.INTEGER
+  }
+});
+
+Track.belongsToMany(Playlist, { through: 'Playlist_Track' });
+Playlist.belongsToMany(Track, { through: 'Playlist_Track' });
+
+const Artist = sequelize.define('Artist', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  name: {
+    type: Sequelize.STRING
   }
 })
 
-Playlist.belongsTo(User, { foreignKey: 'user_id', targetKey: 'spotify_id' });
-User.hasMany(Playlist);
-
+Track.belongsTo(Artist, { foreignKey: 'artist_id', targetKey: 'id'});
+Artist.hasMany(Track, { foreignKey: 'artist_id', sourceKey: 'id'});
