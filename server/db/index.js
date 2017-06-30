@@ -58,13 +58,33 @@ const Track = sequelize.define('Track', {
     type: Sequelize.STRING,
     unique: true
   },
-  artist_id: {
+  album_id: {
     type: Sequelize.INTEGER
   }
 });
 
 Track.belongsToMany(Playlist, { through: 'Playlist_Track' });
 Playlist.belongsToMany(Track, { through: 'Playlist_Track' });
+
+const Album = sequelize.define('Album', {
+  id: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  name: {
+    type: Sequelize.STRING
+  },
+  image: {
+    type: Sequelize.STRING
+  },
+  artist_id: {
+    type: Sequelize.INTEGER
+  }
+});
+
+Track.belongsTo(Album, { foreignKey: 'album_id', targetKey: 'id' });
+Album.hasMany(Track, { foreignKey: 'album_id', sourceKey: 'id' });
 
 const Artist = sequelize.define('Artist', {
   id: {
@@ -75,7 +95,22 @@ const Artist = sequelize.define('Artist', {
   name: {
     type: Sequelize.STRING
   }
-})
+});
 
-Track.belongsTo(Artist, { foreignKey: 'artist_id', targetKey: 'id'});
-Artist.hasMany(Track, { foreignKey: 'artist_id', sourceKey: 'id'});
+Album.belongsTo(Artist, { foreignKey: 'artist_id', targetKey: 'id' });
+Artist.hasMany(Album, { foreignKey: 'artist_id', targetKey: 'id' });
+
+User.sync();
+Artist.sync();
+Album.sync();
+Track.sync();
+Playlist.sync();
+
+module.exports = {
+  User: User,
+  Playlist: Playlist,
+  Track: Track,
+  Artist: Artist,
+  Album: Album
+  sequelize: sequelize
+}
