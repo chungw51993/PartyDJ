@@ -1,4 +1,25 @@
 const Sequelize = require('sequelize');
+const mysql = require('mysql');
+
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: ''
+});
+
+connection.connect((err) => {
+  if (err) {
+    throw err;
+  }
+  console.log('Connected to database');
+  connection.query('CREATE DATABASE IF NOT EXISTS partyDJ', (err, result) => {
+    if (err) {
+      throw err;
+    }
+    console.log('Database created successfully');
+  })
+
+});
 
 const sequelize = new Sequelize('partyDJ', 'root', '', {
   host: 'localhost',
@@ -12,7 +33,7 @@ sequelize.authenticate()
   })
   .catch((err) => {
     console.error('There is ERROR in connecting to database');
-  });
+})
 
 const User = require('./models/user')(sequelize, Sequelize);
 const Playlist = require('./models/playlist')(sequelize, Sequelize);
