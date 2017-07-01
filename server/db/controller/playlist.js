@@ -34,4 +34,5 @@ module.exports = {
   deletePlaylist: function(id) {
     return models.playlist.destroy({ where: { id: id }});
   }
+
 }
