@@ -7,9 +7,17 @@ module.exports = {
   },
 
   findByUserId: function(uid) {
+    return models.playlist.findAll({ where: { user_id: uid }});
+  },
+
+  updatePlaylist: function(id, title) {
+    return models.playlist.update({ name: title }, { where: { id: id }});
+  },
+
+  getAllTracks: function(id) {
     return models.playlist.findAll({
       where: {
-        user_id: uid
+        id: id
       },
       include: [
         {
@@ -23,5 +31,7 @@ module.exports = {
     });
   },
 
-
+  deletePlaylist: function(id) {
+    return models.playlist.destroy({ where: { id: id }});
+  }
 }
