@@ -6,6 +6,8 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const passport = require('passport');
+
 const db = require('./db/index');
 
 const port = 8000;
