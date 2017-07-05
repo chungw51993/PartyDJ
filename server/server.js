@@ -20,7 +20,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../')));
 
 const users = require('./routes/user');
+const playlist = require('./routes/playlist');
+const track = require('./routes/track');
+
 app.use('/api/user', users);
+app.use('/api/playlist', playlist);
+app.use('/api/track', track);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/index.html'));

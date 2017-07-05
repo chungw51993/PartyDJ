@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Playlist = require('../db/playlist');
+const Playlist = require('../db/controller/playlist');
 
 router.get('/:uid', (req, res) => {
   let userId = req.params.uid;
