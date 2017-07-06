@@ -13,7 +13,7 @@ module.exports = {
       .then((track) => {
         return models.playlist.find({ where: { id: pid }})
           .then((playlist) => {
-            playlist.addTrack(track);
+            return playlist.addTrack(track);
           });
       });
   },
@@ -23,7 +23,7 @@ module.exports = {
       .then((track) => {
         return models.playlist.find({ where: { id: pid }})
           .then((playlist) => {
-            playlist.removeTrack(track);
+            return playlist.removeTrack(track);
           })
       })
   }
