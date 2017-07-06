@@ -2,7 +2,7 @@ module.exports = (sequelize, Sequelize) => {
   const Playlist = sequelize.define('Playlist', {
     id: {
       type: Sequelize.INTEGER,
-      primaryKey:true,
+      primaryKey: true,
       autoIncrement: true
     },
     name: {
@@ -14,4 +14,4 @@ module.exports = (sequelize, Sequelize) => {
   });
 
   return Playlist;
-}
+};

@@ -11,4 +11,4 @@ module.exports = (sequelize, Sequelize) => {
   });
 
   return Artist;
-}
+};

@@ -24,8 +24,8 @@ module.exports = {
         return models.playlist.find({ where: { id: pid }})
           .then((playlist) => {
             return playlist.removeTrack(track);
-          })
-      })
+          });
+      });
   }
 
-}
+};

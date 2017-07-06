@@ -35,4 +35,4 @@ module.exports = {
     return models.playlist.destroy({ where: { id: id }});
   }
 
-}
+};

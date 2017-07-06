@@ -2,4 +2,4 @@
 module.exports = {
   id: 'YOUR_SPOTIFY_CLIENT_ID',
   secret: 'YOUR_SPOTIFY_CLIENT_SECRET'
-}
+};

@@ -17,8 +17,7 @@ connection.connect((err) => {
       throw err;
     }
     console.log('Database created successfully');
-  })
-
+  });
 });
 
 const sequelize = new Sequelize('partyDJ', 'root', '', {
@@ -33,7 +32,7 @@ sequelize.authenticate()
   })
   .catch((err) => {
     console.error('There is ERROR in connecting to database');
-})
+  });
 
 const User = require('./models/user')(sequelize, Sequelize);
 const Playlist = require('./models/playlist')(sequelize, Sequelize);
