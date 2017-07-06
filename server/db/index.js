@@ -44,8 +44,8 @@ const Artist = require('./models/artist')(sequelize, Sequelize);
 Playlist.belongsTo(User, { foreignKey: 'user_id', targetKey: 'spotify_id' });
 User.hasMany(Playlist, { foreignKey: 'user_id', sourceKey: 'spotify_id' });
 
-Track.belongsToMany(Playlist, { through: 'Playlist_Track' });
-Playlist.belongsToMany(Track, { through: 'Playlist_Track' });
+Track.belongsToMany(Playlist, { through: 'Playlist_Track', foreignKey: 'track_id', constraints: false });
+Playlist.belongsToMany(Track, { through: 'Playlist_Track', foreignKey: 'playlist_id', constraints: false });
 
 Track.belongsTo(Album, { foreignKey: 'album_id', targetKey: 'id' });
 Album.hasMany(Track, { foreignKey: 'album_id', sourceKey: 'id' });
