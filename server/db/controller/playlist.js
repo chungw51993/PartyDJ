@@ -15,7 +15,7 @@ module.exports = {
   },
 
   getAllTracks: function(id) {
-    return models.playlist.findAll({
+    return models.playlist.find({
       where: {
         id: id
       },
