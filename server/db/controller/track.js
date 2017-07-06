@@ -3,7 +3,6 @@ var models = require('../index');
 module.exports = {
 
   newTrack: function(artist, album, track, pid) {
-        console.log('>>>>>>>>>>>>>>>>', artist);
     return models.artist.findOrCreate({ where: { id: artist.id }, defaults: { name: artist.name }})
       .then((artist) => {
         return models.album.findOrCreate({ where: { id: album.id }, defaults: { name: album.name, image: album.image, artist_id: artist[0].id }});
