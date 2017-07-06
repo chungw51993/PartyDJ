@@ -1,9 +1,9 @@
 module.exports = (sequelize, Sequelize) => {
   const Album = sequelize.define('Album', {
     id: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING,
       primaryKey: true,
-      autoIncrement: true
+      unique: true
     },
     name: {
       type: Sequelize.STRING
@@ -12,7 +12,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
     },
     artist_id: {
-      type: Sequelize.INTEGER
+      type: Sequelize.STRING
     }
   });
 
