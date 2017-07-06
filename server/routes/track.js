@@ -8,7 +8,7 @@ router.post('/:pid', (req, res) => {
   let album = req.body.album;
   let track = req.body.track;
 
-  Track.addTrack(artist, album, track, pid)
+  Track.newTrack(artist, album, track, pid)
     .then((data) => {
       res.status(200);
       res.send(data);
