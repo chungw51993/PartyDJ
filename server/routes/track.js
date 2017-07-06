@@ -25,8 +25,7 @@ router.delete('/:pid', (req, res) => {
 
   Track.deleteTrack(tid, pid)
     .then((data) => {
-      res.status(200);
-      res.send(data);
+      res.sendStatus(200);
     })
     .catch((err) => {
       console.error(err);
