@@ -13,7 +13,10 @@ angular.module('partyDJ', [
     })
     .when('/playlist', {
       templateUrl: '/client/views/playlist.html',
-      controller: 'PlaylistCtrl'
+      controller: 'PlaylistCtrl',
+      resolve: {
+        user: authorized
+      }
     })
     .otherwise({
       redirectTo: '/'

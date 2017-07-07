@@ -1,15 +1,22 @@
 angular.module('partyDJ')
 
-.factory('Auth', function($http) {
+.factory('Auth', function($http, $timeout, $location) {
   return {
+
     isAuthorized: function() {
       return $http({
         method: 'GET',
         url: '/api/user/authorized'
       })
-      .then((data) => {
-        console.log(JSON.parse(data));
+      .then((resp) => {
+        return resp.data;
       })
+      .catch(() => {
+        $timeout(() => {
+          $location.path('/landing');
+        });
+      });
     }
-  }
-})
+
+  };
+});
