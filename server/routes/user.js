@@ -4,40 +4,19 @@ const querystring = require('querystring');
 const request = require('request');
 
 const User = require('../db/controller/user');
-const CLIENT = require('../config/config.js');
 
-const generateRandomString = function(length) {
-  let text = '';
-  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+module.exports = (passport) => {
+  router.get('/login', passport.authenticate('spotify',
+    {scope: ['user-read-email', 'user-read-private'],
+      showDialog: true}),
+    (req, res) => {
+    });
 
-  for (let i = 0; i < length; i++) {
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
+  router.get('/callback', passport.authenticate('spotify', { failureRedirect: '/landing'
+  }), (req, res) => {
+    res.redirect('/playlist');
+  });
 
-  return text;
+  return router;
 };
 
-const stateKey = 'spotify_auth_state';
-const client_id = CLIENT.id;
-const client_secret = CLIENT.secret;
-const redirect_uri = 'http://localhost:8000/api/user/callback';
-
-
-router.post('/', (req, res) => {
-  let uid = req.body.uid;
-  let email = req.body.email;
-  let name = req.body.name;
-
-  User.newUser(uid, email, name)
-    .then((data) => {
-      res.status(200);
-      res.send(data);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.send(err);
-    });
-});
-
-
-module.exports = router;

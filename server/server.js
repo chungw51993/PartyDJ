@@ -6,20 +6,28 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const session = require('express-session');
 const passport = require('passport');
 
 const db = require('./db/index');
 
 const port = 8000;
 
+require('./passport/init')(passport);
+
+app.use(cookieParser());
+app.use(session({ secret: 'keyboard cat!' }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
-app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, '../')));
 
-const users = require('./routes/user');
+const users = require('./routes/user')(passport);
 const playlist = require('./routes/playlist');
 const track = require('./routes/track');
 
