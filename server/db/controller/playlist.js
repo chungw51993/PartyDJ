@@ -7,7 +7,11 @@ module.exports = {
   },
 
   findByUserId: function(uid) {
-    return models.playlist.findAll({ where: { user_id: uid }});
+    return models.playlist.findAll({
+      where: { user_id: uid },
+      order: [
+        ['createdAt', 'DESC']
+      ]});
   },
 
   updatePlaylist: function(id, title) {
