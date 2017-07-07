@@ -32,6 +32,12 @@ app.get('*', (req, res) => {
 });
 
 db.sequelize.sync().then(function() {
+  db.sequelize.query('ALTER TABLE `partyDJ`.`Playlist_Track` DROP PRIMARY KEY')
+    .then((data) => {
+      console.log('Playlist_Track table has been altered', data);
+    })
+    .catch((err) => {});
+
   app.listen(port, () => {
     console.log('Server is listening on ', port);
   });
