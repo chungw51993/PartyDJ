@@ -19,4 +19,37 @@ angular.module('partyDJ')
     }
 
   };
+})
+
+.factory('Playlist', function($http, $location) {
+  return {
+
+    getPlaylists: function() {
+      return $http({
+        method: 'GET',
+        url: '/api/playlist'
+      })
+      .then((resp) => {
+        return resp.data;
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    },
+
+    newPlaylist: function(playlist) {
+      return $http({
+        method: 'POST',
+        url: '/api/playlist',
+        data: playlist
+      })
+      .then((resp) => {
+        return resp.data;
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    }
+
+  };
 });

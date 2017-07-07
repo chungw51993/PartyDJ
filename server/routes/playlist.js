@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const Playlist = require('../db/controller/playlist');
+const authenticated = require('../helper');
 
-router.get('/', (req, res) => {
-  let userId = req.params.uid;
+router.get('/', authenticated, (req, res) => {
+  let userId = req.user;
+  console.log(userId);
 
   Playlist.findByUserId(userId)
     .then((data) => {
@@ -16,7 +18,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/', authenticated, (req, res) => {
   let playlist = req.body.playlist;
 
   Playlist.newPlaylist(playlist)
@@ -30,7 +32,7 @@ router.post('/', (req, res) => {
     });
 });
 
-router.put('/', (req, res) => {
+router.put('/', authenticated, (req, res) => {
   let pid = req.body.pid;
   let title = req.body.title;
 
@@ -59,7 +61,7 @@ router.get('/:pid', (req, res) => {
     });
 });
 
-router.delete('/:pid', (req, res) => {
+router.delete('/:pid', authenticated, (req, res) => {
   let pid = req.params.pid;
 
   Playlist.deletePlaylist(pid)

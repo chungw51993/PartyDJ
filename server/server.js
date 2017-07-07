@@ -42,7 +42,7 @@ app.get('*', (req, res) => {
 db.sequelize.sync().then(function() {
   db.sequelize.query('ALTER TABLE `partyDJ`.`Playlist_Track` DROP PRIMARY KEY')
     .then((data) => {
-      console.log('Playlist_Track table has been altered', data);
+      console.log('Playlist_Track table has been altered');
     })
     .catch((err) => {});
 
