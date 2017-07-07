@@ -37,11 +37,13 @@ angular.module('partyDJ')
       });
     },
 
-    newPlaylist: function(playlist) {
+    newPlaylist: function(title) {
       return $http({
         method: 'POST',
         url: '/api/playlist',
-        data: playlist
+        data: {
+          title: title
+        }
       })
       .then((resp) => {
         return resp.data;

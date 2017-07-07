@@ -4,8 +4,7 @@ const Playlist = require('../db/controller/playlist');
 const authenticated = require('../helper');
 
 router.get('/', authenticated, (req, res) => {
-  let userId = req.user;
-  console.log(userId);
+  let userId = req.user.dataValues.spotify_id;
 
   Playlist.findByUserId(userId)
     .then((data) => {
@@ -19,7 +18,10 @@ router.get('/', authenticated, (req, res) => {
 });
 
 router.post('/', authenticated, (req, res) => {
-  let playlist = req.body.playlist;
+  let playlist = {
+    name: req.body.title,
+    user_id: req.user.dataValues.spotify_id
+  };
 
   Playlist.newPlaylist(playlist)
     .then((data) => {

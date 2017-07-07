@@ -3,8 +3,13 @@ angular.module('partyDJ', [
 ])
 
 .config(function($routeProvider, $locationProvider) {
+
   const authorized = function(Auth) {
     return Auth.isAuthorized();
+  };
+
+  const getPlaylist = function(Playlist) {
+    return Playlist.getPlaylists();
   };
 
   $routeProvider
@@ -15,8 +20,13 @@ angular.module('partyDJ', [
       templateUrl: '/client/views/playlist.html',
       controller: 'PlaylistCtrl',
       resolve: {
-        user: authorized
+        user: authorized,
+        playlist: getPlaylist
       }
+    })
+    .when('/playlist/:id', {
+      templateUrl: '/client/views/playlist-detail.html',
+      controller: 'PlaylistDetailCtrl'
     })
     .otherwise({
       redirectTo: '/'
