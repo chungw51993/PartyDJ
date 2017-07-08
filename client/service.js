@@ -51,6 +51,19 @@ angular.module('partyDJ')
       .catch((err) => {
         console.error(err);
       });
+    },
+
+    getAllTracks: function(id) {
+      return $http({
+        method: 'GET',
+        url: '/api/playlist/' + id
+      })
+      .then((resp) => {
+        return resp.data;
+      })
+      .catch((err) => {
+        console.error(err);
+      });
     }
 
   };

@@ -21,7 +21,7 @@ angular.module('partyDJ', [
       controller: 'PlaylistCtrl',
       resolve: {
         user: authorized,
-        playlist: getPlaylist
+        playlists: getPlaylist
       }
     })
     .when('/playlist/:id', {

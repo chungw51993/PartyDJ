@@ -1,7 +1,7 @@
 angular.module('partyDJ')
 
-.controller('PlaylistCtrl', function($scope, $location, Playlist, playlist) {
-  $scope.playlists = playlist;
+.controller('PlaylistCtrl', function($scope, $location, Playlist, playlists) {
+  $scope.playlists = playlists;
   $scope.title = '';
 
   $scope.newPlaylist = function() {
