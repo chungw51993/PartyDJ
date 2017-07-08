@@ -1,3 +1,15 @@
+/*Landing Page Style*/
+a.spotify-login {
+  border-style: solid;
+  padding: 10px 5px 10px 5px;
+  border-radius: 20px;
+  border-color: #1db954;
+  background-color: #1db954;
+  color: white;
+}
+
+/*Playlist Page Style*/
+
 div.playlist-item {
   margin: 10px 0 10px 0;
 }
