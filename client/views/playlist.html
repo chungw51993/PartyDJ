@@ -1,9 +1,11 @@
-<h1>PLAYLIST</h1>
+<div class="container">
+  <h1>PLAYLIST</h1>
 
-<input type="title" name="title" ng-model="title">
-<button ng-click="newPlaylist()">Submit</button>
+  <input type="title" name="title" ng-model="title">
+  <button ng-click="newPlaylist()">Submit</button>
 
-<div ng-repeat="item in playlists">
-  {{ item.name }}
-  {{ item.createdAt }}
+  <div ng-repeat="item in playlists">
+    <div class="title">{{ item.name }}</div>
+    <div class="date">{{ item.createdAt }}</div>
+  </div>
 </div>
