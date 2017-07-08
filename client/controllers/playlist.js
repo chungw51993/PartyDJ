@@ -14,4 +14,8 @@ angular.module('partyDJ')
       });
   };
 
+  $scope.goToDetail = function(id) {
+    $location.path(`/playlist/${id}`);
+  };
+
 });

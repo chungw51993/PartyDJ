@@ -5,7 +5,7 @@
   <button ng-click="newPlaylist()">Submit</button>
 
   <div class="playlist-item" ng-repeat="item in playlists">
-    <div class="title">{{ item.name }}</div>
-    <div class="date">{{ item.createdAt }}</div>
+    <div ng-click="goToDetail(item.id)" class="title">{{ item.name }}</div>
+    <div class="date">{{ item.createdAt.slice(0, 10) }}</div>
   </div>
 </div>
