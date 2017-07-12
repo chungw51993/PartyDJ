@@ -53,6 +53,13 @@ angular.module('partyDJ')
       });
     },
 
+    deletePlaylist: function(id) {
+      return $http({
+        method: 'DELETE',
+        url: '/api/playlist/' + id
+      });
+    },
+
     getAllTracks: function(id) {
       return $http({
         method: 'GET',

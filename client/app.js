@@ -12,12 +12,6 @@ angular.module('partyDJ', [
     return Playlist.getPlaylists();
   };
 
-  const getPlaylist = function(Playlist, $routeParams) {
-    var params = $routeParams;
-    console.log(params);
-    return Playlist.getAllTracks(params);
-  };
-
   $routeProvider
     .when('/', {
       templateUrl: '/client/views/landing.html'
@@ -32,10 +26,7 @@ angular.module('partyDJ', [
     })
     .when('/:id', {
       templateUrl: '/client/views/playlist-detail.html',
-      controller: 'PlaylistDetailCtrl',
-      resolve: {
-        playlist: getPlaylist
-      }
+      controller: 'PlaylistDetailCtrl'
     })
     .otherwise({
       redirectTo: '/'
