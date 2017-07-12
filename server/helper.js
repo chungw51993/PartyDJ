@@ -1,5 +1,3 @@
-const querystring = require('querystring');
-
 exports.authenticated = (req, res, next) => {
   if (req.isAuthenticated()) {
     return next();

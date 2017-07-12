@@ -8,8 +8,14 @@ angular.module('partyDJ', [
     return Auth.isAuthorized();
   };
 
-  const getPlaylist = function(Playlist) {
+  const getPlaylists = function(Playlist) {
     return Playlist.getPlaylists();
+  };
+
+  const getPlaylist = function(Playlist, $routeParams) {
+    var params = $routeParams;
+    console.log(params);
+    return Playlist.getAllTracks(params);
   };
 
   $routeProvider
@@ -21,12 +27,15 @@ angular.module('partyDJ', [
       controller: 'PlaylistCtrl',
       resolve: {
         user: authorized,
-        playlists: getPlaylist
+        playlists: getPlaylists
       }
     })
     .when('/:id', {
       templateUrl: '/client/views/playlist-detail.html',
-      controller: 'PlaylistDetailCtrl'
+      controller: 'PlaylistDetailCtrl',
+      resolve: {
+        playlist: getPlaylist
+      }
     })
     .otherwise({
       redirectTo: '/'

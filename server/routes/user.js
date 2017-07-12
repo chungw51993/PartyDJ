@@ -14,7 +14,7 @@ module.exports = (passport) => {
   router.get('/callback', passport.authenticate('spotify', { failureRedirect: '/landing',
   }), (req, res) => {
     if (req.session.returnTo) {
-      var redirectUrl = `${req.protocol}://${req.get('host')}/${req.session.returnTo}`;
+      const redirectUrl = `${req.protocol}://${req.get('host')}/${req.session.returnTo}`;
       res.redirect(redirectUrl);
     } else {
       res.redirect('/playlist');
