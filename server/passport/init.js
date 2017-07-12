@@ -5,7 +5,7 @@ const CLIENT = require('../config/config');
 module.exports = (passport) => {
 
   passport.serializeUser((user, done) => {
-    done(null, user[0].spotify_id);
+    done(null, user.spotify_id);
   });
 
   passport.deserializeUser((id, done) => {
@@ -24,27 +24,25 @@ module.exports = (passport) => {
     callbackURL: 'http://localhost:8000/api/user/callback'
   },
   (accessToken, refreshToken, profile, done) => {
-    process.nextTick(() => {
-      User.findUserById(profile.id)
-        .then((user) => {
-          if (!user) {
-            User.newUser(profile.id, profile.email, accessToken)
-              .then((user) => {
-                if (!user) {
-                  return done(null, false);
-                } else {
-                  return done(null, user);
-                }
-              });
-          } else {
-            return done(null, user);
-          }
-        })
-        .catch((err) => {
-          console.error(err);
-          done(err);
-        });
-    });
+    User.findUserById(profile.id)
+      .then((user) => {
+        if (!user) {
+          User.newUser(profile.id, profile.email, accessToken)
+            .then((user) => {
+              if (!user) {
+                return done(null, false);
+              } else {
+                return done(null, user);
+              }
+            });
+        } else {
+          return done(null, user);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        done(err);
+      });
   }));
 
 };
