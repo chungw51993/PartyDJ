@@ -5,16 +5,20 @@ const User = require('../db/controller/user');
 const helper = require('../helper');
 
 module.exports = (passport) => {
-  router.get('/login', passport.authenticate('spotify',
+  router.get('/login', helper.checkReturnTo, passport.authenticate('spotify',
     {scope: ['user-read-email', 'user-read-private'],
       showDialog: true}),
     (req, res) => {
     });
 
   router.get('/callback', passport.authenticate('spotify', { failureRedirect: '/landing',
-    successReturnToOrRedirect: '/playlist'
   }), (req, res) => {
-    res.redirect('/playlist');
+    if (req.session.returnTo) {
+      var redirectUrl = `${req.protocol}://${req.get('host')}/${req.session.returnTo}`;
+      res.redirect(redirectUrl);
+    } else {
+      res.redirect('/playlist');
+    }
   });
 
   router.get('/authorized', helper.authenticated, (req, res) => {
