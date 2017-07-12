@@ -8,6 +8,10 @@ module.exports = {
 
   findUserById: function(id) {
     return models.user.findById(id);
+  },
+
+  updateUser: function(uid, token) {
+    return models.user.update({ access_token: token }, { where: { spotify_id: uid }});
   }
 
 };

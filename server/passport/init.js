@@ -27,7 +27,7 @@ module.exports = (passport) => {
     User.findUserById(profile.id)
       .then((user) => {
         if (!user) {
-          User.newUser(profile.id, profile.email, accessToken)
+          User.newUser(profile.id, profile.emails[0].value, accessToken)
             .then((user) => {
               if (!user) {
                 return done(null, false);
@@ -36,6 +36,16 @@ module.exports = (passport) => {
               }
             });
         } else {
+          if (user.access_token !== accessToken) {
+            User.updateUser(user.spotify_id, accessToken)
+              .then((user) => {
+                if (!user) {
+                  return done(null, false);
+                } else {
+                  return done(null, user);
+                }
+              });
+          }
           return done(null, user);
         }
       })
