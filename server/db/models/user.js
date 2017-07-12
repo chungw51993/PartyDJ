@@ -8,7 +8,7 @@ module.exports = (sequelize, Sequelize) => {
     email: {
       type: Sequelize.STRING
     },
-    request_token: {
+    access_token: {
       type: Sequelize.STRING
     }
   });

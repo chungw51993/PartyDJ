@@ -25,7 +25,7 @@ module.exports = (passport) => {
   },
   (accessToken, refreshToken, profile, done) => {
     process.nextTick(() => {
-      User.newUser(profile.id, profile.emails[0].value)
+      User.newUser(profile.id, profile.emails[0].value, accessToken)
         .then((user) => {
           if (!user) {
             return done(null, false);
