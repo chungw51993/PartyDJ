@@ -38,15 +38,19 @@ module.exports = (passport) => {
         } else {
           if (user.access_token !== accessToken) {
             User.updateUser(user.spotify_id, accessToken)
-              .then((user) => {
-                if (!user) {
-                  return done(null, false);
-                } else {
-                  return done(null, user);
-                }
+              .then(() => {
+                User.findUserById(user.spotify_id)
+                  .then((user) => {
+                    if (!user) {
+                      return done(null, false);
+                    } else {
+                      return done(null, user);
+                    }
+                  });
               });
+          } else {
+            return done(null, user);
           }
-          return done(null, user);
         }
       })
       .catch((err) => {

@@ -7,7 +7,6 @@ angular.module('partyDJ')
     Playlist.getAllTracks($routeParams.id)
       .then((resp) => {
         $scope.playlist = resp;
-        console.log($scope.playlist);
       });
   };
 
