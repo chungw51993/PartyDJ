@@ -10,7 +10,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
     },
     access_token: {
-      type: Sequelize.STRING(1234)
+      type: Sequelize.STRING
     }
   });
 
