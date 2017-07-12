@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const Playlist = require('../db/controller/playlist');
-const authenticated = require('../helper');
+const helper = require('../helper');
 
-router.get('/', authenticated, (req, res) => {
+/* eslint-disable */
+
+router.get('/', helper.authenticated, (req, res) => {
   let userId = req.user.dataValues.spotify_id;
 
   Playlist.findByUserId(userId)
@@ -17,7 +19,7 @@ router.get('/', authenticated, (req, res) => {
     });
 });
 
-router.post('/', authenticated, (req, res) => {
+router.post('/', helper.authenticated, (req, res) => {
   let playlist = {
     name: req.body.title,
     user_id: req.user.dataValues.spotify_id
@@ -34,7 +36,7 @@ router.post('/', authenticated, (req, res) => {
     });
 });
 
-router.put('/', authenticated, (req, res) => {
+router.put('/', helper.authenticated, (req, res) => {
   let pid = req.body.pid;
   let title = req.body.title;
 
@@ -63,7 +65,7 @@ router.get('/:pid', (req, res) => {
     });
 });
 
-router.delete('/:pid', authenticated, (req, res) => {
+router.delete('/:pid', helper.authenticated, (req, res) => {
   let pid = req.params.pid;
 
   Playlist.deletePlaylist(pid)
