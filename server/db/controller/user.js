@@ -1,7 +1,7 @@
 var models = require('../index');
 
 module.exports = {
-
+  /* eslint-disable */
   newUser: function(uid, email, token) {
     return models.user.create({ spotify_id: uid, email: email, access_token: token });
   },
@@ -13,5 +13,4 @@ module.exports = {
   updateUser: function(uid, token) {
     return models.user.update({ access_token: token }, { where: { spotify_id: uid }});
   }
-
 };
