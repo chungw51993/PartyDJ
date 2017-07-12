@@ -24,7 +24,7 @@ angular.module('partyDJ', [
         playlists: getPlaylist
       }
     })
-    .when('/playlist/:id', {
+    .when('/:id', {
       templateUrl: '/client/views/playlist-detail.html',
       controller: 'PlaylistDetailCtrl'
     })

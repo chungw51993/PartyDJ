@@ -35,7 +35,7 @@ app.use('/api/user', users);
 app.use('/api/playlist', playlist);
 app.use('/api/track', track);
 
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 
@@ -44,7 +44,9 @@ db.sequelize.sync().then(function() {
     .then((data) => {
       console.log('Playlist_Track table has been altered');
     })
-    .catch((err) => {});
+    .catch((err) => {
+      console.log('Playlist_Track was already altered');
+    });
 
   app.listen(port, () => {
     console.log('Server is listening on ', port);

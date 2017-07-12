@@ -13,6 +13,7 @@ module.exports = (passport) => {
 
   router.get('/callback', passport.authenticate('spotify', { failureRedirect: '/landing'
   }), (req, res) => {
+    console.log(req.headers, '<<<<<<<<<<<<<<<<<<<<<<');
     res.redirect('/playlist');
   });
 
