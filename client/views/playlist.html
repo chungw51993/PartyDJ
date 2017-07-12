@@ -1,7 +1,7 @@
 <div class="container">
   <h1>PLAYLIST</h1>
 
-  <input type="title" name="title" ng-model="title">
+  <input ng-model="title">
   <button ng-click="newPlaylist()">Submit</button>
 
   <div class="playlist-item" ng-repeat="playlist in playlists">
@@ -25,8 +25,8 @@
 <div class="popup" ng-if="editPopup">
   <div class="mdl-card mdl-shadow--8dp">
     <h4>Do you want to change the name of the playlist?</h4>
-    <input type="title" name="title" ng-model="newTitle" placeholder="New Playlist Name">
-    <button ng-click="editPlaylist(title)">Submit</button>
+    <input ng-model="newTitle" placeholder="New Playlist Name">
+    <button ng-click="editPlaylist(currentPL.id, newTitle)">Submit</button>
     <button ng-click="cancelEdit()">Cancel</button>
   </div>
 </div>

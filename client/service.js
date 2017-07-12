@@ -60,6 +60,17 @@ angular.module('partyDJ')
       });
     },
 
+    editPlaylist: function(id, title) {
+      return $http({
+        method: 'PUT',
+        url: '/api/playlist',
+        data: {
+          pid: id,
+          title: title
+        }
+      });
+    },
+
     getAllTracks: function(id) {
       return $http({
         method: 'GET',

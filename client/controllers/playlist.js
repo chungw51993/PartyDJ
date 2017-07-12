@@ -31,6 +31,18 @@ angular.module('partyDJ')
       });
   };
 
+  $scope.editPlaylist = function(id, title) {
+    Playlist.editPlaylist(id, title)
+      .then(() => {
+        $scope.editPopup = false;
+        $scope.newTitle = '';
+        Playlist.getPlaylists()
+          .then((resp) => {
+            $scope.playlists = resp;
+          });
+      });
+  };
+
   $scope.goToDetail = function(id) {
     $location.path(`/${id}`);
   };

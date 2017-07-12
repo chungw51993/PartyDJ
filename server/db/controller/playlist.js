@@ -1,5 +1,5 @@
 const models = require('../index');
-
+/* eslint-disable */
 module.exports = {
 
   newPlaylist: function(playlist) {
