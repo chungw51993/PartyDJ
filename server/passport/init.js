@@ -25,10 +25,17 @@ module.exports = (passport) => {
   },
   (accessToken, refreshToken, profile, done) => {
     process.nextTick(() => {
-      User.newUser(profile.id, profile.emails[0].value, accessToken)
+      User.findUserById(profile.id)
         .then((user) => {
           if (!user) {
-            return done(null, false);
+            User.newUser(profile.id, profile.email, accessToken)
+              .then((user) => {
+                if (!user) {
+                  return done(null, false);
+                } else {
+                  return done(null, user);
+                }
+              });
           } else {
             return done(null, user);
           }

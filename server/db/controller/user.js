@@ -2,8 +2,8 @@ var models = require('../index');
 
 module.exports = {
 
-  newUser: function(uid, email) {
-    return models.user.findOrCreate({ where: { spotify_id: uid }, defaults: { email: email }});
+  newUser: function(uid, email, token) {
+    return models.user.create({ spotify_id: uid, email: email, access_token: token });
   },
 
   findUserById: function(id) {
