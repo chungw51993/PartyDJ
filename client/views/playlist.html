@@ -1,9 +1,6 @@
 <div class="container">
   <h1>PLAYLIST</h1>
 
-  <input ng-model="title">
-  <button ng-click="newPlaylist()">Submit</button>
-
   <div class="playlist-item" ng-repeat="playlist in playlists">
     <div ng-click="goToDetail(playlist.id)" class="title">{{ playlist.name }}</div>
     <div class="date">{{ playlist.createdAt.slice(0, 10) }}</div>
@@ -11,13 +8,17 @@
     <button class="deletePL" ng-click="showDeletePopup(playlist)">Delete</button>
     <hr>
   </div>
+
+  <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" ng-click="showNewPopup()">
+    <i class="material-icons">add</i>
+  </button>
 </div>
 
-<div class="popup" ng-show="deletePopup">
+<div class="popup" ng-if="deletePopup">
   <div class="mdl-card mdl-shadow--8dp">
     <h4>Are you sure you want to delete {{ currentPL.name }}?</h4>
     <p>You won't be able to get the playlist back after it is deleted</p>
-    <button ng-click="deletePlaylist(currentPL.id)">Submit</button>
+    <button ng-click="deletePlaylist(currentPL.id)">Delete</button>
     <button ng-click="cancelDelete()">Cancel</button>
   </div>
 </div>
@@ -26,7 +27,16 @@
   <div class="mdl-card mdl-shadow--8dp">
     <h4>Do you want to change the name of the playlist?</h4>
     <input ng-model="newTitle" placeholder="New Playlist Name">
-    <button ng-click="editPlaylist(currentPL.id, newTitle)">Submit</button>
+    <button ng-click="editPlaylist(currentPL.id, newTitle)">Edit</button>
     <button ng-click="cancelEdit()">Cancel</button>
+  </div>
+</div>
+
+<div class="popup" ng-if="newPopup">
+  <div class="mdl-card mdl-shadow--8dp">
+    <h4>New Playlist</h4>
+    <input ng-model="title" placeholder="Playlist Title">
+    <button ng-click="newPlaylist(title)">Submit</button>
+    <button ng-click="cancelNew()">Cancel</button>
   </div>
 </div>

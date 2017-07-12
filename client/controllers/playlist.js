@@ -5,14 +5,16 @@ angular.module('partyDJ')
   $scope.user = user;
   $scope.deletePopup = false;
   $scope.editPopup = false;
+  $scope.newPopup = false;
   $scope.currentPL = {};
   $scope.title = '';
   $scope.newTitle = '';
 
-  $scope.newPlaylist = function() {
-    Playlist.newPlaylist($scope.title)
+  $scope.newPlaylist = function(title) {
+    Playlist.newPlaylist(title)
       .then((resp) => {
         $scope.title = '';
+        $scope.newPopup = false;
         Playlist.getPlaylists()
           .then((resp) => {
             $scope.playlists = resp;
@@ -47,6 +49,11 @@ angular.module('partyDJ')
     $location.path(`/${id}`);
   };
 
+  $scope.showNewPopup = function() {
+    console.log($scope.newPopup);
+    $scope.newPopup = true;
+  };
+
   $scope.showDeletePopup = function(pl) {
     $scope.deletePopup = true;
     $scope.currentPL = pl;
@@ -55,6 +62,10 @@ angular.module('partyDJ')
   $scope.showEditPopup = function(pl) {
     $scope.editPopup = true;
     $scope.currentPL = pl;
+  };
+
+  $scope.cancelNew = function() {
+    $scope.newPopup = false;
   };
 
   $scope.cancelDelete = function() {
