@@ -1,6 +1,6 @@
 angular.module('partyDJ')
 
-.controller('PopupCtrl', function($scope) {
+.controller('PopupCtrl', function() {
   this.handleClick = () => {
     if (this.current && this.name === undefined) {
       this.service(this.current.id);
@@ -37,8 +37,8 @@ angular.module('partyDJ')
         <h4>{{ ctrl.message }}</h4>
         <p>{{ ctrl.sub }}</p>
         <input ng-if="ctrl.name" ng-model="ctrl.name" placeholder="Playlist Name" >
-        <button ng-click="ctrl.handleClick()">Submit</button>
-        <button ng-click="ctrl.handleCancel()">Cancel</button>
+        <button class="submit" ng-click="ctrl.handleClick()">Submit</button>
+        <button class="cancel" ng-click="ctrl.handleCancel()">Cancel</button>
       </div>
     </div>
     `
