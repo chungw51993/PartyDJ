@@ -54,6 +54,8 @@ angular.module('partyDJ')
   };
 
   $scope.showNewPopup = function() {
+    $scope.text = 'Creating new playlist';
+    $scope.title = 'New Playlist';
     $scope.newPopup = true;
   };
 
