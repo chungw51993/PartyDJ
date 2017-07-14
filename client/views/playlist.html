@@ -1,13 +1,7 @@
 <div class="container">
   <h1>PLAYLIST</h1>
 
-  <div class="playlist-item" ng-repeat="playlist in playlists">
-    <div ng-click="goToDetail(playlist.id)" class="title">{{ playlist.name }}</div>
-    <div class="date">{{ playlist.createdAt.slice(0, 10) }}</div>
-    <button class="editPL" ng-click="showEditPopup(playlist)">Edit</button>
-    <button class="deletePL" ng-click="showDeletePopup(playlist)">Delete</button>
-    <hr>
-  </div>
+  <playlist-item ng-repeat="playlist in playlists" playlist="playlist" redirect="goToDetail" show-edit="showEditPopup" show-delete="showDeletePopup"></playlist-item>
 
   <button class="add mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" ng-click="showNewPopup()">
     <i class="material-icons">add</i>

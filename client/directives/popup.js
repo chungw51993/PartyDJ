@@ -32,15 +32,15 @@ angular.module('partyDJ')
     controllerAs: 'ctrl',
     bindToController: true,
     template: `
-    <div>
-      <div class="mdl-card mdl-shadow--8dp">
-        <h4>{{ ctrl.message }}</h4>
-        <p>{{ ctrl.sub }}</p>
-        <input ng-if="ctrl.name" ng-model="ctrl.name" placeholder="Playlist Name" >
-        <button class="submit" ng-click="ctrl.handleClick()">Submit</button>
-        <button class="cancel" ng-click="ctrl.handleCancel()">Cancel</button>
+      <div>
+        <div class="mdl-card mdl-shadow--8dp">
+          <h4>{{ ctrl.message }}</h4>
+          <p>{{ ctrl.sub }}</p>
+          <input ng-if="ctrl.name" ng-model="ctrl.name" placeholder="Playlist Name" >
+          <button class="submit" ng-click="ctrl.handleClick()">Submit</button>
+          <button class="cancel" ng-click="ctrl.handleCancel()">Cancel</button>
+        </div>
       </div>
-    </div>
     `
   };
 });
