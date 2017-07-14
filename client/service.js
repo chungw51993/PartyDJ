@@ -9,11 +9,15 @@ angular.module('partyDJ')
         url: '/api/user/authorized'
       })
       .then((resp) => {
-        return resp.data;
+        if (typeof resp.data !== 'object') {
+          $location.path('/');
+        } else {
+          return resp.data;
+        }
       })
       .catch(() => {
         $timeout(() => {
-          $location.path('/landing');
+          $location.path('/');
         });
       });
     }

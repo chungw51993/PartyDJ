@@ -50,7 +50,6 @@ angular.module('partyDJ')
   };
 
   $scope.showNewPopup = function() {
-    console.log($scope.newPopup);
     $scope.newPopup = true;
   };
 

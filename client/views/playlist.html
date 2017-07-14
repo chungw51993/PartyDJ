@@ -9,19 +9,14 @@
     <hr>
   </div>
 
-  <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" ng-click="showNewPopup()">
+  <button class="add mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" ng-click="showNewPopup()">
     <i class="material-icons">add</i>
   </button>
 </div>
 
-<div class="popup" ng-if="deletePopup">
-  <div class="mdl-card mdl-shadow--8dp">
-    <h4>Are you sure you want to delete {{ currentPL.name }}?</h4>
-    <p>You won't be able to get the playlist back after it is deleted</p>
-    <button ng-click="deletePlaylist(currentPL.id)">Delete</button>
-    <button ng-click="cancelDelete()">Cancel</button>
-  </div>
-</div>
+<popup class="popup" ng-if="deletePopup" service="deletePlaylist" currentPL="currentPL" ></popup>
+<popup ng-if="editPopup"></popup>
+<popup ng-if="newPopup"></popup>
 
 <div class="popup" ng-if="editPopup">
   <div class="mdl-card mdl-shadow--8dp">
