@@ -14,18 +14,9 @@
   </button>
 </div>
 
-<popup class="popup" ng-if="deletePopup" service="deletePlaylist" currentPL="currentPL" ></popup>
-<popup ng-if="editPopup"></popup>
-<popup ng-if="newPopup"></popup>
-
-<div class="popup" ng-if="editPopup">
-  <div class="mdl-card mdl-shadow--8dp">
-    <h4>Do you want to change the name of the playlist?</h4>
-    <input ng-model="newTitle" placeholder="New Playlist Name">
-    <button ng-click="editPlaylist(currentPL.id, newTitle)">Edit</button>
-    <button ng-click="cancelEdit()">Cancel</button>
-  </div>
-</div>
+<popup class="popup" ng-if="deletePopup" service="deletePlaylist" current="currentPL" cancel="cancelDelete" message="text" sub="subText"></popup>
+<popup class="popup" ng-if="editPopup" service="editPlaylist" current="currentPL" cancel="cancelEdit" message="text" name="title"></popup>
+<popup class="popup" ng-if="newPopup"></popup>
 
 <div class="popup" ng-if="newPopup">
   <div class="mdl-card mdl-shadow--8dp">

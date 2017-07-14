@@ -1,25 +1,42 @@
 angular.module('partyDJ')
 
 .controller('PopupCtrl', function($scope) {
-  console.log(this);
+  this.handleClick = () => {
+    if (this.current) {
+      this.service(this.current.id);
+    } else {
+      this.service();
+    }
+  };
+
+  this.handleCancel = () => {
+    this.cancel();
+  };
 })
 
 .directive('popup', function() {
   return {
     scope: {
       service: '<',
-      currentPL: '<'
+      current: '<',
+      cancel: '<',
+      message: '<',
+      sub: '<',
+      delete: '<',
+      name: '<'
     },
     restrict: 'E',
     controller: 'PopupCtrl',
+    controllerAs: 'ctrl',
     bindToController: true,
     template: `
     <div>
       <div class="mdl-card mdl-shadow--8dp">
-        <h4>Are you sure you want to delete {{ currentPL.name }}?</h4>
-        <p>You won't be able to get the playlist back after it is deleted</p>
-        <button ng-click="deletePlaylist(currentPL.id)">Delete</button>
-        <button ng-click="cancelDelete()">Cancel</button>
+        <h4>{{ ctrl.message }}</h4>
+        <p>{{ ctrl.sub }}</p>
+        <input ng-if="ctrl.name" ng-model="ctrl.name" placeholder="Playlist Name" >
+        <button ng-click="ctrl.handleClick()">Delete</button>
+        <button ng-click="ctrl.handleCancel()">Cancel</button>
       </div>
     </div>
     `

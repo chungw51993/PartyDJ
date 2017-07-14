@@ -3,12 +3,16 @@ angular.module('partyDJ')
 .controller('PlaylistCtrl', function($scope, $location, Playlist, playlists, user) {
   $scope.playlists = playlists;
   $scope.user = user;
+
   $scope.deletePopup = false;
   $scope.editPopup = false;
   $scope.newPopup = false;
+
   $scope.currentPL = {};
+
   $scope.title = '';
-  $scope.newTitle = '';
+  $scope.text = '';
+  $scope.subText = '';
 
   $scope.newPlaylist = function(title) {
     Playlist.newPlaylist(title)
@@ -54,13 +58,17 @@ angular.module('partyDJ')
   };
 
   $scope.showDeletePopup = function(pl) {
-    $scope.deletePopup = true;
     $scope.currentPL = pl;
+    $scope.text = `Are you sure you want to delete ${pl.name} playlist?`;
+    $scope.subText = 'You won\'t be able to get the playlist back after it is deleted';
+    $scope.deletePopup = true;
   };
 
   $scope.showEditPopup = function(pl) {
-    $scope.editPopup = true;
     $scope.currentPL = pl;
+    $scope.text = 'Do you want to change the name of the playlist?';
+    $scope.title = pl.name;
+    $scope.editPopup = true;
   };
 
   $scope.cancelNew = function() {
