@@ -20,6 +20,19 @@ angular.module('partyDJ')
           $location.path('/');
         });
       });
+    },
+
+    isLoggedIn: function() {
+      return $http({
+        method: 'GET',
+        url: '/api/user/loggedin'
+      })
+      .then((resp) => {
+        return resp.data;
+      })
+      .catch((err) => {
+        console.error(err);
+      });
     }
 
   };

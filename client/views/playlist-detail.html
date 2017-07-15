@@ -1,4 +1,5 @@
 <div class="container">
-  <div class="detail-title">{{ playlist.name }}</div>
-  <a class="spotify-login list-login" ng-href="/api/user/login" target="_self">Login with Spotify</a>
+  <h1 class="detail-title col-md-1">{{ playlist.name }}</h1>
+  <a class="spotify-login list-login col-md-4" ng-href="/api/user/login" ng-if="!user" target="_self">Login with Spotify</a>
+  <input ng-if="user" type="search" name="search" placeholder="Search">
 </div>

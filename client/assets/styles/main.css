@@ -42,3 +42,10 @@ button.add {
   right: 50px;
   z-index: 2;
 }
+
+/*Playlist Detail Page Style*/
+a.list-login {
+  position: fixed;
+  right: 50px;
+  top: 40px;
+}

@@ -12,6 +12,10 @@ angular.module('partyDJ', [
     return Playlist.getPlaylists();
   };
 
+  const isLoggedIn = function(Auth) {
+    return Auth.isLoggedIn();
+  };
+
   $routeProvider
     .when('/', {
       templateUrl: '/client/views/landing.html'
@@ -26,7 +30,10 @@ angular.module('partyDJ', [
     })
     .when('/:id', {
       templateUrl: '/client/views/playlist-detail.html',
-      controller: 'PlaylistDetailCtrl'
+      controller: 'PlaylistDetailCtrl',
+      resolve: {
+        user: isLoggedIn
+      }
     })
     .otherwise({
       redirectTo: '/'

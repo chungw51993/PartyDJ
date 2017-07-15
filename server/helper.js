@@ -14,3 +14,10 @@ exports.checkReturnTo = (req, res, next) => {
 
   next();
 };
+
+exports.isLoggedIn = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  next();
+};
