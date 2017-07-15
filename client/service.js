@@ -102,4 +102,26 @@ angular.module('partyDJ')
     }
 
   };
+})
+
+.factory('Track', function($http) {
+  return {
+
+    searchTrack: function(query) {
+      return $http({
+        method: 'POST',
+        url: '/api/track/',
+        data: {
+          q: query
+        }
+      })
+      .then((resp) => {
+        return resp.data;
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    },
+
+  };
 });

@@ -1,5 +1,5 @@
 <div class="container">
   <h1 class="detail-title col-md-1">{{ playlist.name }}</h1>
   <a class="spotify-login list-login col-md-4" ng-href="/api/user/login" ng-if="!user" target="_self">Login with Spotify</a>
-  <input ng-if="user" type="search" name="search" placeholder="Search">
+  <input ng-if="user" ng-model="query" type="search" name="search" placeholder="Search" ng-change="searchTrack(query)">
 </div>

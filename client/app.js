@@ -1,5 +1,5 @@
 angular.module('partyDJ', [
-  'ngRoute',
+  'ngRoute'
 ])
 
 .config(function($routeProvider, $locationProvider) {
