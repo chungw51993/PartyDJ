@@ -19,7 +19,6 @@ angular.module('partyDJ')
       Track.searchTrack(query)
         .then((resp) => {
           $scope.tracks = resp.tracks.items;
-          console.log($scope.tracks);
         });
     }
   };
