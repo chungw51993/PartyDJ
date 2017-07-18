@@ -123,5 +123,9 @@ angular.module('partyDJ')
       });
     },
 
+    addTrack: function(pid, track) {
+
+    }
+
   };
 });

@@ -22,16 +22,6 @@ router.post('/', (req, res) => {
   .catch((err) => {
     console.error(err);
   });
-
-  // Track.newTrack(artist, album, track, pid)
-  //   .then((data) => {
-  //     res.status(200);
-  //     res.send(data);
-  //   })
-  //   .catch((err) => {
-  //     console.error(err);
-  //     res.send(err);
-  //   });
 });
 
 router.delete('/:pid', (req, res) => {
