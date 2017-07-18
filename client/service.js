@@ -123,8 +123,22 @@ angular.module('partyDJ')
       });
     },
 
-    addTrack: function(pid, track) {
-
+    addTrack: function(pid, album, artist, track) {
+      return $http({
+        method: 'POST',
+        url: '/api/track/' + pid,
+        data: {
+          album: album,
+          artist: artist,
+          track: track
+        }
+      })
+      .then((resp) => {
+        return resp.data;
+      })
+      .catch((err) => {
+        console.error(err);
+      });
     }
 
   };

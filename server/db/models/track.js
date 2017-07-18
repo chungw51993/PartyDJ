@@ -1,3 +1,4 @@
+/* eslint-disable */
 module.exports = (sequelize, Sequelize) => {
   const Track = sequelize.define('Track', {
     id: {

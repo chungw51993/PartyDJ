@@ -1,5 +1,5 @@
 var models = require('../index');
-
+/* eslint-disable */
 module.exports = {
 
   newTrack: function(artist, album, track, pid) {

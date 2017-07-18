@@ -20,8 +20,23 @@ router.post('/', (req, res) => {
     res.send(data);
   })
   .catch((err) => {
-    console.error(err);
+    res.send(err);
   });
+});
+
+router.post('/:pid', (req, res) => {
+  let pid = req.params.pid;
+  let artist = req.body.artist;
+  let album = req.body.album;
+  let track = req.body.track;
+
+  Track.newTrack(artist, album, track, pid)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
 });
 
 router.delete('/:pid', (req, res) => {
@@ -33,7 +48,6 @@ router.delete('/:pid', (req, res) => {
       res.sendStatus(200);
     })
     .catch((err) => {
-      console.error(err);
       res.send(err);
     });
 });

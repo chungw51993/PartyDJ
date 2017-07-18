@@ -3,7 +3,5 @@
   <a class="spotify-login list-login col-md-4" ng-href="/api/user/login" ng-if="!user" target="_self">Login with Spotify</a>
   <input ng-if="user" ng-model="query" type="search" name="search" placeholder="Search" ng-change="searchTrack(query)">
 
-  <track-item ng-repeat="track in tracks" track="track"></track-item>
-
-  <iframe src="https://open.spotify.com/embed?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+  <track-item ng-repeat="track in tracks" track="track" add="addTrack"></track-item>
 </div>

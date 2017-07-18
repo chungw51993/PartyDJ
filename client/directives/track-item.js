@@ -1,7 +1,9 @@
 angular.module('partyDJ')
 
 .controller('TrackItemCtrl', function() {
-
+  this.addTrack = (track) => {
+    this.add(track);
+  };
 })
 
 .directive('trackItem', function() {
@@ -17,7 +19,7 @@ angular.module('partyDJ')
     template: `
       <div>
         <img ng-src="{{ ctrl.track.album.images[2].url }}">
-        <div>{{ ctrl.track.name }}</div>
+        <div ng-click="ctrl.addTrack(ctrl.track)">{{ ctrl.track.name }}</div>
         <div>{{ ctrl.track.artists[0].name }}</div>
         <hr>
       </div>
