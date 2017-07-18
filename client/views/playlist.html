@@ -1,13 +1,13 @@
 <div class="container">
   <h1>PLAYLIST</h1>
 
-  <playlist-item ng-repeat="playlist in playlists" playlist="playlist" redirect="goToDetail" show-edit="showEditPopup" show-delete="showDeletePopup"></playlist-item>
+  <playlist-item ng-repeat="playlist in ctrl.playlists" playlist="playlist" redirect="ctrl.goToDetail" show-edit="ctrl.showEditPopup" show-delete="ctrl.showDeletePopup"></playlist-item>
 
   <button class="add mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" ng-click="showNewPopup()">
     <i class="material-icons">add</i>
   </button>
 </div>
 
-<popup class="popup" ng-if="deletePopup" service="deletePlaylist" current="currentPL" cancel="cancelDelete" message="text" sub="subText"></popup>
-<popup class="popup" ng-if="editPopup" service="editPlaylist" current="currentPL" cancel="cancelEdit" message="text" name="title"></popup>
-<popup class="popup" ng-if="newPopup" service="newPlaylist" cancel="cancelNew" message="text" name="title"></popup>
+<popup class="popup" ng-if="ctrl.deletePopup" service="ctrl.deletePlaylist" current="ctrl.currentPL" cancel="ctrl.cancelDelete" message="ctrl.text" sub="ctrl.subText"></popup>
+<popup class="popup" ng-if="ctrl.editPopup" service="ctrl.editPlaylist" current="ctrl.currentPL" cancel="ctrl.cancelEdit" message="ctrl.text" name="ctrl.title"></popup>
+<popup class="popup" ng-if="ctrl.newPopup" service="ctrl.newPlaylist" cancel="ctrl.cancelNew" message="ctrl.text" name="ctrl.title"></popup>

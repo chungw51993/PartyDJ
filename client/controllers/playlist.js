@@ -1,88 +1,88 @@
 angular.module('partyDJ')
 
 .controller('PlaylistCtrl', function($scope, $location, Playlist, playlists, user) {
-  $scope.playlists = playlists;
-  $scope.user = user;
+  this.playlists = playlists;
+  this.user = user;
 
-  $scope.deletePopup = false;
-  $scope.editPopup = false;
-  $scope.newPopup = false;
+  this.deletePopup = false;
+  this.editPopup = false;
+  this.newPopup = false;
 
-  $scope.currentPL = {};
+  this.currentPL = {};
 
-  $scope.title = '';
-  $scope.text = '';
-  $scope.subText = '';
+  this.title = '';
+  this.text = '';
+  this.subText = '';
 
-  $scope.newPlaylist = function(title) {
+  this.newPlaylist = (title) => {
     Playlist.newPlaylist(title)
       .then((resp) => {
-        $scope.title = '';
-        $scope.newPopup = false;
+        this.title = '';
+        this.newPopup = false;
         Playlist.getPlaylists()
           .then((resp) => {
-            $scope.playlists = resp;
+            this.playlists = resp;
           });
       });
   };
 
-  $scope.deletePlaylist = function(id) {
+  this.deletePlaylist = (id) => {
     Playlist.deletePlaylist(id)
       .then(() => {
-        $scope.deletePopup = false;
+        this.deletePopup = false;
         Playlist.getPlaylists()
           .then((resp) => {
-            $scope.playlists = resp;
+            this.playlists = resp;
           });
       });
   };
 
-  $scope.editPlaylist = function(id, title) {
+  this.editPlaylist = (id, title) => {
     Playlist.editPlaylist(id, title)
       .then(() => {
-        $scope.editPopup = false;
-        $scope.newTitle = '';
+        this.editPopup = false;
+        this.newTitle = '';
         Playlist.getPlaylists()
           .then((resp) => {
-            $scope.playlists = resp;
+            this.playlists = resp;
           });
       });
   };
 
-  $scope.goToDetail = function(id) {
+  this.goToDetail = (id) => {
     $location.path(`/${id}`);
   };
 
-  $scope.showNewPopup = function() {
-    $scope.text = 'Creating new playlist';
-    $scope.title = 'New Playlist';
-    $scope.newPopup = true;
+  this.showNewPopup = () => {
+    this.text = 'Creating new playlist';
+    this.title = 'New Playlist';
+    this.newPopup = true;
   };
 
-  $scope.showDeletePopup = function(pl) {
-    $scope.currentPL = pl;
-    $scope.text = `Are you sure you want to delete ${pl.name} playlist?`;
-    $scope.subText = 'You won\'t be able to get the playlist back after it is deleted';
-    $scope.deletePopup = true;
+  this.showDeletePopup = (pl) => {
+    this.currentPL = pl;
+    this.text = `Are you sure you want to delete ${pl.name} playlist?`;
+    this.subText = 'You won\'t be able to get the playlist back after it is deleted';
+    this.deletePopup = true;
   };
 
-  $scope.showEditPopup = function(pl) {
-    $scope.currentPL = pl;
-    $scope.text = 'Do you want to change the name of the playlist?';
-    $scope.title = pl.name;
-    $scope.editPopup = true;
+  this.showEditPopup = (pl) => {
+    this.currentPL = pl;
+    this.text = 'Do you want to change the name of the playlist?';
+    this.title = pl.name;
+    this.editPopup = true;
   };
 
-  $scope.cancelNew = function() {
-    $scope.newPopup = false;
+  this.cancelNew = () => {
+    this.newPopup = false;
   };
 
-  $scope.cancelDelete = function() {
-    $scope.deletePopup = false;
+  this.cancelDelete = () => {
+    this.deletePopup = false;
   };
 
-  $scope.cancelEdit = function() {
-    $scope.editPopup = false;
+  this.cancelEdit = () => {
+    this.editPopup = false;
   };
 
 });

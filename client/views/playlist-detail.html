@@ -1,7 +1,7 @@
 <div class="container">
-  <h1 class="detail-title">{{ playlist.name }}</h1>
-  <a class="spotify-login list-login col-md-4" ng-href="/api/user/login" ng-if="!user" target="_self">Login with Spotify</a>
-  <input ng-if="user" ng-model="query" type="search" name="search" placeholder="Search" ng-change="searchTrack(query)">
+  <h1 class="detail-title">{{ ctrl.playlist.name }}</h1>
+  <a class="spotify-login list-login col-md-4" ng-href="/api/user/login" ng-if="!ctrl.user" target="_self">Login with Spotify</a>
+  <input ng-if="ctrl.user" ng-model="ctrl.query" placeholder="Search" ng-change="ctrl.searchTrack(ctrl.query)">
 
-  <track-item ng-if="searchList" ng-repeat="track in tracks" track="track" add="addTrack"></track-item>
+  <track-item ng-if="ctrl.searchList" ng-repeat="track in ctrl.tracks" track="track" add="ctrl.addTrack"></track-item>
 </div>

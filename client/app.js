@@ -23,6 +23,7 @@ angular.module('partyDJ', [
     .when('/playlist', {
       templateUrl: '/client/views/playlist.html',
       controller: 'PlaylistCtrl',
+      controllerAs: 'ctrl',
       resolve: {
         user: authorized,
         playlists: getPlaylists
@@ -31,6 +32,7 @@ angular.module('partyDJ', [
     .when('/:id', {
       templateUrl: '/client/views/playlist-detail.html',
       controller: 'PlaylistDetailCtrl',
+      controllerAs: 'ctrl',
       resolve: {
         user: isLoggedIn
       }

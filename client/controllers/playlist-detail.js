@@ -1,36 +1,36 @@
 angular.module('partyDJ')
 
-.controller('PlaylistDetailCtrl', function($scope, $location, $routeParams, Playlist, Track, user) {
-  $scope.playlist = {};
-  $scope.user = user;
-  $scope.tracks = [];
+.controller('PlaylistDetailCtrl', function($location, $routeParams, Playlist, Track, user) {
+  this.playlist = {};
+  this.user = user;
+  this.tracks = [];
 
-  $scope.query = '';
-  $scope.searchList = false;
+  this.query = '';
+  this.searchList = false;
 
-  $scope.getAllTracks = function() {
-    $scope.query = '';
+  this.getAllTracks = () => {
     Playlist.getAllTracks($routeParams.id)
       .then((resp) => {
-        $scope.playlist = resp;
+        this.query = '';
+        this.searchList = false;
+        this.playlist = resp;
       });
   };
 
-  $scope.searchTrack = function(query) {
+  this.searchTrack = (query) => {
     if (query !== '') {
-      $scope.searchList = true;
+      this.searchList = true;
       Track.searchTrack(query)
         .then((resp) => {
-          $scope.tracks = resp.tracks.items;
+          this.tracks = resp.tracks.items;
         });
     } else {
-      $scope.searchList = false;
-      $scope.tracks = [];
+      this.searchList = false;
+      this.tracks = [];
     }
   };
 
-  $scope.addTrack = function(song) {
-    console.log($scope);
+  this.addTrack = (song) => {
     let album = {
       id: song.album.id,
       name: song.album.name,
@@ -50,10 +50,9 @@ angular.module('partyDJ')
 
     Track.addTrack($routeParams.id, album, artist, track)
       .then(() => {
-        $scope.query = '';
-        $scope.getAllTracks();
+        this.getAllTracks();
       });
   };
 
-  $scope.getAllTracks();
+  this.getAllTracks();
 });
