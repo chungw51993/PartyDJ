@@ -1,19 +1,19 @@
 angular.module('partyDJ')
 
-.controller('TrackItemCtrl', function() {
+.controller('SearchItemCtrl', function() {
   this.addTrack = (track) => {
     this.add(track);
   };
 })
 
-.directive('trackItem', function() {
+.directive('searchItem', function() {
   return {
     scope: {
       track: '<',
       add: '<'
     },
     restrict: 'E',
-    controller: 'TrackItemCtrl',
+    controller: 'SearchItemCtrl',
     controllerAs: 'ctrl',
     bindToController: true,
     template: `

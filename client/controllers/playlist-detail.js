@@ -1,9 +1,9 @@
 angular.module('partyDJ')
 
-.controller('PlaylistDetailCtrl', function($location, $routeParams, Playlist, Track, user) {
+.controller('PlaylistDetailCtrl', function($routeParams, Playlist, Track, user) {
   this.playlist = {};
   this.user = user;
-  this.tracks = [];
+  this.search = [];
 
   this.query = '';
   this.searchList = false;
@@ -22,11 +22,11 @@ angular.module('partyDJ')
       this.searchList = true;
       Track.searchTrack(query)
         .then((resp) => {
-          this.tracks = resp.tracks.items;
+          this.search = resp.tracks.items;
         });
     } else {
       this.searchList = false;
-      this.tracks = [];
+      this.search = [];
     }
   };
 

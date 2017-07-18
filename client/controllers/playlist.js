@@ -1,6 +1,6 @@
 angular.module('partyDJ')
 
-.controller('PlaylistCtrl', function($scope, $location, Playlist, playlists, user) {
+.controller('PlaylistCtrl', function($location, Playlist, playlists, user) {
   this.playlists = playlists;
   this.user = user;
 

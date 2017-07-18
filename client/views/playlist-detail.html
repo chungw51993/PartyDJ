@@ -3,5 +3,5 @@
   <a class="spotify-login list-login col-md-4" ng-href="/api/user/login" ng-if="!ctrl.user" target="_self">Login with Spotify</a>
   <input ng-if="ctrl.user" ng-model="ctrl.query" placeholder="Search" ng-change="ctrl.searchTrack(ctrl.query)">
 
-  <track-item ng-if="ctrl.searchList" ng-repeat="track in ctrl.tracks" track="track" add="ctrl.addTrack"></track-item>
+  <search-item ng-if="ctrl.searchList" ng-repeat="track in ctrl.search" track="track" add="ctrl.addTrack"></search-item>
 </div>
