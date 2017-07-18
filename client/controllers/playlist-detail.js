@@ -6,26 +6,31 @@ angular.module('partyDJ')
   $scope.tracks = [];
 
   $scope.query = '';
+  $scope.searchList = false;
 
   $scope.getAllTracks = function() {
-    console.log($scope.query);
+    $scope.query = '';
     Playlist.getAllTracks($routeParams.id)
       .then((resp) => {
         $scope.playlist = resp;
-        console.log($scope.playlist);
       });
   };
 
   $scope.searchTrack = function(query) {
     if (query !== '') {
+      $scope.searchList = true;
       Track.searchTrack(query)
         .then((resp) => {
           $scope.tracks = resp.tracks.items;
         });
+    } else {
+      $scope.searchList = false;
+      $scope.tracks = [];
     }
   };
 
   $scope.addTrack = function(song) {
+    console.log($scope);
     let album = {
       id: song.album.id,
       name: song.album.name,
