@@ -4,6 +4,7 @@ angular.module('partyDJ')
   this.playlist = {};
   this.user = user;
   this.search = [];
+  this.tracks = [];
 
   this.query = '';
   this.searchList = false;
@@ -14,6 +15,7 @@ angular.module('partyDJ')
         this.query = '';
         this.searchList = false;
         this.playlist = resp;
+        this.tracks = resp.Tracks;
       });
   };
 
