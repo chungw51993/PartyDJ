@@ -41,7 +41,7 @@ router.post('/:pid', (req, res) => {
 
 router.delete('/:pid', (req, res) => {
   let pid = req.params.pid;
-  let tid = req.body.tid;
+  let tid = req.query.tid;
 
   Track.deleteTrack(tid, pid)
     .then((data) => {
