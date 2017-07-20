@@ -23,7 +23,8 @@ angular.module('partyDJ')
         scope.service(scope.track.id);
       };
 
-      scope.play = (song) => {
+      scope.playTrack = (song) => {
+
         scope.play(song);
       };
 
@@ -37,6 +38,7 @@ angular.module('partyDJ')
           <div class="trackArtist">Artist: {{ track.Album.Artist.name }}</div>
           <div class="trackAlbum">Album: {{ track.Album.name }}</div>
         </div>
+        <button ng-click="playTrack(track)">Play</button>
         <button ng-if="isAdmin" ng-click="deleteTrack()" class="trackDelete col-md-2 col-sm-2 col-lg-2">Delete</button>
       </div>
     `
