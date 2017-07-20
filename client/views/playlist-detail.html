@@ -5,7 +5,5 @@
 
   <search-item ng-if="ctrl.searchList" ng-repeat="song in ctrl.search" track="song" add="ctrl.addTrack"></search-item>
 
-  <div ng-repeat="track in ctrl.tracks">
-    <div>{{ track.name }}</div>
-  </div>
+  <track-item ng-repeat="track in ctrl.tracks" track="track"></track-item>
 </div>
