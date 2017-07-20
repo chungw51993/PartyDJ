@@ -42,4 +42,15 @@ angular.module('partyDJ', [
     });
 
   $locationProvider.html5Mode(true);
+})
+.run(function() {
+  soundManager.setup({
+    url: '../node_modules/soundmanager2/swf',
+    onready: function() {
+      console.log('soundManager is ready');
+    },
+    ontimeout: () => {
+      console.log('soundManager timing out');
+    }
+  });
 });

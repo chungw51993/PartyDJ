@@ -142,7 +142,6 @@ angular.module('partyDJ')
     },
 
     deleteTrack: function(pid, tid) {
-      console.log(pid, '--------', tid);
       return $http({
         method: 'DELETE',
         url: '/api/track/' + pid,

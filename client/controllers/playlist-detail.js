@@ -63,5 +63,14 @@ angular.module('partyDJ')
       });
   };
 
+  this.playTrack = (song) => {
+    soundManager.createSound({
+      id: song.name,
+      url: song.uri
+    });
+
+    soundManager.play(song.name);
+  };
+
   this.getAllTracks();
 });

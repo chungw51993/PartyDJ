@@ -6,7 +6,8 @@ angular.module('partyDJ')
       track: '<',
       user: '<',
       playlist: '<',
-      service: '<'
+      service: '<',
+      play: '<'
     },
     restrict: 'E',
     link: function(scope) {
@@ -20,6 +21,10 @@ angular.module('partyDJ')
 
       scope.deleteTrack = () => {
         scope.service(scope.track.id);
+      };
+
+      scope.play = (song) => {
+        scope.play(song);
       };
 
       scope.checkIfAdmin();
