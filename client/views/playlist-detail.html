@@ -5,5 +5,5 @@
 
   <search-item ng-if="ctrl.searchList" ng-repeat="song in ctrl.search" track="song" add="ctrl.addTrack"></search-item>
 
-  <track-item class="trackItem" ng-repeat="track in ctrl.tracks" track="track" user="ctrl.user" playlist="ctrl.playlist"></track-item>
+  <track-item class="trackItem" ng-repeat="track in ctrl.tracks" track="track" user="ctrl.user" service="ctrl.deleteTrack" playlist="ctrl.playlist"></track-item>
 </div>

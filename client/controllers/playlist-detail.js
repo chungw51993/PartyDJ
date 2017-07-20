@@ -56,5 +56,12 @@ angular.module('partyDJ')
       });
   };
 
+  this.deleteTrack = (tid) => {
+    Track.deleteTrack($routeParams.id, tid)
+      .then((resp) => {
+        this.getAllTracks();
+      });
+  };
+
   this.getAllTracks();
 });

@@ -139,6 +139,22 @@ angular.module('partyDJ')
       .catch((err) => {
         console.error(err);
       });
+    },
+
+    deleteTrack: function(pid, tid) {
+      return $http({
+        method: 'DELETE',
+        url: '/api/track/' + pid,
+        data: {
+          tid: tid
+        }
+      })
+      .then((resp) => {
+        return resp.data;
+      })
+      .catch((err) => {
+        console.error(err);
+      });
     }
 
   };
