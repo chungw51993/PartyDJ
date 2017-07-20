@@ -49,3 +49,21 @@ a.list-login {
   right: 50px;
   top: 40px;
 }
+
+input.search {
+  margin-bottom: 20px;
+}
+
+div.trackItem {
+  margin-bottom: 20px;
+}
+
+img.trackImg {
+  width: 100px;
+  height: 70px;
+  margin-top: -5px;
+}
+
+div.trackName {
+  font-weight: bold;
+}

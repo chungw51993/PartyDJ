@@ -1,9 +1,9 @@
 <div class="container">
   <h1 class="detail-title">{{ ctrl.playlist.name }}</h1>
   <a class="spotify-login list-login col-md-4" ng-href="/api/user/login" ng-if="!ctrl.user" target="_self">Login with Spotify</a>
-  <input ng-if="ctrl.user" ng-model="ctrl.query" placeholder="Search" ng-change="ctrl.searchTrack(ctrl.query)">
+  <input class="search" ng-if="ctrl.user" ng-model="ctrl.query" placeholder="Search" ng-change="ctrl.searchTrack(ctrl.query)">
 
   <search-item ng-if="ctrl.searchList" ng-repeat="song in ctrl.search" track="song" add="ctrl.addTrack"></search-item>
 
-  <track-item ng-repeat="track in ctrl.tracks" track="track"></track-item>
+  <track-item class="trackItem" ng-repeat="track in ctrl.tracks" track="track" user="ctrl.user" playlist="ctrl.playlist"></track-item>
 </div>
