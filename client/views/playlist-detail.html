@@ -3,6 +3,12 @@
   <a class="spotify-login list-login col-md-2" ng-href="/api/user/login" ng-if="!ctrl.user" target="_self">Login with Spotify</a>
   <input class="search" ng-if="ctrl.user" ng-model="ctrl.query" placeholder="Search" ng-change="ctrl.searchTrack(ctrl.query)">
 
+  <div class="sm2-bar-ui">
+    <div class="bd sm2-main-controls">
+      <div></div>
+    </div>
+  </div>
+
   <search-item ng-if="ctrl.searchList" ng-repeat="song in ctrl.search" track="song" add="ctrl.addTrack"></search-item>
 
   <track-item class="trackItem" ng-repeat="track in ctrl.tracks" track="track" user="ctrl.user" service="ctrl.deleteTrack" playlist="ctrl.playlist" play="ctrl.playTrack"></track-item>
