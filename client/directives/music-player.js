@@ -10,36 +10,12 @@ angular.module('partyDJ')
 
     },
     template: `
-      <div class="sm2-bar-ui fullwidth">
-        <div class="bd sm2-main-controls">
-          <div class="sm2-inline-texture"></div>
-          <div class="sm2-inline-gradient"></div>
-          <div class="sm2-inline-element sm2-button-element">
-              <div class="sm2-button-bd">
-
-              </div>
-          </div>
-          <div class="sm2-inline-element sm2-inline-status">
-            <div class="sm2-playlist">
-              <div class="sm2-playlist-target">
-                <ul class="sm2-playlist-bd">
-                  <li>
-
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="sm2-inline-element sm2-button-element sm2-volume">
-            <span class="sm2-inline-button sm2-volume-control volume-shade"></span>
-
-          </div>
-          <div class="sm2-inline-element sm2-button-element sm2-menu">
-            <div class="sm2-button-bd">
-
-            </div>
-          </div>
-        </div>
+      <div class="row player">
+        <div class="play col-md-1 col-lg-1 col-sm-1">Play</div>
+        <div class="pause col-md-1 col-lg-1 col-sm-1">Pause</div>
+        <marquee class="col-md-8 col-lg-8 col-sm-8">
+          <b>Title</b>
+        </marquee>
       </div>
     `
   };

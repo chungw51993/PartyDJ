@@ -72,3 +72,14 @@ div.searchItem {
   height: 200px;
   overflow-y: scroll;
 }
+
+/*Music Player Style*/
+div.player {
+  margin-bottom: 20px;
+  background-color: blue;
+}
+
+div.play {
+  background-image: url('../image/play');
+  background-size: 67.5%;
+}
