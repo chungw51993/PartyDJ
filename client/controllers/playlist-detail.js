@@ -73,5 +73,13 @@ angular.module('partyDJ')
     soundManager.play(song.name);
   };
 
+  this.showAddTrackPopup = () => {
+    this.showAddTrack = true;
+  };
+
+  this.cancelAdd = () => {
+    this.showAddTrack = false;
+  };
+
   this.getAllTracks();
 });
