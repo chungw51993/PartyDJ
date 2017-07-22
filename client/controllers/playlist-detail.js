@@ -54,6 +54,7 @@ angular.module('partyDJ')
     Track.addTrack($routeParams.id, album, artist, track)
       .then(() => {
         this.getAllTracks();
+        this.showAddTrack = false;
       });
   };
 

@@ -13,9 +13,11 @@
 
 <div class="popup" ng-if="ctrl.showAddTrack">
   <div class="mdl-card mdl-shadow--8dp">
-    <div>Search by the song name</div>
+    <h4>Search by the song name</h4>
     <input class="search" ng-if="ctrl.user" ng-model="ctrl.query" placeholder="Search" ng-change="ctrl.searchTrack(ctrl.query)">
-    <search-item ng-if="ctrl.searchList" ng-repeat="song in ctrl.search" track="song" add="ctrl.addTrack"></search-item>
+    <div class="searchItem">
+      <search-item ng-if="ctrl.searchList" ng-repeat="song in ctrl.search" track="song" add="ctrl.addTrack"></search-item>
+    </div>
     <button class="cancel" ng-click="ctrl.cancelAdd()">Cancel</button>
   </div>
 </div>

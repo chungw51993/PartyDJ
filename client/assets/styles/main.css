@@ -67,3 +67,8 @@ img.trackImg {
 div.trackName {
   font-weight: bold;
 }
+
+div.searchItem {
+  height: 200px;
+  overflow-y: scroll;
+}
