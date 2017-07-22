@@ -522,15 +522,15 @@
 .sm2-icon-play-pause,
 .sm2-icon-play-pause:hover,
 .paused .sm2-icon-play-pause:hover {
- background-image: url(../image/icomoon/entypo-25px-ffffff/PNG/play.png);
- background-image: none, url(../image/icomoon/entypo-25px-ffffff/SVG/play.svg);
+ background-image: url(../image/play.png);
+ background-image: none, url(../image/play.svg);
  background-size: 67.5%;
  background-position: 40% 53%;
 }
 
 .playing .sm2-icon-play-pause {
- background-image: url(../image/icomoon/entypo-25px-ffffff/PNG/pause.png);
- background-image: none, url(../image/icomoon/entypo-25px-ffffff/SVG/pause.svg);
+ background-image: url(../image/pause.png);
+ background-image: none, url(../image/pause.svg);
  background-size: 57.6%;
  background-position: 50% 53%;
 }
@@ -555,8 +555,8 @@
 }
 
 .sm2-icon-menu {
- background-image: url(../image/icomoon/entypo-25px-ffffff/PNG/list2.png);
- background-image: none, url(../image/icomoon/entypo-25px-ffffff/SVG/list2.svg);
+ background-image: url(../image/menu.png);
+ background-image: none, url(../image/menu.svg);
  background-size: 58%;
  background-position: 54% 51%;
 }
@@ -567,8 +567,8 @@
 }
 
 .sm2-icon-next {
- background-image: url(../image/icomoon/entypo-25px-ffffff/PNG/last.png);
- background-image: none, url(../image/icomoon/entypo-25px-ffffff/SVG/last.svg);
+ background-image: url(../image/next.png);
+ background-image: none, url(../image/next.svg);
 }
 
 .sm2-icon-previous,

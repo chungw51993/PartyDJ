@@ -10,7 +10,7 @@ angular.module('partyDJ')
 
     },
     template: `
-      <div class="sm2-bar-ui">
+      <div class="sm2-bar-ui fullwidth">
         <div class="bd sm2-main-controls">
           <div class="sm2-inline-texture"></div>
           <div class="sm2-inline-gradient"></div>
