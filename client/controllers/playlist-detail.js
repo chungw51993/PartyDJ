@@ -5,6 +5,7 @@ angular.module('partyDJ')
   this.user = user;
   this.search = [];
   this.tracks = [];
+  this.showAddTrack = false;
 
   this.query = '';
   this.searchList = false;
