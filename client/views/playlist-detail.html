@@ -2,7 +2,7 @@
   <h1 class="detail-title">{{ ctrl.playlist.name }}</h1>
   <a class="spotify-login list-login col-md-2" ng-href="/api/user/login" ng-if="!ctrl.user" target="_self">Login with Spotify</a>
 
-  <music-player></music-player>
+  <music-player current="ctrl.currentSong"></music-player>
 
   <track-item class="trackItem" ng-repeat="track in ctrl.tracks" track="track" user="ctrl.user" service="ctrl.deleteTrack" playlist="ctrl.playlist" play="ctrl.playTrack"></track-item>
 

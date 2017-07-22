@@ -6,6 +6,7 @@ angular.module('partyDJ')
   this.search = [];
   this.tracks = [];
   this.showAddTrack = false;
+  this.currentSong = {};
 
   this.query = '';
   this.searchList = false;
@@ -17,6 +18,7 @@ angular.module('partyDJ')
         this.searchList = false;
         this.playlist = resp;
         this.tracks = resp.Tracks;
+        this.currentSong = resp.Tracks[0];
       });
   };
 
