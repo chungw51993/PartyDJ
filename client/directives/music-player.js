@@ -9,6 +9,7 @@ angular.module('partyDJ')
     restrict: 'E',
     link: function(scope) {
       console.log(scope);
+      scope.gong = 0;
 
       scope.playTrack = () => {
         soundManager.createSound({
@@ -18,18 +19,38 @@ angular.module('partyDJ')
 
         soundManager.play(scope.current.name);
       };
+
+      scope.pauseTrack = () => {
+
+      };
+
+      scope.nextTrack = () => {
+
+      };
+
+      scope.gongTrack = () => {
+        if (scope.gong < 3) {
+          scope.gong++;
+        } else {
+          scope.nextTrack();
+          scope.gong = 0;
+        }
+      };
+
     },
     template: `
       <div class="row player">
         <button class="play col-md-1 col-lg-1 col-sm-1" ng-click="playTrack()">Play</button>
-        <div class="pause col-md-1 col-lg-1 col-sm-1">Pause</div>
+        <button class="pause col-md-1 col-lg-1 col-sm-1">Pause</button>
         <marquee class="col-md-8 col-lg-8 col-sm-8">
-          <b>{{ current.name }}</b>
-          - {{ current.Album.Artist.name }}
-          <span class="label">{{ current.Album.name }}</span>
+          <div>
+            <b>{{ current.name }}</b>
+            - {{ current.Album.Artist.name }}
+            <span class="label">{{ current.Album.name }}</span>
+          </div>
         </marquee>
-        <div class="next col-md-1 col-lg-1 col-sm-1">Next</div>
-        <div class="gong col-md-1 col-lg-1 col-sm-1">Gong</div>
+        <button class="next col-md-1 col-lg-1 col-sm-1">Next</button>
+        <button class="gong col-md-1 col-lg-1 col-sm-1">Gong</button>
       </div>
     `
   };

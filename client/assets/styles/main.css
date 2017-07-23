@@ -84,3 +84,11 @@ div.play {
   background-image: url('../image/play');
   background-size: 67.5%;
 }
+
+span.label {
+  border-style: solid;
+  border-radius: 15px;
+  font-size: 11px;
+  background-color: lightblue;
+  border-color: lightblue;
+}
