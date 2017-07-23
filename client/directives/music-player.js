@@ -25,15 +25,17 @@ angular.module('partyDJ')
       };
 
       scope.nextTrack = () => {
-
+        console.log('NEXT');
       };
 
       scope.gongTrack = () => {
         if (scope.gong < 3) {
           scope.gong++;
+          console.log(scope.gong);
         } else {
           scope.nextTrack();
           scope.gong = 0;
+          console.log(scope.gong);
         }
       };
 
@@ -50,7 +52,7 @@ angular.module('partyDJ')
           </div>
         </marquee>
         <button class="next col-md-1 col-lg-1 col-sm-1">Next</button>
-        <button class="gong col-md-1 col-lg-1 col-sm-1">Gong</button>
+        <button class="gong col-md-1 col-lg-1 col-sm-1" ng-click="gongTrack()">Gong</button>
       </div>
     `
   };
