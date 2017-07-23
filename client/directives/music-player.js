@@ -3,7 +3,10 @@ angular.module('partyDJ')
 .directive('musicPlayer', function() {
   return {
     scope: {
-      current: '<'
+      current: '<',
+      play: '<',
+      skip: '<',
+      pause: '<'
     },
     restrict: 'E',
     link: function(scope) {
