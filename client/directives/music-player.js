@@ -9,10 +9,19 @@ angular.module('partyDJ')
     restrict: 'E',
     link: function(scope) {
       console.log(scope);
+
+      scope.playTrack = () => {
+        soundManager.createSound({
+          id: scope.current.name,
+          url: scope.current.uri
+        });
+
+        soundManager.play(scope.current.name);
+      };
     },
     template: `
       <div class="row player">
-        <div class="play col-md-1 col-lg-1 col-sm-1">Play</div>
+        <button class="play col-md-1 col-lg-1 col-sm-1" ng-click="playTrack()">Play</button>
         <div class="pause col-md-1 col-lg-1 col-sm-1">Pause</div>
         <marquee class="col-md-8 col-lg-8 col-sm-8">
           <b>{{ current.name }}</b>
