@@ -4,9 +4,7 @@ angular.module('partyDJ')
   return {
     scope: {
       current: '<',
-      play: '<',
-      skip: '<',
-      pause: '<'
+      tracks: '<'
     },
     restrict: 'E',
     link: function(scope) {
