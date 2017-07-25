@@ -28,7 +28,7 @@ angular.module('partyDJ')
         this.playlist = resp;
         this.tracks = resp.Tracks;
         if (resp.Tracks.length !== 0) {
-          this.currentSong = resp.Tracks[0];
+          this.currentSong = this.tracks.shift();
         }
       });
   };
@@ -72,10 +72,10 @@ angular.module('partyDJ')
   };
 
   this.nextTrack = () => {
-    const played = this.tracks.shift();
-    this.played.push(played);
+    this.played.push(this.currentSong);
     if (this.tracks.length !== 0) {
-      this.currentSong = this.tracks[0];
+      console.log('this.tracks', this.tracks);
+      this.currentSong = this.tracks.shift();
     } else {
       this.currentSong = {
         name: 'Title',
