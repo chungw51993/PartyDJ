@@ -73,8 +73,7 @@ angular.module('partyDJ')
 
   this.nextTrack = () => {
     this.played.push(this.currentSong);
-    if (this.tracks.length !== 0) {
-      console.log('this.tracks', this.tracks);
+    if (this.tracks.length > 0) {
       this.currentSong = this.tracks.shift();
     } else {
       this.currentSong = {
@@ -89,10 +88,10 @@ angular.module('partyDJ')
     }
   };
 
-  this.deleteTrack = (tid) => {
+  this.deleteTrack = (tid, status) => {
     Track.deleteTrack($routeParams.id, tid)
       .then((resp) => {
-        this.getAllTracks();
+        if ()
       });
   };
 
