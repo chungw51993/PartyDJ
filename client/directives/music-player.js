@@ -1,49 +1,60 @@
 angular.module('partyDJ')
 
-.directive('musicPlayer', function() {
+.directive('musicPlayer', function($timeout) {
   return {
     scope: {
       current: '<',
-      tracks: '<'
+      tracks: '<',
+      next: '<'
     },
     restrict: 'E',
     link: function(scope) {
-      console.log(scope);
       scope.gong = 0;
 
-      scope.playTrack = () => {
+      scope.playTrack = (song) => {
         soundManager.createSound({
-          id: scope.current.name,
-          url: scope.current.uri
+          id: song.name,
+          url: song.uri,
+          onfinish: () => {
+            scope.next();
+            scope.$apply();
+            $timeout(() => {
+              scope.playTrack(scope.current);
+            }, 500);
+          }
         });
 
-        soundManager.play(scope.current.name);
+        soundManager.play(song.name);
       };
 
-      scope.pauseTrack = () => {
-
+      scope.pauseTrack = (song) => {
+        soundManager.pause(song.name);
       };
 
       scope.nextTrack = () => {
-        console.log('NEXT');
+        scope.pauseTrack(scope.current);
+        scope.next();
+        $timeout(() => {
+          scope.playTrack(scope.current);
+        }, 500);
       };
 
       scope.gongTrack = () => {
-        if (scope.gong < 3) {
+        scope.gonged = true;
+        if (scope.gong < 2) {
           scope.gong++;
-          console.log(scope.gong);
         } else {
           scope.nextTrack();
+          scope.gonged = false;
           scope.gong = 0;
-          console.log(scope.gong);
         }
       };
 
     },
     template: `
       <div class="row player">
-        <button class="play col-md-1 col-lg-1 col-sm-1" ng-click="playTrack()">Play</button>
-        <button class="pause col-md-1 col-lg-1 col-sm-1">Pause</button>
+        <button class="play col-md-1 col-lg-1 col-sm-1" ng-click="playTrack(current)">Play</button>
+        <button class="pause col-md-1 col-lg-1 col-sm-1" ng-click="pauseTrack(current)">Pause</button>
         <marquee class="col-md-8 col-lg-8 col-sm-8">
           <div>
             <b>{{ current.name }}</b>
@@ -51,8 +62,8 @@ angular.module('partyDJ')
             <span class="label">{{ current.Album.name }}</span>
           </div>
         </marquee>
-        <button class="next col-md-1 col-lg-1 col-sm-1">Next</button>
-        <button class="gong col-md-1 col-lg-1 col-sm-1" ng-click="gongTrack()">Gong</button>
+        <button class="next col-md-1 col-lg-1 col-sm-1" ng-click="nextTrack()">Next</button>
+        <button class="gong col-md-1 col-lg-1 col-sm-1" ng-click="gongTrack()" ng-disabled="gonged">Gong</button>
       </div>
     `
   };

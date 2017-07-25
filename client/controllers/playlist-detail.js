@@ -5,6 +5,7 @@ angular.module('partyDJ')
   this.user = user;
   this.search = [];
   this.tracks = [];
+  this.played = [];
   this.showAddTrack = false;
   this.currentSong = {};
 
@@ -36,18 +37,18 @@ angular.module('partyDJ')
   };
 
   this.addTrack = (song) => {
-    let album = {
+    const album = {
       id: song.album.id,
       name: song.album.name,
       image: song.album.images[2].url
     };
 
-    let artist = {
+    const artist = {
       id: song.artists[0].id,
       name: song.artists[0].name
     };
 
-    let track = {
+    const track = {
       id: song.id,
       name: song.name,
       uri: song.preview_url
@@ -58,6 +59,16 @@ angular.module('partyDJ')
         this.getAllTracks();
         this.showAddTrack = false;
       });
+  };
+
+  this.nextTrack = () => {
+    const played = this.tracks.shift();
+    this.played.push(played);
+    if (this.tracks.length !== 0) {
+      this.currentSong = this.tracks[0];
+    } else {
+      this.currentSong = {};
+    }
   };
 
   this.deleteTrack = (tid) => {
