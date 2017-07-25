@@ -32,7 +32,7 @@ angular.module('partyDJ')
       };
 
       scope.nextTrack = () => {
-        scope.pauseTrack(scope.current);
+        soundManager.stop(scope.current.name);
         scope.next();
         $timeout(() => {
           scope.playTrack(scope.current);

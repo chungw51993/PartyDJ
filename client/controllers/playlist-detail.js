@@ -7,7 +7,15 @@ angular.module('partyDJ')
   this.tracks = [];
   this.played = [];
   this.showAddTrack = false;
-  this.currentSong = {};
+  this.currentSong = {
+    name: 'Title',
+    Album: {
+      name: 'Album',
+      Artist: {
+        name: 'Artist'
+      }
+    }
+  };
 
   this.query = '';
   this.searchList = false;
@@ -19,7 +27,9 @@ angular.module('partyDJ')
         this.searchList = false;
         this.playlist = resp;
         this.tracks = resp.Tracks;
-        this.currentSong = resp.Tracks[0];
+        if (resp.Tracks.length !== 0) {
+          this.currentSong = resp.Tracks[0];
+        }
       });
   };
 
@@ -67,7 +77,15 @@ angular.module('partyDJ')
     if (this.tracks.length !== 0) {
       this.currentSong = this.tracks[0];
     } else {
-      this.currentSong = {};
+      this.currentSong = {
+        name: 'Title',
+        Album: {
+          name: 'Album',
+          Artist: {
+            name: 'Artist'
+          }
+        }
+      };
     }
   };
 
