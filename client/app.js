@@ -16,8 +16,8 @@ angular.module('partyDJ', [
     return Auth.isLoggedIn();
   };
 
-  const getPlaylist = function(Playlist, $location) {
-    return Playlist.getAllTracks($location.path().slice(1));
+  const getPlaylist = function(Playlist, $stateParams) {
+    return Playlist.getAllTracks($stateParams.id);
   };
 
   $stateProvider

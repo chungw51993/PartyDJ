@@ -1,13 +1,12 @@
 angular.module('partyDJ')
 
 .controller('PlaylistDetailCtrl', function($scope, Playlist, Track, user, playlist) {
-  this.playlist = playlist;
+
   this.user = user;
-  this.search = [];
-  this.tracks = [];
-  this.played = [];
-  this.showAddTrack = false;
-  this.currentSong = {
+  this.playlist = playlist;
+
+  var current = playlist.Tracks.shift();
+  this.currentSong = current ? current : {
     name: 'Title',
     Album: {
       name: 'Album',
@@ -16,20 +15,25 @@ angular.module('partyDJ')
       }
     }
   };
+  this.tracks = playlist.Tracks;
+  this.played = [];
 
   this.query = '';
+  this.search = [];
+
+  this.showAddTrack = false;
   this.searchList = false;
 
   this.getAllTracks = () => {
     Playlist.getAllTracks($routeParams.id)
       .then((resp) => {
+        if (resp.Tracks.length !== 0) {
+          this.currentSong = this.tracks.shift();
+        }
         this.query = '';
         this.searchList = false;
         this.playlist = resp;
         this.tracks = resp.Tracks;
-        if (resp.Tracks.length !== 0) {
-          this.currentSong = this.tracks.shift();
-        }
       });
   };
 
