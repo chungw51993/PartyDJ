@@ -1,6 +1,6 @@
 angular.module('partyDJ')
 
-.controller('PlaylistDetailCtrl', function($scope, $routeParams, Playlist, Track, user, playlist) {
+.controller('PlaylistDetailCtrl', function($scope, Playlist, Track, user, playlist) {
   this.playlist = playlist;
   this.user = user;
   this.search = [];

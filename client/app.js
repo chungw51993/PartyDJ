@@ -1,8 +1,8 @@
 angular.module('partyDJ', [
-  'ngRoute'
+  'ui.router'
 ])
 
-.config(function($routeProvider, $locationProvider) {
+.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
   const authorized = function(Auth) {
     return Auth.isAuthorized();
@@ -20,11 +20,13 @@ angular.module('partyDJ', [
     return Playlist.getAllTracks($location.path().slice(1));
   };
 
-  $routeProvider
-    .when('/', {
+  $stateProvider
+    .state('landing', {
+      url: '/',
       templateUrl: '/client/views/landing.html'
     })
-    .when('/playlist', {
+    .state('playlists', {
+      url: '/playlist',
       templateUrl: '/client/views/playlist.html',
       controller: 'PlaylistCtrl',
       controllerAs: 'ctrl',
@@ -33,7 +35,8 @@ angular.module('partyDJ', [
         playlists: getPlaylists
       }
     })
-    .when('/:id', {
+    .state('details', {
+      url: '/:id',
       templateUrl: '/client/views/playlist-detail.html',
       controller: 'PlaylistDetailCtrl',
       controllerAs: 'ctrl',
@@ -41,10 +44,9 @@ angular.module('partyDJ', [
         user: isLoggedIn,
         playlist: getPlaylist
       }
-    })
-    .otherwise({
-      redirectTo: '/'
     });
+
+  $urlRouterProvider.otherwise('/');
 
   $locationProvider.html5Mode(true);
 })
