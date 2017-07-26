@@ -97,10 +97,10 @@ button.gong {
 }
 
 button.play, button.pause, button.next, button.gong {
-  background-size: 100%;
+  color: black;
   background-color: white;
-  height: 60px;
-  width: 60px;
+  background-size: 20%;
+  height: 30px;
 }
 
 button.play:hover, button.pause:hover, button.next:hover, button.gong:hover {

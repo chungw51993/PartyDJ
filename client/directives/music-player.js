@@ -15,7 +15,7 @@ angular.module('partyDJ')
       scope.playing = false;
       scope.isAdmin = false;
 
-      scope.checkIfAdmin = () => {
+      checkIfAdmin = () => {
         if (scope.playlist.user_id === scope.user.spotify_id) {
           scope.isAdmin = true;
         }
@@ -29,7 +29,11 @@ angular.module('partyDJ')
             scope.next();
             scope.$apply();
             $timeout(() => {
-              scope.playTrack(scope.current);
+              if (scope.current.uri === undefined) {
+                scope.playing = false;
+              } else {
+                scope.playTrack(scope.current);
+              }
             }, 500);
           }
         });
@@ -62,21 +66,22 @@ angular.module('partyDJ')
         }
       };
 
-      scope.checkIfAdmin();
+      checkIfAdmin();
     },
     template: `
       <div class="row player">
-        <button class="play col-md-2 col-lg-2 col-sm-2" ng-click="playTrack(current)" ng-if="!playing"></button>
-        <button class="pause col-md-2 col-lg-2 col-sm-2" ng-click="pauseTrack(current)" ng-if="playing"></button>
-        <marquee class="col-md-10 col-lg-10 col-sm-10">
+        <marquee class="col-md-12 col-lg-12 col-sm-12">
           <div>
             <b>{{ current.name }}</b>
             - {{ current.Album.Artist.name }}
             <span class="label">{{ current.Album.name }}</span>
           </div>
         </marquee>
-        <button class="next col-md-2 col-lg-2 col-sm-2" ng-click="nextTrack()" ng-if="isAdmin"></button>
-        <button class="gong col-md-2 col-lg-2 col-sm-2" ng-click="gongTrack()" ng-if="!isAdmin" ng-disabled="gonged"></button>
+        <button class="play col-md-2 col-lg-2 col-sm-2" ng-click="playTrack(current)" ng-if="!playing">Play</button>
+        <button class="pause col-md-2 col-lg-2 col-sm-2" ng-click="pauseTrack(current)" ng-if="playing">Pause</button>
+        <div class="col-md-8 col-lg-8 col-sm-8"></div>
+        <button class="next col-md-2 col-lg-2 col-sm-2" ng-click="nextTrack()" ng-if="isAdmin">Next</button>
+        <button class="gong col-md-2 col-lg-2 col-sm-2" ng-click="gongTrack()" ng-if="!isAdmin" ng-disabled="gonged">Gong</button>
       </div>
     `
   };

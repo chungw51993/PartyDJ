@@ -13,7 +13,7 @@ angular.module('partyDJ')
     link: function(scope) {
       scope.isAdmin = false;
 
-      scope.checkIfAdmin = () => {
+      checkIfAdmin = () => {
         if (scope.playlist.user_id === scope.user.spotify_id) {
           scope.isAdmin = true;
         }
@@ -23,7 +23,7 @@ angular.module('partyDJ')
         scope.service(scope.track.id, scope.status);
       };
 
-      scope.checkIfAdmin();
+      checkIfAdmin();
     },
     template: `
       <div class="row trackItem">

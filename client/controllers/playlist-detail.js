@@ -1,7 +1,6 @@
 angular.module('partyDJ')
 
-.controller('PlaylistDetailCtrl', function($scope, Playlist, Track, user, playlist) {
-
+.controller('PlaylistDetailCtrl', function($scope, $stateParams, Playlist, Track, user, playlist) {
   this.user = user;
   this.playlist = playlist;
 
@@ -25,15 +24,16 @@ angular.module('partyDJ')
   this.searchList = false;
 
   this.getAllTracks = () => {
-    Playlist.getAllTracks($routeParams.id)
+    Playlist.getAllTracks($stateParams.id)
       .then((resp) => {
-        if (resp.Tracks.length !== 0) {
-          this.currentSong = this.tracks.shift();
-        }
         this.query = '';
         this.searchList = false;
         this.playlist = resp;
-        this.tracks = resp.Tracks;
+        this.tracks = resp.Tracks.filter((track) => {
+          if (track.name !== this.currentSong.name) {
+            return track;
+          }
+        });
       });
   };
 
@@ -68,7 +68,7 @@ angular.module('partyDJ')
       uri: song.preview_url
     };
 
-    Track.addTrack($routeParams.id, album, artist, track)
+    Track.addTrack($stateParams.id, album, artist, track)
       .then(() => {
         this.getAllTracks();
         this.showAddTrack = false;
