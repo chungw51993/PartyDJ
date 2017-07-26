@@ -16,6 +16,10 @@ angular.module('partyDJ', [
     return Auth.isLoggedIn();
   };
 
+  const getPlaylist = function(Playlist, $location) {
+    return Playlist.getAllTracks($location.path().slice(1));
+  };
+
   $routeProvider
     .when('/', {
       templateUrl: '/client/views/landing.html'
@@ -34,7 +38,8 @@ angular.module('partyDJ', [
       controller: 'PlaylistDetailCtrl',
       controllerAs: 'ctrl',
       resolve: {
-        user: isLoggedIn
+        user: isLoggedIn,
+        playlist: getPlaylist
       }
     })
     .otherwise({

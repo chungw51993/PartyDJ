@@ -1,6 +1,6 @@
 angular.module('partyDJ')
 
-.factory('Auth', function($http, $timeout, $location) {
+.factory('Auth', function($http, $timeout, $location, $routeParams) {
   return {
 
     isAuthorized: function() {

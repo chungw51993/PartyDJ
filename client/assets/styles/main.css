@@ -76,20 +76,36 @@ div.searchItem {
 /*Music Player Style*/
 div.player {
   margin-bottom: 20px;
-  background-color: blue;
+  background-color: black;
   color: white;
 }
 
 button.play {
   background: url('../image/play.svg') no-repeat;
+}
+
+button.pause {
+  background: url('../image/pause.svg') no-repeat;
+}
+
+button.next {
+  background: url('../image/next.svg') no-repeat;
+}
+
+button.gong {
+  background: url('../image/sad.svg') no-repeat;
+}
+
+button.play, button.pause, button.next, button.gong {
   background-size: 100%;
+  background-color: white;
   height: 60px;
   width: 60px;
 }
 
-div.play {
-  background-image: url('../image/play');
-  background-size: 67.5%;
+button.play:hover, button.pause:hover, button.next:hover, button.gong:hover {
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 span.label {

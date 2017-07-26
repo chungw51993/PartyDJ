@@ -1,7 +1,7 @@
 angular.module('partyDJ')
 
-.controller('PlaylistDetailCtrl', function($routeParams, Playlist, Track, user) {
-  this.playlist = {};
+.controller('PlaylistDetailCtrl', function($scope, $routeParams, Playlist, Track, user, playlist) {
+  this.playlist = playlist;
   this.user = user;
   this.search = [];
   this.tracks = [];
@@ -114,6 +114,4 @@ angular.module('partyDJ')
   this.cancelAdd = () => {
     this.showAddTrack = false;
   };
-
-  this.getAllTracks();
 });

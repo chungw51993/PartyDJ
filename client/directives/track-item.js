@@ -11,7 +11,6 @@ angular.module('partyDJ')
     },
     restrict: 'E',
     link: function(scope) {
-      console.log(scope);
       scope.isAdmin = false;
 
       scope.checkIfAdmin = () => {
