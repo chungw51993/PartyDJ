@@ -18,10 +18,10 @@
   </div>
 
   <h3>Upcoming Songs</h3>
-  <track-item class="trackItem" ng-repeat="track in ctrl.tracks" track="track" user="ctrl.user" service="ctrl.deleteTrack" playlist="ctrl.playlist" status="'not'"></track-item>
+  <track-item class="trackItem" ng-repeat="track in ctrl.tracks" track="track" user="ctrl.user" service="ctrl.deleteTrack" playlist="ctrl.playlist" status="false"></track-item>
 
   <h3>Songs Already Played</h3>
-  <track-item class="trackItem" ng-repeat="track in ctrl.played" track="track" user="ctrl.user" service="ctrl.deleteTrack" playlist="ctrl.playlist" status="'played'"></track-item>
+  <track-item class="trackItem" ng-repeat="track in ctrl.played" track="track" user="ctrl.user" service="ctrl.deleteTrack" playlist="ctrl.playlist" status="true"></track-item>
 
   <button ng-if="ctrl.user" class="add mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" ng-click="ctrl.showAddTrackPopup()">
     <i class="material-icons">add</i>
