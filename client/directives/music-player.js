@@ -10,6 +10,7 @@ angular.module('partyDJ')
     restrict: 'E',
     link: function(scope) {
       scope.gong = 0;
+      scope.playing = false;
 
       scope.playTrack = (song) => {
         soundManager.createSound({
@@ -24,10 +25,12 @@ angular.module('partyDJ')
           }
         });
 
+        scope.playing = true;
         soundManager.play(song.name);
       };
 
       scope.pauseTrack = (song) => {
+        scope.playing = false;
         soundManager.pause(song.name);
       };
 
@@ -53,8 +56,8 @@ angular.module('partyDJ')
     },
     template: `
       <div class="row player">
-        <button class="play col-md-1 col-lg-1 col-sm-1" ng-click="playTrack(current)">Play</button>
-        <button class="pause col-md-1 col-lg-1 col-sm-1" ng-click="pauseTrack(current)">Pause</button>
+        <button class="play col-md-2 col-lg-2 col-sm-2" ng-click="playTrack(current)" ng-if="!playing"></button>
+        <button class="pause col-md-2 col-lg-2 col-sm-2" ng-click="pauseTrack(current)" ng-if="playing">Pause</button>
         <marquee class="col-md-8 col-lg-8 col-sm-8">
           <div>
             <b>{{ current.name }}</b>
