@@ -6,10 +6,12 @@ angular.module('partyDJ')
       track: '<',
       user: '<',
       playlist: '<',
-      service: '<'
+      service: '<',
+      status: '<'
     },
     restrict: 'E',
     link: function(scope) {
+      console.log(scope);
       scope.isAdmin = false;
 
       scope.checkIfAdmin = () => {
@@ -19,7 +21,7 @@ angular.module('partyDJ')
       };
 
       scope.deleteTrack = () => {
-        scope.service(scope.track.id);
+        scope.service(scope.track.id, scope.status);
       };
 
       scope.checkIfAdmin();

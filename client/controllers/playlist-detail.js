@@ -91,7 +91,20 @@ angular.module('partyDJ')
   this.deleteTrack = (tid, status) => {
     Track.deleteTrack($routeParams.id, tid)
       .then((resp) => {
-        if ()
+        if (status === 'not') {
+          this.tracks = this.tracks.map((track) => {
+            if (track.id !== tid) {
+              return track;
+            }
+          });
+          console.log(this.tracks);
+        } else if (status === 'played') {
+          this.played = this.played.map((track) => {
+            if (track.id !== tid) {
+              return track;
+            }
+          });
+        }
       });
   };
 
