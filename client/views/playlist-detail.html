@@ -6,15 +6,7 @@
 
   <div ng-if="ctrl.currentSong.name !== 'Title'">
     <h3>Current Song</h3>
-    <div class="row trackItem">
-      <img class="trackImg col-md-2 col-sm-2 col-lg-2" ng-src="{{ ctrl.currentSong.Album.image }}">
-      <div class="col-md-8 col-sm-8 col-lg-8">
-        <div class="trackName">Title: {{ ctrl.currentSong.name }}</div>
-        <div class="trackArtist">Artist: {{ ctrl.currentSong.Album.Artist.name }}</div>
-        <div class="trackAlbum">Album: {{ ctrl.currentSong.Album.name }}</div>
-      </div>
-      <button ng-if="isAdmin" ng-click="deleteTrack()" class="trackDelete col-md-2 col-sm-2 col-lg-2">Delete</button>
-    </div>
+    <track-item class="trackItem" track="ctrl.currentSong"></track-item>
   </div>
 
   <h3>Upcoming Songs</h3>
@@ -31,9 +23,9 @@
 <div class="popup" ng-if="ctrl.showAddTrack">
   <div class="mdl-card mdl-shadow--8dp">
     <h4>Search by the song name</h4>
-    <input class="search" ng-if="ctrl.user" ng-model="ctrl.query" placeholder="Search" ng-change="ctrl.searchTrack(ctrl.query)">
+    <input class="search" ng-model="ctrl.query" placeholder="Search" ng-change="ctrl.searchTrack(ctrl.query)">
     <div class="searchItem">
-      <search-item ng-if="ctrl.searchList" ng-repeat="song in ctrl.search" track="song" add="ctrl.addTrack"></search-item>
+      <search-item ng-if="ctrl.showSearchList" ng-repeat="song in ctrl.search" track="song" add="ctrl.addTrack"></search-item>
     </div>
     <button class="cancel" ng-click="ctrl.cancelAdd()">Cancel</button>
   </div>

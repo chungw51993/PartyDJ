@@ -25,13 +25,13 @@ angular.module('partyDJ')
 
   this.searchTrack = (query) => {
     if (query !== '') {
-      this.searchList = true;
+      this.showSearchList = true;
       Track.searchTrack(query)
         .then((resp) => {
           this.search = resp.tracks.items;
         });
     } else {
-      this.searchList = false;
+      this.showSearchList = false;
       this.search = [];
     }
   };
@@ -56,6 +56,9 @@ angular.module('partyDJ')
 
     Track.addTrack($stateParams.id, album, artist, track)
       .then((resp) => {
+        this.query = '';
+        this.search = [];
+        this.showSearchList = false;
         this.tracks.push(resp);
         this.showAddTrack = false;
       });

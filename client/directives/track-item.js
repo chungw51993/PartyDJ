@@ -14,8 +14,10 @@ angular.module('partyDJ')
       scope.isAdmin = false;
 
       checkIfAdmin = () => {
-        if (scope.playlist.user_id === scope.user.spotify_id) {
-          scope.isAdmin = true;
+        if (scope.user !== undefined) {
+          if (scope.playlist.user_id === scope.user.spotify_id) {
+            scope.isAdmin = true;
+          }
         }
       };
 
