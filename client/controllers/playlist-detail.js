@@ -23,20 +23,6 @@ angular.module('partyDJ')
   this.showAddTrack = false;
   this.searchList = false;
 
-  this.getAllTracks = () => {
-    Playlist.getAllTracks($stateParams.id)
-      .then((resp) => {
-        this.query = '';
-        this.searchList = false;
-        this.playlist = resp;
-        this.tracks = resp.Tracks.filter((track) => {
-          if (track.name !== this.currentSong.name) {
-            return track;
-          }
-        });
-      });
-  };
-
   this.searchTrack = (query) => {
     if (query !== '') {
       this.searchList = true;
@@ -69,8 +55,8 @@ angular.module('partyDJ')
     };
 
     Track.addTrack($stateParams.id, album, artist, track)
-      .then(() => {
-        this.getAllTracks();
+      .then((resp) => {
+        this.tracks.push(resp);
         this.showAddTrack = false;
       });
   };
@@ -93,7 +79,7 @@ angular.module('partyDJ')
   };
 
   this.deleteTrack = (tid, status) => {
-    Track.deleteTrack($routeParams.id, tid)
+    Track.deleteTrack($stateParams.id, tid)
       .then((resp) => {
         if (!status) {
           this.tracks = this.tracks.filter((track) => {

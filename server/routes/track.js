@@ -32,7 +32,10 @@ router.post('/:pid', (req, res) => {
 
   Track.newTrack(artist, album, track, pid)
     .then((data) => {
-      res.send(data);
+      Track.findTrack(data[0][0].dataValues.track_id)
+        .then((data) => {
+          res.send(data);
+        });
     })
     .catch((err) => {
       res.send(err);

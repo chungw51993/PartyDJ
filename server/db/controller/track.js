@@ -26,6 +26,22 @@ module.exports = {
             return playlist.removeTrack(track);
           });
       });
+  },
+
+  findTrack: function(tid) {
+    return models.track.find({
+      where: {
+        id: tid
+      },
+      include: [
+        {
+          model: models.album,
+          include: {
+            model: models.artist
+          }
+        }
+      ]
+    });
   }
 
 };
