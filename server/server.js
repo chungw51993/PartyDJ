@@ -41,7 +41,7 @@ app.get('/*', (req, res) => {
 });
 
 const socketListener = require('./socket.js');
-io.on('connection', socketListener);
+io.sockets.on('connection', socketListener);
 
 db.sequelize.sync().then(function() {
   db.sequelize.query('ALTER TABLE `partyDJ`.`Playlist_Track` DROP PRIMARY KEY')
