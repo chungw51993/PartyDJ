@@ -1,4 +1,5 @@
 <div class="container">
+  <a class="back" ng-href="/playlist" ng-if="ctrl.user">Back to List</a>
   <h1 class="detail-title">{{ ctrl.playlist.name }}</h1>
   <a class="spotify-login list-login col-md-2" ng-href="/api/user/login" ng-if="!ctrl.user" target="_self">Login with Spotify</a>
 
@@ -6,7 +7,7 @@
 
   <div ng-if="ctrl.currentSong.name !== 'Title'">
     <h3>Current Song</h3>
-    <track-item class="trackItem" track="ctrl.currentSong"></track-item>
+    <track-item class="trackItem" track="ctrl.currentSong" service="ctrl.deleteTrack"></track-item>
   </div>
 
   <h3>Upcoming Songs</h3>

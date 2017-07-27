@@ -61,7 +61,11 @@ angular.module('partyDJ')
         this.showSearchList = false;
         this.query = '';
         this.search = [];
-        this.tracks.push(resp);
+        if (this.tracks.length === 0 && this.currentSong.name === 'Title') {
+          this.currentSong = resp;
+        } else {
+          this.tracks.push(resp);
+        }
         socket.emit('new:track', resp);
       });
   };
@@ -111,10 +115,9 @@ angular.module('partyDJ')
   };
 
   socket.on('add:track', (data) => {
-    console.log(data);
-    // if (data.id !== this.tracks[this.tracks.length].id) {
-    //   this.tracks.push(data);
-    // }
+    if (data.id !== this.tracks[this.tracks.length - 1].id) {
+      this.tracks.push(data);
+    }
   });
 
 });
