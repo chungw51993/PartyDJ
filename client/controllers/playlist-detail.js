@@ -56,11 +56,11 @@ angular.module('partyDJ')
 
     Track.addTrack($stateParams.id, album, artist, track)
       .then((resp) => {
+        this.showAddTrack = false;
+        this.showSearchList = false;
         this.query = '';
         this.search = [];
-        this.showSearchList = false;
         this.tracks.push(resp);
-        this.showAddTrack = false;
       });
   };
 
@@ -108,7 +108,4 @@ angular.module('partyDJ')
     this.showAddTrack = false;
   };
 
-  socket.on('new', (data) => {
-    console.log(data);
-  });
 });

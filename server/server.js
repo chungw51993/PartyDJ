@@ -40,12 +40,8 @@ app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 
-io.on('connection', (socket) => {
-  socket.emit('new', { hello: 'world' });
-  socket.on('other', (data) => {
-    console.log(data);
-  });
-});
+const socketListener = require('./socket.js');
+io.on('connection', socketListener);
 
 db.sequelize.sync().then(function() {
   db.sequelize.query('ALTER TABLE `partyDJ`.`Playlist_Track` DROP PRIMARY KEY')
