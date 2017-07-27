@@ -23,7 +23,8 @@ connection.connect((err) => {
 const sequelize = new Sequelize('partyDJ', 'root', '', {
   host: 'localhost',
   port: 3306,
-  dialect: 'mysql'
+  dialect: 'mysql',
+  logging: false
 });
 
 sequelize.authenticate()

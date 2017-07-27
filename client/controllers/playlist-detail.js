@@ -54,6 +54,7 @@ angular.module('partyDJ')
       uri: song.preview_url
     };
 
+
     Track.addTrack($stateParams.id, album, artist, track)
       .then((resp) => {
         this.showAddTrack = false;
@@ -61,6 +62,7 @@ angular.module('partyDJ')
         this.query = '';
         this.search = [];
         this.tracks.push(resp);
+        socket.emit('new:track', resp);
       });
   };
 
@@ -107,5 +109,12 @@ angular.module('partyDJ')
   this.cancelAdd = () => {
     this.showAddTrack = false;
   };
+
+  socket.on('add:track', (data) => {
+    console.log(data);
+    // if (data.id !== this.tracks[this.tracks.length].id) {
+    //   this.tracks.push(data);
+    // }
+  });
 
 });

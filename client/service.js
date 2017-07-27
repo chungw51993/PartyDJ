@@ -175,7 +175,7 @@ angular.module('partyDJ')
     },
 
     emit: function(eventName, data, callback) {
-      socket.on(eventName, data, function() {
+      socket.emit(eventName, data, function() {
         var args = arguments;
         $rootScope.$apply(function() {
           callback.apply(socket, args);
