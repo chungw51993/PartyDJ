@@ -1,6 +1,6 @@
 angular.module('partyDJ')
 
-.controller('PlaylistDetailCtrl', function($scope, $stateParams, Playlist, Track, user, playlist) {
+.controller('PlaylistDetailCtrl', function($scope, $stateParams, Playlist, Track, socket, user, playlist) {
   this.user = user;
   this.playlist = playlist;
 
@@ -107,4 +107,8 @@ angular.module('partyDJ')
   this.cancelAdd = () => {
     this.showAddTrack = false;
   };
+
+  socket.on('new', (data) => {
+    console.log(data);
+  });
 });
