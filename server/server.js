@@ -3,7 +3,8 @@ const path = require('path');
 
 const app = express();
 const server = require('http').Server(app);
-const io = require('socket.io')(server);
+const socket = require('socket.io');
+const io = socket.listen(server);
 
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
@@ -13,7 +14,13 @@ const passport = require('passport');
 
 const db = require('./db/index');
 
+require('./socket.js')(io);
+
 const port = 8000;
+
+server.listen(port, () => {
+  console.log('Server is listening on ', port);
+});
 
 require('./passport/init')(passport);
 
@@ -40,9 +47,6 @@ app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 
-const socketListener = require('./socket.js');
-io.sockets.on('connection', socketListener);
-
 db.sequelize.sync().then(function() {
   db.sequelize.query('ALTER TABLE `partyDJ`.`Playlist_Track` DROP PRIMARY KEY')
     .then((data) => {
@@ -51,8 +55,4 @@ db.sequelize.sync().then(function() {
     .catch((err) => {
       console.log('Playlist_Track was already altered');
     });
-
-  server.listen(port, () => {
-    console.log('Server is listening on ', port);
-  });
 });

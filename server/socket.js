@@ -1,8 +1,10 @@
-module.exports = (socket) => {
+module.exports = (io) => {
   const allConnection = [];
-  allConnection.push(socket);
-  console.log(allConnection.length, '<<<<<<<<<<<<<<<<<<<<<<<<<<');
-  socket.on('new:track', (data) => {
-    socket.emit('add:track', data);
+  io.on('connection', function(socket) {
+    allConnection.push(socket);
+    console.log(allConnection.length, '<<<<<<<<<<<<<<<<<<<<<<<<<<');
+    socket.on('new:track', (data) => {
+      socket.emit('add:track', data);
+    });
   });
 };
