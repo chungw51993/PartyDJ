@@ -1,21 +1,5 @@
 angular.module('partyDJ')
 
-.controller('PopupCtrl', function() {
-  this.handleClick = () => {
-    if (this.current && this.name === undefined) {
-      this.service(this.current.id);
-    } else if (this.current && this.name) {
-      this.service(this.current.id, this.name);
-    } else {
-      this.service(this.name);
-    }
-  };
-
-  this.handleCancel = () => {
-    this.cancel();
-  };
-})
-
 .directive('popup', function() {
   return {
     scope: {
@@ -29,17 +13,29 @@ angular.module('partyDJ')
       input: '<'
     },
     restrict: 'E',
-    controller: 'PopupCtrl',
-    controllerAs: 'ctrl',
-    bindToController: true,
+    link: (scope) => {
+      scope.handleClick = () => {
+        if (scope.current && scope.name === undefined) {
+          scope.service(scope.current.id);
+        } else if (scope.current && scope.name) {
+          scope.service(scope.current.id, scope.name);
+        } else {
+          scope.service(scope.name);
+        }
+      };
+
+      scope.handleCancel = () => {
+        scope.cancel();
+      };
+    },
     template: `
       <div>
         <div class="mdl-card mdl-shadow--8dp">
-          <h4>{{ ctrl.message }}</h4>
-          <p>{{ ctrl.sub }}</p>
-          <input ng-if="ctrl.input" ng-model="ctrl.name" placeholder="Playlist Name" >
-          <button class="submit" ng-click="ctrl.handleClick()">Submit</button>
-          <button class="cancel" ng-click="ctrl.handleCancel()">Cancel</button>
+          <h4>{{ message }}</h4>
+          <p>{{ sub }}</p>
+          <input ng-if="input" ng-model="name" placeholder="Playlist Name" >
+          <button class="submit" ng-click="handleClick()">Submit</button>
+          <button class="cancel" ng-click="handleCancel()">Cancel</button>
         </div>
       </div>
     `

@@ -1,6 +1,6 @@
 module.exports = (io) => {
   const allConnection = [];
-  io.on('connection', function(socket) {
+  io.on('connection', (socket) => {
     allConnection.push(socket);
     console.log('THERE IS CURRENTLY ', allConnection.length, ' SOCKETS CONNECTED');
 

@@ -1,6 +1,6 @@
 angular.module('partyDJ')
 
-.directive('musicPlayer', function($timeout, Auth) {
+.directive('musicPlayer', ($timeout, Auth) => {
   return {
     scope: {
       user: '<',
@@ -10,7 +10,7 @@ angular.module('partyDJ')
       next: '<'
     },
     restrict: 'E',
-    link: function(scope) {
+    link: (scope) => {
       scope.gong = 0;
       scope.playing = false;
       scope.isAdmin = Auth.checkIfAdmin(scope);

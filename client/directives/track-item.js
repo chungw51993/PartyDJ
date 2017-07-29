@@ -1,6 +1,6 @@
 angular.module('partyDJ')
 
-.directive('trackItem', function(Auth) {
+.directive('trackItem', (Auth) => {
   return {
     scope: {
       track: '<',
@@ -10,7 +10,7 @@ angular.module('partyDJ')
       status: '<'
     },
     restrict: 'E',
-    link: function(scope) {
+    link: (scope) => {
       scope.isAdmin = Auth.checkIfAdmin(scope);
 
       scope.deleteTrack = () => {

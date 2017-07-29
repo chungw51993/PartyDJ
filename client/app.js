@@ -2,21 +2,21 @@ angular.module('partyDJ', [
   'ui.router'
 ])
 
-.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
 
-  const authorized = function(Auth) {
+  const authorized = (Auth) => {
     return Auth.isAuthorized();
   };
 
-  const getPlaylists = function(Playlist) {
+  const getPlaylists = (Playlist) => {
     return Playlist.getPlaylists();
   };
 
-  const isLoggedIn = function(Auth) {
+  const isLoggedIn = (Auth) => {
     return Auth.isLoggedIn();
   };
 
-  const getPlaylist = function(Playlist, $stateParams) {
+  const getPlaylist = (Playlist, $stateParams) => {
     return Playlist.getAllTracks($stateParams.id);
   };
 
@@ -50,10 +50,10 @@ angular.module('partyDJ', [
 
   $locationProvider.html5Mode(true);
 })
-.run(function() {
+.run(() => {
   soundManager.setup({
     url: '../node_modules/soundmanager2/swf',
-    onready: function() {
+    onready: () => {
       console.log('soundManager is ready');
     },
     ontimeout: () => {
