@@ -123,7 +123,9 @@ angular.module('partyDJ')
   });
 
   socket.on('next:track', (data) => {
-
+    if (data.id === this.currentSong.id) {
+      this.nextTrack();
+    }
   });
 
 });

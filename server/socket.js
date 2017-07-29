@@ -13,6 +13,10 @@ module.exports = (io) => {
       io.sockets.to(playlist).emit('add:track', data);
     });
 
+    socket.on('skip:track', (data) => {
+      io.sockets.to(playlist).emit('next:track', data);
+    });
+
     socket.on('disconnect', () => {
       allConnection.shift();
     });
