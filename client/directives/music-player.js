@@ -14,7 +14,12 @@ angular.module('partyDJ')
       scope.gong = 0;
       scope.playing = false;
       scope.isAdmin = Auth.checkIfAdmin(scope);
-      scope.progressBar = {};
+      scope.progressBar = {
+        background: 'white',
+        'margin-top': '5px',
+        height: '20px',
+        width: '100%'
+      };
 
       scope.playTrack = (song) => {
         soundManager.createSound({
@@ -24,7 +29,8 @@ angular.module('partyDJ')
             const width = ((this.position / this.duration) * 100) + '%';
             scope.progressBar = {
               background: 'white',
-              height: '50px',
+              'margin-top': '5px',
+              height: '20px',
               width: width
             };
             scope.$apply();
