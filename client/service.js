@@ -1,9 +1,9 @@
 angular.module('partyDJ')
 
-.factory('Auth', function($http, $timeout, $location) {
+.factory('Auth', ($http, $timeout, $location) => {
   return {
 
-    isAuthorized: function() {
+    isAuthorized: () => {
       return $http({
         method: 'GET',
         url: '/api/user/authorized'
@@ -22,7 +22,7 @@ angular.module('partyDJ')
       });
     },
 
-    isLoggedIn: function() {
+    isLoggedIn: () => {
       return $http({
         method: 'GET',
         url: '/api/user/loggedin'
@@ -33,15 +33,27 @@ angular.module('partyDJ')
       .catch((err) => {
         console.error(err);
       });
+    },
+
+    checkIfAdmin: (scope) => {
+      let admin = false;
+
+      if (scope.user !== undefined) {
+        if (scope.playlist.user_id === scope.user.spotify_id) {
+          admin = true;
+        }
+      }
+
+      return admin;
     }
 
   };
 })
 
-.factory('Playlist', function($http, $location) {
+.factory('Playlist', ($http, $location) => {
   return {
 
-    getPlaylists: function() {
+    getPlaylists: () => {
       return $http({
         method: 'GET',
         url: '/api/playlist'
@@ -54,7 +66,7 @@ angular.module('partyDJ')
       });
     },
 
-    newPlaylist: function(title) {
+    newPlaylist: (title) => {
       return $http({
         method: 'POST',
         url: '/api/playlist',
@@ -70,14 +82,14 @@ angular.module('partyDJ')
       });
     },
 
-    deletePlaylist: function(id) {
+    deletePlaylist: (id) => {
       return $http({
         method: 'DELETE',
         url: '/api/playlist/' + id
       });
     },
 
-    editPlaylist: function(id, title) {
+    editPlaylist: (id, title) => {
       return $http({
         method: 'PUT',
         url: '/api/playlist',
@@ -88,7 +100,7 @@ angular.module('partyDJ')
       });
     },
 
-    getAllTracks: function(id) {
+    getAllTracks: (id) => {
       return $http({
         method: 'GET',
         url: '/api/playlist/' + id
@@ -104,10 +116,10 @@ angular.module('partyDJ')
   };
 })
 
-.factory('Track', function($http) {
+.factory('Track', ($http) => {
   return {
 
-    searchTrack: function(query) {
+    searchTrack: (query) => {
       return $http({
         method: 'POST',
         url: '/api/track/',
@@ -123,7 +135,7 @@ angular.module('partyDJ')
       });
     },
 
-    addTrack: function(pid, album, artist, track) {
+    addTrack: (pid, album, artist, track) => {
       return $http({
         method: 'POST',
         url: '/api/track/' + pid,
@@ -141,7 +153,7 @@ angular.module('partyDJ')
       });
     },
 
-    deleteTrack: function(pid, tid) {
+    deleteTrack: (pid, tid) => {
       return $http({
         method: 'DELETE',
         url: '/api/track/' + pid,
@@ -160,24 +172,24 @@ angular.module('partyDJ')
   };
 })
 
-.factory('socket', function($rootScope) {
+.factory('socket', ($rootScope) => {
   const socket = io.connect();
 
   return {
 
-    on: function(eventName, callback) {
-      socket.on(eventName, function() {
+    on: (eventName, callback) => {
+      socket.on(eventName, () => {
         var args = arguments;
-        $rootScope.$apply(function() {
+        $rootScope.$apply(() => {
           callback.apply(socket, args);
         });
       });
     },
 
-    emit: function(eventName, data, callback) {
-      socket.emit(eventName, data, function() {
+    emit: (eventName, data, callback) => {
+      socket.emit(eventName, data, () => {
         var args = arguments;
-        $rootScope.$apply(function() {
+        $rootScope.$apply(() => {
           callback.apply(socket, args);
         });
       });

@@ -1,6 +1,6 @@
 angular.module('partyDJ')
 
-.directive('musicPlayer', function($timeout) {
+.directive('musicPlayer', function($timeout, Auth) {
   return {
     scope: {
       user: '<',
@@ -13,13 +13,7 @@ angular.module('partyDJ')
     link: function(scope) {
       scope.gong = 0;
       scope.playing = false;
-      scope.isAdmin = false;
-
-      checkIfAdmin = () => {
-        if (scope.playlist.user_id === scope.user.spotify_id) {
-          scope.isAdmin = true;
-        }
-      };
+      scope.isAdmin = Auth.checkIfAdmin(scope);
 
       scope.playTrack = (song) => {
         soundManager.createSound({
@@ -70,7 +64,6 @@ angular.module('partyDJ')
         }
       };
 
-      checkIfAdmin();
     },
     template: `
       <div class="row player">

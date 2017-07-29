@@ -1,6 +1,6 @@
 angular.module('partyDJ')
 
-.directive('trackItem', function() {
+.directive('trackItem', function(Auth) {
   return {
     scope: {
       track: '<',
@@ -11,21 +11,11 @@ angular.module('partyDJ')
     },
     restrict: 'E',
     link: function(scope) {
-      scope.isAdmin = false;
-
-      checkIfAdmin = () => {
-        if (scope.user !== undefined) {
-          if (scope.playlist.user_id === scope.user.spotify_id) {
-            scope.isAdmin = true;
-          }
-        }
-      };
+      scope.isAdmin = Auth.checkIfAdmin(scope);
 
       scope.deleteTrack = () => {
         scope.service(scope.track.id, scope.status);
       };
-
-      checkIfAdmin();
     },
     template: `
       <div class="row trackItem">
