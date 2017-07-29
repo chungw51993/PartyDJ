@@ -78,9 +78,12 @@ angular.module('partyDJ')
             <span class="label">{{ current.Album.name }}</span>
           </div>
         </marquee>
-        <button class="play col-md-2 col-lg-2 col-sm-2" ng-click="playTrack(current)" ng-if="!playing" ng-disabled="!isAdmin">Play</button>
-        <button class="pause col-md-2 col-lg-2 col-sm-2" ng-click="pauseTrack(current)" ng-if="playing" ng-disabled="!isAdmin">Pause</button>
-        <div class="col-md-8 col-lg-8 col-sm-8"></div>
+        <div ng-if="isAdmin">
+          <button class="play col-md-2 col-lg-2 col-sm-2" ng-click="playTrack(current)" ng-if="!playing">Play</button>
+          <button class="pause col-md-2 col-lg-2 col-sm-2" ng-click="pauseTrack(current)" ng-if="playing">Pause</button>
+        </div>
+        <div class="col-md-8 col-lg-8 col-sm-8" ng-if="isAdmin"></div>
+        <div class="col-sm-10 col-lg-10 col-sm-10" ng-if="!isAdmin"></div>
         <button class="next col-md-2 col-lg-2 col-sm-2" ng-click="nextTrack()" ng-if="isAdmin">Next</button>
         <button class="gong col-md-2 col-lg-2 col-sm-2" ng-click="gongTrack()" ng-if="!isAdmin" ng-disabled="gonged">Gong</button>
       </div>

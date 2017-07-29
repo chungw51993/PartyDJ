@@ -162,9 +162,11 @@ angular.module('partyDJ')
   });
 
   socket.on('catch:up', (data) => {
-    this.currentSong = data.current;
-    this.tracks = data.tracks;
-    this.played = data.played;
+    if (playlist.user_id !== user.spotify_id) {
+      this.currentSong = data.current;
+      this.tracks = data.tracks;
+      this.played = data.played;
+    }
   });
 
 });
