@@ -134,15 +134,15 @@ angular.module('partyDJ')
   });
 
   socket.on('delete:track', (data) => {
-    if (!status) {
+    if (!data.status) {
       this.tracks = this.tracks.filter((track) => {
-        if (track.id !== tid) {
+        if (track.id !== data.tid) {
           return track;
         }
       });
     } else {
       this.played = this.played.filter((track) => {
-        if (track.id !== tid) {
+        if (track.id !== data.tid) {
           return track;
         }
       });
