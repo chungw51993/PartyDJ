@@ -105,6 +105,11 @@ angular.module('partyDJ')
             }
           });
         }
+
+        socket.emit('remove:track', {
+          tid: tid,
+          status: status
+        });
       });
   };
 
@@ -125,6 +130,22 @@ angular.module('partyDJ')
   socket.on('next:track', (data) => {
     if (data === this.currentSong.id) {
       this.nextTrack();
+    }
+  });
+
+  socket.on('delete:track', (data) => {
+    if (!status) {
+      this.tracks = this.tracks.filter((track) => {
+        if (track.id !== tid) {
+          return track;
+        }
+      });
+    } else {
+      this.played = this.played.filter((track) => {
+        if (track.id !== tid) {
+          return track;
+        }
+      });
     }
   });
 

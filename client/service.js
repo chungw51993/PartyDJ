@@ -178,7 +178,7 @@ angular.module('partyDJ')
   return {
 
     on: (eventName, callback) => {
-      socket.on(eventName, () => {
+      socket.on(eventName, function() {
         var args = arguments;
         $rootScope.$apply(() => {
           callback.apply(socket, args);
@@ -187,7 +187,7 @@ angular.module('partyDJ')
     },
 
     emit: (eventName, data, callback) => {
-      socket.emit(eventName, data, () => {
+      socket.emit(eventName, data, function() {
         var args = arguments;
         $rootScope.$apply(() => {
           callback.apply(socket, args);

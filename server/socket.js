@@ -17,6 +17,10 @@ module.exports = (io) => {
       io.sockets.to(playlist).emit('next:track', data);
     });
 
+    socket.on('remove:track', (data) => {
+      io.sockets.to(playlist).emit('delete:track', data);
+    });
+
     socket.on('disconnect', () => {
       allConnection.shift();
     });

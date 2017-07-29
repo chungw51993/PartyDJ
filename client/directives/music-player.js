@@ -54,7 +54,7 @@ angular.module('partyDJ')
       };
 
       scope.gongTrack = () => {
-        scope.gonged = true;
+        // scope.gonged = true;
         if (scope.gong < 2) {
           scope.gong++;
         } else {
