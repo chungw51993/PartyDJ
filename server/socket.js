@@ -7,10 +7,9 @@ module.exports = (io) => {
     const playlist = socket.handshake.headers.referer.split('/')[3];
 
     socket.join(playlist);
-    console.log('PLAYLIST JOINED PLAYLIST: ', playlist);
+    console.log('USER JOINED PLAYLIST: ', playlist);
 
     socket.on('new:track', (data) => {
-      console.log('EMIT NEW TRACK');
       io.sockets.to(playlist).emit('add:track', data);
     });
 

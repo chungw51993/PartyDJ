@@ -4,7 +4,7 @@ angular.module('partyDJ')
   this.user = user;
   this.playlist = playlist;
 
-  var current = playlist.Tracks.shift();
+  const current = playlist.Tracks.shift();
   this.currentSong = current ? current : {
     name: 'Title',
     Album: {
