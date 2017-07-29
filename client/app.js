@@ -58,6 +58,7 @@ angular.module('partyDJ', [
     },
     ontimeout: () => {
       console.log('soundManager timing out');
-    }
+    },
+    debugMode: false
   });
 });

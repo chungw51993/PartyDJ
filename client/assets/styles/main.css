@@ -80,6 +80,14 @@ div.player {
   color: white;
 }
 
+div.startTime {
+  margin-top: 5px;
+}
+
+div.endTime {
+  margin-top: 5px;
+}
+
 button.play {
   background: url('../image/play.svg') no-repeat;
 }

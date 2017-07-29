@@ -33,6 +33,10 @@ module.exports = (io) => {
       io.sockets.to(playlist).emit('delete:track', data);
     });
 
+    socket.on('update:progress', (data) => {
+      io.sockets.to(playlist).emit('progress:track', data);
+    });
+
     socket.on('gonged:track', (data) => {
       console.log('PLAYLIST ', playlist, ' ', data);
       io.sockets.to(playlist).emit('gong:track', data);

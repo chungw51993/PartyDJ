@@ -14,9 +14,11 @@ angular.module('partyDJ')
       scope.gong = 0;
       scope.playing = false;
       scope.isAdmin = Auth.checkIfAdmin(scope);
+
+      scope.duration = '0:00';
       scope.progressBar = {
         background: 'white',
-        'margin-top': '5px',
+        marginTop: '5px',
         height: '20px',
         width: '100%'
       };
@@ -25,16 +27,26 @@ angular.module('partyDJ')
         soundManager.createSound({
           id: song.name,
           url: song.uri,
+          autoLoad: true,
+          whileloading: function() {
+            const duration = new Date(this.duration);
+            const m = duration.getMinutes();
+            const s = duration.getSeconds();
+
+            scope.duration = m + ':' + s;
+          },
           whileplaying: function() {
             const width = ((this.position / this.duration) * 100) + '%';
             scope.progressBar = {
               background: 'white',
-              'margin-top': '5px',
+              marginTop: '5px',
               height: '20px',
               width: width
             };
             scope.$apply();
-            console.log(scope.progressBar);
+            let progress = scope.progressBar;
+            progress.duration = scope.duration;
+            socket.emit('update:progress', progress);
           },
           onfinish: () => {
             scope.next();
@@ -42,6 +54,7 @@ angular.module('partyDJ')
             $timeout(() => {
               if (scope.current.uri === undefined) {
                 scope.playing = false;
+                scope.duration = '0:00';
               } else {
                 scope.playTrack(scope.current);
               }
@@ -85,6 +98,18 @@ angular.module('partyDJ')
         }
       });
 
+      socket.on('progress:track', (progress) => {
+        if (progress.width !== scope.progressBar.width) {
+          scope.progressBar = {
+            background: progress.background,
+            marginTop: progress.marginTop,
+            height: progress.height,
+            width: progress.width
+          };
+          scope.duration = progress.duration;
+        }
+      });
+
     },
     template: `
       <div class="row player">
@@ -99,10 +124,20 @@ angular.module('partyDJ')
           <button class="play col-md-2 col-lg-2 col-sm-2" ng-click="playTrack(current)" ng-if="!playing">Play</button>
           <button class="pause col-md-2 col-lg-2 col-sm-2" ng-click="pauseTrack(current)" ng-if="playing">Pause</button>
         </div>
-        <div class="col-md-8 col-lg-8 col-sm-8" ng-if="isAdmin">
-          <div ng-style="progressBar"></div>
+        <div ng-if="isAdmin">
+          <div class="startTime col-md-1 col-lg-1 col-sm-1">0:00</div>
+          <div class="col-md-6 col-lg-6 col-sm-6 progressBar" >
+            <div ng-style="progressBar"></div>
+          </div>
+          <div class="endTime col-md-1 col-lg-1 col-sm-1">{{ duration }}</div>
         </div>
-        <div class="col-sm-10 col-lg-10 col-sm-10" ng-if="!isAdmin"></div>
+        <div class="col-sm-10 col-lg-10 col-sm-10" ng-if="!isAdmin">
+          <div class="startTime col-md-1 col-lg-1 col-sm-1">0:00</div>
+          <div class="col-md-8 col-lg-8 col-sm-8 progressBar" >
+            <div ng-style="progressBar"></div>
+          </div>
+          <div class="endTime col-md-1 col-lg-1 col-sm-1">{{ duration }}</div>
+        </div>
         <button class="next col-md-2 col-lg-2 col-sm-2" ng-click="nextTrack()" ng-if="isAdmin">Next</button>
         <button class="gong col-md-2 col-lg-2 col-sm-2" ng-click="gongTrack()" ng-if="!isAdmin" ng-disabled="gonged">Gong</button>
       </div>
