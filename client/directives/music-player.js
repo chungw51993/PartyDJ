@@ -16,11 +16,11 @@ angular.module('partyDJ')
       scope.isAdmin = Auth.checkIfAdmin(scope);
 
       scope.duration = '0:00';
-      scope.progressBar = {
-        background: 'white',
+      scope.progress = {
+        background: 'grey',
         marginTop: '5px',
         height: '20px',
-        width: '100%'
+        width: '0%'
       };
 
       scope.playTrack = (song) => {
@@ -37,14 +37,14 @@ angular.module('partyDJ')
           },
           whileplaying: function() {
             const width = ((this.position / this.duration) * 100) + '%';
-            scope.progressBar = {
-              background: 'white',
+            scope.progress = {
+              background: 'grey',
               marginTop: '5px',
               height: '20px',
               width: width
             };
             scope.$apply();
-            let progress = scope.progressBar;
+            let progress = scope.progress;
             progress.duration = scope.duration;
             socket.emit('update:progress', progress);
           },
@@ -99,8 +99,8 @@ angular.module('partyDJ')
       });
 
       socket.on('progress:track', (progress) => {
-        if (progress.width !== scope.progressBar.width) {
-          scope.progressBar = {
+        if (progress.width !== scope.progress.width) {
+          scope.progress = {
             background: progress.background,
             marginTop: progress.marginTop,
             height: progress.height,
@@ -126,15 +126,19 @@ angular.module('partyDJ')
         </div>
         <div ng-if="isAdmin">
           <div class="startTime col-md-1 col-lg-1 col-sm-1">0:00</div>
-          <div class="col-md-6 col-lg-6 col-sm-6 progressBar" >
-            <div ng-style="progressBar"></div>
+          <div class="col-md-6 col-lg-6 col-sm-6" >
+            <div class="progressBar">
+              <div ng-style="progress"></div>
+            </div>
           </div>
           <div class="endTime col-md-1 col-lg-1 col-sm-1">{{ duration }}</div>
         </div>
-        <div class="col-sm-10 col-lg-10 col-sm-10" ng-if="!isAdmin">
+        <div ng-if="!isAdmin">
           <div class="startTime col-md-1 col-lg-1 col-sm-1">0:00</div>
-          <div class="col-md-8 col-lg-8 col-sm-8 progressBar" >
-            <div ng-style="progressBar"></div>
+          <div class="col-md-8 col-lg-8 col-sm-8" >
+            <div class="progressBar">
+              <div ng-style="progress"></div>
+            </div>
           </div>
           <div class="endTime col-md-1 col-lg-1 col-sm-1">{{ duration }}</div>
         </div>

@@ -88,6 +88,13 @@ div.endTime {
   margin-top: 5px;
 }
 
+div.progressBar {
+  margin-top: 5px;
+  width: 100%;
+  background-color: white;
+  height: 20px;
+}
+
 button.play {
   background: url('../image/play.svg') no-repeat;
 }
