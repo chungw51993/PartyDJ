@@ -1,20 +1,6 @@
 angular.module('partyDJ')
 
-.controller('PlaylistItemCtrl', function() {
-  this.showEditPopup = () => {
-    this.showEdit(this.playlist);
-  };
-
-  this.showDeletePopup = () => {
-    this.showDelete(this.playlist);
-  };
-
-  this.goToDetail = () => {
-    this.redirect(this.playlist.id);
-  };
-})
-
-.directive('playlistItem', function() {
+.directive('playlistItem', () => {
   return {
     scope: {
       playlist: '<',
@@ -23,9 +9,19 @@ angular.module('partyDJ')
       showDelete: '<',
     },
     restrict: 'E',
-    controller: 'PlaylistItemCtrl',
-    controllerAs: 'ctrl',
-    bindToController: true,
+    link: (scope) => {
+      scope.showEditPopup = () => {
+        scope.showEdit(scope.playlist);
+      };
+
+      scope.showDeletePopup = () => {
+        scope.showDelete(scope.playlist);
+      };
+
+      scope.goToDetail = () => {
+        scope.redirect(scope.playlist.id);
+      };
+    },
     template: `
       <div class="playlist-item">
         <div ng-click="ctrl.goToDetail()" class="title">{{ ctrl.playlist.name }}</div>

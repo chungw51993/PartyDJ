@@ -66,13 +66,13 @@ angular.module('partyDJ')
         } else {
           this.tracks.push(resp);
         }
-        socket.emit('new:track', resp);
+        socket.emit('new:track', resp.id);
       });
   };
 
   this.nextTrack = () => {
     this.played.push(this.currentSong);
-    socket.emit('skip:track', this.currentSong);
+    socket.emit('skip:track', this.currentSong.id);
 
     if (this.tracks.length > 0) {
       this.currentSong = this.tracks.shift();
@@ -117,13 +117,13 @@ angular.module('partyDJ')
   };
 
   socket.on('add:track', (data) => {
-    if (data.id !== this.tracks[this.tracks.length - 1].id) {
+    if (data !== this.tracks[this.tracks.length - 1].id) {
       this.tracks.push(data);
     }
   });
 
   socket.on('next:track', (data) => {
-    if (data.id === this.currentSong.id) {
+    if (data === this.currentSong.id) {
       this.nextTrack();
     }
   });

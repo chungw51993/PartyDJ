@@ -1,6 +1,6 @@
 angular.module('partyDJ')
 
-.directive('searchItem', function() {
+.directive('searchItem', () => {
   return {
     scope: {
       track: '<',

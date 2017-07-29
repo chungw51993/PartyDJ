@@ -1,6 +1,6 @@
 angular.module('partyDJ')
 
-.directive('popup', function() {
+.directive('popup', () => {
   return {
     scope: {
       service: '<',
