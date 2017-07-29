@@ -48,11 +48,15 @@ angular.module('partyDJ')
       };
 
       scope.nextTrack = () => {
-        soundManager.stop(scope.current.name);
-        scope.next();
-        $timeout(() => {
-          scope.playTrack(scope.current);
-        }, 500);
+        if (scope.playing) {
+          soundManager.stop(scope.current.name);
+          scope.next();
+          $timeout(() => {
+            scope.playTrack(scope.current);
+          }, 500);
+        } else {
+          scope.next();
+        }
       };
 
       scope.gongTrack = () => {
