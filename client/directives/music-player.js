@@ -1,6 +1,6 @@
 angular.module('partyDJ')
 
-.directive('musicPlayer', ($timeout, Auth) => {
+.directive('musicPlayer', ($timeout, Auth, socket) => {
   return {
     scope: {
       user: '<',
@@ -55,6 +55,10 @@ angular.module('partyDJ')
 
       scope.gongTrack = () => {
         scope.gonged = true;
+        socket.emit('gonged:track', 'GONGED!!');
+      };
+
+      socket.on('gong:track', () => {
         if (scope.gong < 2) {
           scope.gong++;
         } else {
@@ -62,7 +66,7 @@ angular.module('partyDJ')
           scope.gonged = false;
           scope.gong = 0;
         }
-      };
+      });
 
     },
     template: `

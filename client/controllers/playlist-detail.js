@@ -149,4 +149,22 @@ angular.module('partyDJ')
     }
   });
 
+  socket.on('new:user', (data) => {
+    const current = {
+      current: this.currentSong,
+      tracks: this.tracks,
+      played: this.played
+    };
+
+    if (playlist.user_id === user.spotify_id) {
+      socket.emit('current:track', current);
+    }
+  });
+
+  socket.on('catch:up', (data) => {
+    this.currentSong = data.current;
+    this.tracks = data.tracks;
+    this.played = data.played;
+  });
+
 });
