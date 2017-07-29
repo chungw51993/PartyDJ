@@ -72,6 +72,8 @@ angular.module('partyDJ')
 
   this.nextTrack = () => {
     this.played.push(this.currentSong);
+    socket.emit('skip:track', this.currentSong);
+
     if (this.tracks.length > 0) {
       this.currentSong = this.tracks.shift();
     } else {
@@ -118,6 +120,10 @@ angular.module('partyDJ')
     if (data.id !== this.tracks[this.tracks.length - 1].id) {
       this.tracks.push(data);
     }
+  });
+
+  socket.on('next:track', (data) => {
+
   });
 
 });
