@@ -128,7 +128,12 @@ angular.module('partyDJ')
         }
       })
       .then((resp) => {
-        return resp.data;
+        const filtered = resp.data.tracks.items.filter((track) => {
+          if (track.preview_url) {
+            return track;
+          }
+        });
+        return filtered;
       })
       .catch((err) => {
         console.error(err);
@@ -160,12 +165,6 @@ angular.module('partyDJ')
         params: {
           tid: tid
         }
-      })
-      .then((resp) => {
-        return resp.data;
-      })
-      .catch((err) => {
-        console.error(err);
       });
     }
 

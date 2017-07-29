@@ -28,7 +28,7 @@ angular.module('partyDJ')
       this.showSearchList = true;
       Track.searchTrack(query)
         .then((resp) => {
-          this.search = resp.tracks.items;
+          this.search = resp;
         });
     } else {
       this.showSearchList = false;
@@ -91,7 +91,7 @@ angular.module('partyDJ')
 
   this.deleteTrack = (tid, status) => {
     Track.deleteTrack($stateParams.id, tid)
-      .then((resp) => {
+      .then(() => {
         if (!status) {
           this.tracks = this.tracks.filter((track) => {
             if (track.id !== tid) {
