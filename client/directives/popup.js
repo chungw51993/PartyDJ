@@ -31,9 +31,9 @@ angular.module('partyDJ')
     template: `
       <div>
         <div class="mdl-card mdl-shadow--8dp">
-          <h4>{{ message }}</h4>
-          <p>{{ sub }}</p>
-          <input ng-if="input" ng-model="name" placeholder="Playlist Name" >
+          <h4 class="popupMsg">{{ message }}</h4>
+          <p class="popupSub">{{ sub }}</p>
+          <input class="playlistname" ng-if="input" ng-model="name" placeholder="Playlist Name" >
           <button class="submit" ng-click="handleClick()">Submit</button>
           <button class="cancel" ng-click="handleCancel()">Cancel</button>
         </div>
