@@ -24,10 +24,10 @@ angular.module('partyDJ')
     },
     template: `
       <div class="playlist-item">
-        <div ng-click="ctrl.goToDetail()" class="title">{{ ctrl.playlist.name }}</div>
-        <div class="date">{{ ctrl.playlist.createdAt.slice(0, 10) }}</div>
-        <button class="editPL" ng-click="ctrl.showEditPopup()">Edit</button>
-        <button class="deletePL" ng-click="ctrl.showDeletePopup()">Delete</button>
+        <div ng-click="goToDetail()" class="title">{{ playlist.name }}</div>
+        <div class="date">{{ playlist.createdAt.slice(0, 10) }}</div>
+        <button class="editPL" ng-click="showEditPopup()">Edit</button>
+        <button class="deletePL" ng-click="showDeletePopup()">Delete</button>
         <hr>
       </div>
     `

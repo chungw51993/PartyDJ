@@ -25,7 +25,11 @@ server.listen(port, () => {
 require('./passport/init')(passport);
 
 app.use(cookieParser());
-app.use(session({ secret: 'keyboard cat!' }));
+app.use(session({
+  secret: 'keyboard cat!',
+  resave: false,
+  saveUninitialized: false
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
