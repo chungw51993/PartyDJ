@@ -192,6 +192,15 @@ angular.module('partyDJ')
           callback.apply(socket, args);
         });
       });
+    },
+
+    disconnect: () => {
+      socket.io.disconnect();
+    },
+
+    reconnect: () => {
+      console.log('reconnect');
+      socket.io.connect();
     }
 
   };

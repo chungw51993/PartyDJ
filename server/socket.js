@@ -11,12 +11,13 @@ module.exports = (io) => {
 
     if (!allRooms[playlist] || allRooms[playlist].length === 0) {
       allRooms[playlist] = [socket];
+      console.log('USER JOINED PLAYLIST: ', playlist, ' THERE IS CURRENTLY ', allRooms[playlist].length, ' USERS');
     } else {
       allRooms[playlist].push(socket);
       io.sockets.to(playlist).emit('new:user');
+      console.log('USER JOINED PLAYLIST: ', playlist, ' THERE IS CURRENTLY ', allRooms[playlist].length, ' USERS');
     }
 
-    console.log('USER JOINED PLAYLIST: ', playlist, ' THERE IS CURRENTLY ', allRooms[playlist].length, ' USERS');
 
     socket.on('current:track', (data) => {
       io.sockets.to(playlist).emit('catch:up', data);

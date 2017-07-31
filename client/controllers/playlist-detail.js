@@ -1,6 +1,7 @@
 angular.module('partyDJ')
 
 .controller('PlaylistDetailCtrl', function($scope, $stateParams, Playlist, Track, socket, user, playlist) {
+  socket.reconnect();
   this.user = user;
   this.playlist = playlist;
 
@@ -14,6 +15,7 @@ angular.module('partyDJ')
       }
     }
   };
+
   this.tracks = playlist.Tracks;
   this.played = [];
 
@@ -170,8 +172,7 @@ angular.module('partyDJ')
   });
 
   $scope.$on('$locationChangeSuccess', () => {
-    console.log('hello');
-  })
-  console.log();
+    socket.disconnect();
+  });
 
 });
