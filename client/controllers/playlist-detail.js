@@ -169,4 +169,9 @@ angular.module('partyDJ')
     }
   });
 
+  $scope.$on('$locationChangeSuccess', () => {
+    console.log('hello');
+  })
+  console.log();
+
 });

@@ -43,7 +43,12 @@ module.exports = (io) => {
       io.sockets.to(playlist).emit('gong:track', data);
     });
 
+    socket.on('main:page', () => {
+      socket.disconnect();
+    });
+
     socket.on('disconnect', () => {
+      console.log('SOCKET DISCONNECTED');
       allConnection.shift();
       allRooms[playlist].shift();
     });
