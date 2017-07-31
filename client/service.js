@@ -195,11 +195,10 @@ angular.module('partyDJ')
     },
 
     disconnect: () => {
-      socket.io.disconnect();
+      socket.disconnect();
     },
 
     reconnect: () => {
-      console.log('reconnect');
       socket.io.connect();
     }
 
