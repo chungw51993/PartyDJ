@@ -172,6 +172,9 @@ angular.module('partyDJ')
   });
 
   $scope.$on('$locationChangeSuccess', () => {
+    if (checkIfAdmin(this)) {
+
+    }
     socket.disconnect();
   });
 
