@@ -6,7 +6,6 @@ angular.module('partyDJ')
 
   this.user = user;
   this.playlist = playlist;
-
   const current = playlist.Tracks.shift();
 
   if (leftOff) {
@@ -26,7 +25,6 @@ angular.module('partyDJ')
     this.tracks = playlist.Tracks;
     this.played = [];
   }
-
 
   this.query = '';
   this.search = [];
@@ -97,6 +95,10 @@ angular.module('partyDJ')
           }
         }
       };
+
+      if (leftOff) {
+        window.localStorage.removeItem(playlist.name);
+      }
     }
   };
 
