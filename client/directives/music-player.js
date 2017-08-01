@@ -115,10 +115,11 @@ angular.module('partyDJ')
     },
     template: `
       <div class="row player">
-        <marquee class="col-md-12 col-lg-12 col-sm-12">
+        <marquee class="marquee col-md-12 col-lg-12 col-sm-12">
           <div>
-            <b>{{ current.name }}</b>
-            - {{ current.Album.Artist.name }}
+            <span class="description">
+              <b>{{ current.name }}</b> - {{ current.Album.Artist.name }}
+            </span>
             <span class="label">{{ current.Album.name }}</span>
           </div>
         </marquee>

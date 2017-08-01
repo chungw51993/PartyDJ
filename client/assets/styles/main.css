@@ -80,6 +80,15 @@ div.player {
   color: white;
 }
 
+.marquee {
+  height: 30px;
+  padding-top: 5px;
+}
+
+span.description {
+  font-size: 20px;
+}
+
 div.time {
   margin-top: 5px;
   text-align: center;
@@ -111,4 +120,6 @@ span.label {
   font-size: 11px;
   background-color: lightblue;
   border-color: lightblue;
+  position: relative;
+  bottom: 3px;
 }
