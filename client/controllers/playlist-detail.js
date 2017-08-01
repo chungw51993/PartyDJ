@@ -1,7 +1,12 @@
 angular.module('partyDJ')
 
-.controller('PlaylistDetailCtrl', function($scope, $stateParams, Playlist, Track, socket, user, playlist) {
+.controller('PlaylistDetailCtrl', function($scope, $stateParams, Playlist, Track, Auth, socket, user, playlist) {
   socket.reconnect();
+
+  const leftOff = JSON.parse(window.localStorage.getItem(playlist.name));
+
+  console.log(leftOff);
+
   this.user = user;
   this.playlist = playlist;
 
@@ -172,8 +177,16 @@ angular.module('partyDJ')
   });
 
   $scope.$on('$locationChangeSuccess', () => {
-    if (checkIfAdmin(this)) {
-
+    if (Auth.checkIfAdmin(this)) {
+      if (this.played.length !== 0) {
+        const last = {
+          current: this.currentSong,
+          tracks: this.tracks,
+          played: this.played
+        }
+        console.log(last);
+        window.localStorage.setItem(this.playlist.name, JSON.stringify(last))
+      }
     }
     socket.disconnect();
   });
