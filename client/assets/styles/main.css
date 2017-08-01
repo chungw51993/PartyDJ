@@ -80,35 +80,17 @@ div.player {
   color: white;
 }
 
-div.startTime {
+div.time {
   margin-top: 5px;
-}
-
-div.endTime {
-  margin-top: 5px;
+  text-align: center;
 }
 
 div.progressBar {
-  margin-top: 5px;
+  margin-top: 7px;
   width: 100%;
   background-color: white;
-  height: 20px;
-}
-
-button.play {
-  background: url('../image/play.svg') no-repeat;
-}
-
-button.pause {
-  background: url('../image/pause.svg') no-repeat;
-}
-
-button.next {
-  background: url('../image/next.svg') no-repeat;
-}
-
-button.gong {
-  background: url('../image/sad.svg') no-repeat;
+  height: 15px;
+  border-radius: 30px;
 }
 
 button.play, button.pause, button.next, button.gong {

@@ -19,8 +19,9 @@ angular.module('partyDJ')
       scope.progress = {
         background: 'grey',
         marginTop: '5px',
-        height: '20px',
-        width: '0%'
+        height: '15px',
+        width: '0%',
+        borderRadius: '35px'
       };
 
       scope.playTrack = (song) => {
@@ -40,7 +41,8 @@ angular.module('partyDJ')
             scope.progress = {
               background: 'grey',
               marginTop: '5px',
-              height: '20px',
+              height: '15px',
+              borderRadius: '30px',
               width: width
             };
             scope.$apply();
@@ -121,29 +123,29 @@ angular.module('partyDJ')
           </div>
         </marquee>
         <div ng-if="isAdmin">
-          <button class="play col-md-2 col-lg-2 col-sm-2" ng-click="playTrack(current)" ng-if="!playing">Play</button>
-          <button class="pause col-md-2 col-lg-2 col-sm-2" ng-click="pauseTrack(current)" ng-if="playing">Pause</button>
+          <button class="play col-lg-2 col-md-2 col-sm-2 col-2" ng-click="playTrack(current)" ng-if="!playing"><img src="client/assets/image/play.svg" />Play</button>
+          <button class="pause col-lg-2 col-md-2 col-sm-2 col-2" ng-click="pauseTrack(current)" ng-if="playing"><img src="client/assets/image/pause.svg" />Pause</button>
         </div>
         <div ng-if="isAdmin">
-          <div class="startTime col-md-1 col-lg-1 col-sm-1">0:00</div>
-          <div class="col-md-6 col-lg-6 col-sm-6" >
+          <div class="time col-lg-1 col-md-1 col-sm-1 col-1">0:00</div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-4" >
             <div class="progressBar">
               <div ng-style="progress"></div>
             </div>
           </div>
-          <div class="endTime col-md-1 col-lg-1 col-sm-1">{{ duration }}</div>
+          <div class="time col-lg-1 col-md-1 col-sm-1 col-1">{{ duration }}</div>
         </div>
         <div ng-if="!isAdmin">
-          <div class="startTime col-md-1 col-lg-1 col-sm-1">0:00</div>
-          <div class="col-md-8 col-lg-8 col-sm-8" >
+          <div class="time col-lg-1 col-md-1 col-sm-1 col-1">0:00</div>
+          <div class="col-lg-8 col-md-8 col-sm-8 col-8" >
             <div class="progressBar">
               <div ng-style="progress"></div>
             </div>
           </div>
-          <div class="endTime col-md-1 col-lg-1 col-sm-1">{{ duration }}</div>
+          <div class="time col-lg-1 col-md-1 col-sm-1 col-1">{{ duration }}</div>
         </div>
-        <button class="next col-md-2 col-lg-2 col-sm-2" ng-click="nextTrack()" ng-if="isAdmin">Next</button>
-        <button class="gong col-md-2 col-lg-2 col-sm-2" ng-click="gongTrack()" ng-if="!isAdmin" ng-disabled="gonged">Gong</button>
+        <button class="next col-lg-2 col-md-2 col-sm-2 col-2" ng-click="nextTrack()" ng-if="isAdmin"><img src="client/assets/image/next.svg" /> Next</button>
+        <button class="gong col-lg-2 col-md-2 col-sm-2 col-2" ng-click="gongTrack()" ng-if="!isAdmin" ng-disabled="gonged"><img src="client/assets/image/sad.svg" /> Gong</button>
       </div>
     `
   };
