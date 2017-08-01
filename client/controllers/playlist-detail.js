@@ -96,6 +96,7 @@ angular.module('partyDJ')
         }
       };
 
+      console.log(leftOff);
       if (leftOff) {
         window.localStorage.removeItem(playlist.name);
       }
@@ -135,12 +136,13 @@ angular.module('partyDJ')
   };
 
   socket.on('add:track', (data) => {
-    if (data !== this.tracks[this.tracks.length - 1].id) {
+    if (data !== this.tracks[this.tracks.length - 1].id && this.currentSong.title.name !== 'Title') {
       this.tracks.push(data);
     }
   });
 
   socket.on('next:track', (data) => {
+    console.log('next');
     if (data === this.currentSong.id) {
       this.nextTrack();
     }
@@ -189,8 +191,8 @@ angular.module('partyDJ')
           current: this.currentSong,
           tracks: this.tracks,
           played: this.played
-        }
-        window.localStorage.setItem(this.playlist.name, JSON.stringify(last))
+        };
+        window.localStorage.setItem(this.playlist.name, JSON.stringify(last));
       }
     }
     socket.disconnect();
