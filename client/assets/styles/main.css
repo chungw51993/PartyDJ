@@ -37,11 +37,16 @@ div.playlist-item {
 }
 
 div.popupMsg, div.popupSub {
-  margin: 10px 10px 0 10px;
+  margin: 0 10px 0 10px;
 }
 
 div.popupMsg {
   font-size: 30px;
+  margin-top: 15px;
+}
+
+div.popupSub {
+  margin-top: 15px;
 }
 
 div.playlistname {

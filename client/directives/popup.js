@@ -32,7 +32,7 @@ angular.module('partyDJ')
       <div>
         <div class="mdl-card mdl-shadow--8dp">
           <div class="popupMsg">{{ message }}</div>
-          <div class="popupSub" ng-if="sub">{{ sub }}</div>
+          <div class="popupSub">{{ sub }}</div>
           <div class="playlistname mdl-textfield mdl-js-textfield" ng-if="input">
             <input class=" mdl-textfield__input" ng-model="name" type="text" id="name">
             <label class="mdl-textfield__label" for="name">Playlist Name</label>
