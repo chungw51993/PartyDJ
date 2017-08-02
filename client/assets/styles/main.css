@@ -36,11 +36,29 @@ div.playlist-item {
   background-color: rgba(144, 144, 144, 0.5);
 }
 
+h4.popupMsg {
+  margin-left: 10px;
+}
+
+div.playlistname {
+  margin: auto;
+}
+
 button.add {
   position: fixed;
   bottom: 50px;
   right: 50px;
   z-index: 2;
+}
+
+button.submit {
+  margin-right: 8px;
+}
+
+div.buttons {
+  display: flex;
+  margin: 0 10px 8px 0;
+  justify-content: flex-end;
 }
 
 /*Playlist Detail Page Style*/

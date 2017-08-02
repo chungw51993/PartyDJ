@@ -33,12 +33,14 @@ angular.module('partyDJ')
         <div class="mdl-card mdl-shadow--8dp">
           <h4 class="popupMsg">{{ message }}</h4>
           <p class="popupSub" ng-if="sub">{{ sub }}</p>
-          <div class="mdl-textfield mdl-js-textfield">
-            <input class="playlistname mdl-textfield__input" ng-if="input" ng-model="name" type="text" id="name">
+          <div class="playlistname mdl-textfield mdl-js-textfield">
+            <input class=" mdl-textfield__input" ng-if="input" ng-model="name" type="text" id="name">
             <label class="mdl-textfield__label" for="name">Playlist Name</label>
           </div>
-          <button class="submit" ng-click="handleClick()">Submit</button>
-          <button class="cancel" ng-click="handleCancel()">Cancel</button>
+          <div class="buttons">
+            <button class="submit mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="handleClick()">Submit</button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="handleCancel()">Cancel</button>
+          </div>
         </div>
       </div>
     `
