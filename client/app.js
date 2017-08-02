@@ -49,8 +49,10 @@ angular.module('partyDJ', [
   $urlRouterProvider.otherwise('/');
 
   $locationProvider.html5Mode(true);
+
 })
 .run(() => {
+
   soundManager.setup({
     url: '../node_modules/soundmanager2/swf',
     onready: () => {
@@ -61,4 +63,7 @@ angular.module('partyDJ', [
     },
     debugMode: false
   });
+
+  componentHandler.upgradeAllRegistered();
+
 });
