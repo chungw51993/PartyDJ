@@ -31,10 +31,10 @@ angular.module('partyDJ')
     template: `
       <div>
         <div class="mdl-card mdl-shadow--8dp">
-          <h4 class="popupMsg">{{ message }}</h4>
-          <p class="popupSub" ng-if="sub">{{ sub }}</p>
-          <div class="playlistname mdl-textfield mdl-js-textfield">
-            <input class=" mdl-textfield__input" ng-if="input" ng-model="name" type="text" id="name">
+          <div class="popupMsg">{{ message }}</div>
+          <div class="popupSub" ng-if="sub">{{ sub }}</div>
+          <div class="playlistname mdl-textfield mdl-js-textfield" ng-if="input">
+            <input class=" mdl-textfield__input" ng-model="name" type="text" id="name">
             <label class="mdl-textfield__label" for="name">Playlist Name</label>
           </div>
           <div class="buttons">

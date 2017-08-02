@@ -54,21 +54,23 @@ angular.module('partyDJ')
   };
 
   this.showNewPopup = () => {
-    this.text = 'Creating new playlist';
+    this.text = 'New Playlist';
     this.title = 'New Playlist';
+    this.subText = 'Please enter the name for your playlist and click submit';
     this.newPopup = true;
   };
 
   this.showDeletePopup = (pl) => {
     this.currentPL = pl;
-    this.text = `Are you sure you want to delete ${pl.name} playlist?`;
+    this.text = `Delete ${pl.name} playlist`;
     this.subText = 'You won\'t be able to get the playlist back after it is deleted';
     this.deletePopup = true;
   };
 
   this.showEditPopup = (pl) => {
     this.currentPL = pl;
-    this.text = 'Do you want to change the name of the playlist?';
+    this.text = 'Edit Playlist';
+    this.subText = 'Please enter a new name for your playlist';
     this.title = pl.name;
     this.editPopup = true;
   };
