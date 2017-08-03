@@ -38,7 +38,7 @@ div.playlist-item {
 
 div.card {
   width: 400px;
-  height: 200px;
+  height: 250px;
 }
 
 div.popupMsg, div.popupSub {
@@ -48,6 +48,9 @@ div.popupMsg, div.popupSub {
 div.popupMsg {
   font-size: 30px;
   margin-top: 15px;
+  line-height: 35px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 div.popupSub {
