@@ -14,13 +14,15 @@ angular.module('partyDJ')
     },
     restrict: 'E',
     link: (scope) => {
+      scope.newName = '';
+
       scope.handleClick = () => {
         if (scope.current && scope.name === undefined) {
           scope.service(scope.current.id);
-        } else if (scope.current && scope.name) {
-          scope.service(scope.current.id, scope.name);
+        } else if (scope.current && scope.newName) {
+          scope.service(scope.current.id, scope.newName);
         } else {
-          scope.service(scope.name);
+          scope.service(scope.newName);
         }
       };
 
@@ -30,11 +32,11 @@ angular.module('partyDJ')
     },
     template: `
       <div>
-        <div class="mdl-card mdl-shadow--8dp">
+        <div class="card mdl-card mdl-shadow--8dp">
           <div class="popupMsg">{{ message }}</div>
           <div class="popupSub">{{ sub }}</div>
           <div class="playlistname mdl-textfield mdl-js-textfield" ng-if="input">
-            <input class=" mdl-textfield__input" ng-model="name" type="text" id="name">
+            <input class=" mdl-textfield__input" ng-model="newName" type="text" id="name">
             <label class="mdl-textfield__label" for="name">Playlist Name</label>
           </div>
           <div class="buttons">
