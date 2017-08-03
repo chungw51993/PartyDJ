@@ -36,11 +36,11 @@ angular.module('partyDJ')
           <div class="popupMsg">{{ message }}</div>
           <div class="popupSub">{{ sub }}</div>
           <div class="playlistname mdl-textfield mdl-js-textfield" ng-if="input">
-            <input class=" mdl-textfield__input" ng-model="newName" type="text" id="name">
+            <input class=" mdl-textfield__input" ng-model="$parent.newName" type="text" id="name">
             <label class="mdl-textfield__label" for="name">Playlist Name</label>
           </div>
           <div class="buttons">
-            <button class="submit mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="handleClick()">Submit</button>
+            <button class="submit mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="handleClick(newName)">Submit</button>
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="handleCancel()">Cancel</button>
           </div>
         </div>
