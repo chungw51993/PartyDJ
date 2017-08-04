@@ -27,11 +27,14 @@ div.playlist-item {
 }
 
 button.editPL {
-  margin-right: 10px;
+  margin: 0 5px 0 5px;
 }
 
 div.title {
   font-size: 20px;
+}
+
+div.date {
   margin-top: 2px;
 }
 
