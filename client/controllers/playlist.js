@@ -80,6 +80,8 @@ angular.module('partyDJ')
     this.currentPL = pl;
     this.text = 'Share Playlist';
     this.subText = 'To share the playlist just press the clipboard botton to copy the URL and share it with your friends';
+    this.title = window.location.origin + '/' + this.currentPL.id;
+    this.sharePopup = true;
   };
 
   this.cancelNew = () => {
@@ -92,6 +94,10 @@ angular.module('partyDJ')
 
   this.cancelEdit = () => {
     this.editPopup = false;
+  };
+
+  this.cancelShare = () => {
+    this.sharePopup = false;
   };
 
 

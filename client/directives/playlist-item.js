@@ -7,6 +7,7 @@ angular.module('partyDJ')
       redirect: '<',
       showEdit: '<',
       showDelete: '<',
+      showShare: '<'
     },
     restrict: 'E',
     link: (scope) => {
@@ -16,6 +17,10 @@ angular.module('partyDJ')
 
       scope.showDeletePopup = () => {
         scope.showDelete(scope.playlist);
+      };
+
+      scope.showSharePopup = () => {
+        scope.showShare(scope.playlist);
       };
 
       scope.goToDetail = () => {
@@ -32,7 +37,7 @@ angular.module('partyDJ')
         </div>
         <button class="deletePL mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="showDeletePopup()">Delete</button>
         <button class="editPL mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="showEditPopup()">Edit</button>
-        <button class="sharePL mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Share</button>
+        <button class="sharePL mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="showSharePopup()">Share</button>
       </div>
     `
   };
