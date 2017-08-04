@@ -14,7 +14,7 @@ angular.module('partyDJ')
     },
     restrict: 'E',
     link: (scope) => {
-      scope.newName = '';
+      scope.newName = scope.name ? scope.name : '';
 
       scope.handleClick = () => {
         if (scope.current && scope.name === undefined) {
