@@ -18,10 +18,25 @@ a.spotify-login {
 }
 
 /*Playlist Page Style*/
+div.subHead {
+  text-align: justify;
+}
 
 div.playlist-item {
-  margin: 10px 0 10px 0;
+  margin: 20px 0 20px 0;
 }
+
+button.editPL {
+  margin-right: 10px;
+}
+
+div.title {
+  font-size: 20px;
+  margin-top: 2px;
+}
+
+
+/*Popup Style*/
 
 .popup {
   position: fixed;

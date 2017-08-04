@@ -1,5 +1,6 @@
 <div class="container">
-  <h1>PLAYLIST</h1>
+  <h1>Playlists</h1>
+  <div class="subHead">This is where your playlists are listed. If you don't have any playlist yet just simply press the plus button on the bottom right hand sign and start jamming!</div>
 
   <playlist-item ng-repeat="playlist in ctrl.playlists track by $index" playlist="playlist" redirect="ctrl.goToDetail" show-edit="ctrl.showEditPopup" show-delete="ctrl.showDeletePopup"></playlist-item>
 
