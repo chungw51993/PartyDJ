@@ -7,6 +7,7 @@ angular.module('partyDJ')
   this.deletePopup = false;
   this.editPopup = false;
   this.newPopup = false;
+  this.sharePopup = false;
 
   this.currentPL = {};
 
@@ -70,9 +71,15 @@ angular.module('partyDJ')
   this.showEditPopup = (pl) => {
     this.currentPL = pl;
     this.text = 'Edit Playlist';
-    this.subText = 'Please enter a new name for your playlist';
+    this.subText = 'Please enter a new name for your playlist and click submit to change it or cancel if you changed your mind';
     this.title = pl.name;
     this.editPopup = true;
+  };
+
+  this.showSharePopup = (pl) => {
+    this.currentPL = pl;
+    this.text = 'Share Playlist';
+    this.subText = 'To share the playlist just press the clipboard botton to copy the URL and share it with your friends';
   };
 
   this.cancelNew = () => {

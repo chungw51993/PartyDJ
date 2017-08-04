@@ -26,8 +26,16 @@ div.playlist-item {
   margin: 20px 0 20px 0;
 }
 
+button.sharePL, button.editPL, button.deletePL {
+  float: right;
+}
+
 button.editPL {
-  margin: 0 5px 0 5px;
+  margin: 0 7px 0 7px;
+}
+
+button.deletePL {
+  margin-right: 20px;
 }
 
 div.title {
