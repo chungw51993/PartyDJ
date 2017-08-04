@@ -3,7 +3,7 @@
 
   <playlist-item ng-repeat="playlist in ctrl.playlists track by $index" playlist="playlist" redirect="ctrl.goToDetail" show-edit="ctrl.showEditPopup" show-delete="ctrl.showDeletePopup"></playlist-item>
 
-  <button class="add mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" ng-click="ctrl.showNewPopup()">
+  <button class="add mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" ng-click="ctrl.showNewPopup()">
     <i class="material-icons">add</i>
   </button>
 </div>
