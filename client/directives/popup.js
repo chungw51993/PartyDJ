@@ -22,6 +22,9 @@ angular.module('partyDJ')
           scope.service(scope.current.id);
         } else if (scope.current && scope.newName) {
           scope.service(scope.current.id, scope.newName);
+        } else if (scope.disable) {
+          new Clipboard('.copy');
+          scope.button = 'Copied';
         } else {
           scope.service(scope.newName);
         }
@@ -30,8 +33,6 @@ angular.module('partyDJ')
       scope.handleCancel = () => {
         scope.cancel();
       };
-
-      console.log(new Clipboard('.copy'));
     },
     template: `
       <div>
@@ -39,12 +40,12 @@ angular.module('partyDJ')
           <div class="popupMsg">{{ message }}</div>
           <div class="popupSub">{{ sub }}</div>
           <div class="playlistname mdl-textfield mdl-js-textfield" ng-if="input">
-            <input class="mdl-textfield__input" id="url" ng-model="$parent.newName" type="text" id="name" ng-disabled="disable">
+            <input class="mdl-textfield__input" id="url" ng-model="$parent.newName" type="text" id="name" ng-readonly="disable">
             <label class="mdl-textfield__label" for="name">Playlist Name</label>
           </div>
           <div class="buttons">
-            <button class="submit mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="handleClick(newName)" ng-if="!disable">{{ button }}</button>
-            <button class="copy mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-if="disable" data-clipboard-target="#url">{{ button }}</button>
+            <button class="submit mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="handleClick()" ng-if="!disable">{{ button }}</button>
+            <button class="copy mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-if="disable" data-clipboard-target="#url" ng-click="handleClick()">{{ button }}</button>
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="handleCancel()">Cancel</button>
           </div>
         </div>
