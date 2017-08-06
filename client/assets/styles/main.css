@@ -44,6 +44,7 @@ div.title {
 
 div.title:hover {
   cursor: pointer;
+  opacity: .7;
 }
 
 div.date {

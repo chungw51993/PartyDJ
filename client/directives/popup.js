@@ -19,7 +19,7 @@ angular.module('partyDJ')
       scope.newName = scope.name ? scope.name : '';
 
       scope.handleClick = () => {
-        if (scope.newName === '') {
+        if (scope.newName === '' && scope.name !== undefined) {
           scope.error = true;
         } else if (scope.current && scope.name === undefined) {
           scope.service(scope.current.id);
