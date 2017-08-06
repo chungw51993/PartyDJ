@@ -15,10 +15,13 @@ angular.module('partyDJ')
     },
     restrict: 'E',
     link: (scope) => {
+      scope.error = false;
       scope.newName = scope.name ? scope.name : '';
 
       scope.handleClick = () => {
-        if (scope.current && scope.name === undefined) {
+        if (scope.newName === '') {
+          scope.error = true;
+        } else if (scope.current && scope.name === undefined) {
           scope.service(scope.current.id);
         } else if (scope.current && scope.newName) {
           scope.service(scope.current.id, scope.newName);
@@ -43,6 +46,7 @@ angular.module('partyDJ')
             <input class="mdl-textfield__input" id="url" ng-model="$parent.newName" type="text" id="name" ng-readonly="disable">
             <label class="mdl-textfield__label" for="name">Playlist Name</label>
           </div>
+          <div class="error" ng-show="error">Name for the playlist can't be empty</div>
           <div class="buttons">
             <button class="submit mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="handleClick()" ng-if="!disable">{{ button }}</button>
             <button class="copy mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-if="disable" data-clipboard-target="#url" ng-click="handleClick()">{{ button }}</button>

@@ -56,7 +56,6 @@ angular.module('partyDJ')
 
   this.showNewPopup = () => {
     this.text = 'New Playlist';
-    this.title = 'New Playlist';
     this.subText = 'Please enter the name for your playlist and click submit';
     this.newPopup = true;
   };

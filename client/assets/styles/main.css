@@ -42,10 +42,13 @@ div.title {
   font-size: 20px;
 }
 
+div.title:hover {
+  cursor: pointer;
+}
+
 div.date {
   margin-top: 2px;
 }
-
 
 /*Popup Style*/
 
@@ -84,7 +87,7 @@ div.popupSub {
 }
 
 div.playlistname {
-  margin: 0 auto 0 auto;
+  margin: 0 auto -8px auto;
 }
 
 button.add {
@@ -103,6 +106,11 @@ div.buttons {
   margin: 0 10px 8px 0;
   right: 0px;
   bottom: 0px;
+}
+
+div.error {
+  margin: 4px auto 0 auto;
+  color: red;
 }
 
 /*Playlist Detail Page Style*/
