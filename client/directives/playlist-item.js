@@ -12,6 +12,7 @@ angular.module('partyDJ')
     restrict: 'E',
     link: (scope) => {
       const date = moment(scope.playlist.createdAt.slice(0, 10)).format('MMMM Do YYYY');
+      console.log(date, scope.playlist.name);
 
       scope.showEditPopup = () => {
         scope.showEdit(scope.playlist);
@@ -30,7 +31,6 @@ angular.module('partyDJ')
       };
 
       scope.date = date;
-      scope.$apply();
     },
     template: `
       <div class="playlist-item row">
