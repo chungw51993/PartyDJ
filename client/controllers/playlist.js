@@ -18,13 +18,9 @@ angular.module('partyDJ')
   this.newPlaylist = (title) => {
     Playlist.newPlaylist(title)
       .then((resp) => {
+        this.playlists.unshift(resp);
         this.title = '';
         this.newPopup = false;
-        console.log(resp);
-        Playlist.getPlaylists()
-          .then((resp) => {
-            this.playlists = resp;
-          });
       });
   };
 
