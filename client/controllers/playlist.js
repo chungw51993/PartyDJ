@@ -20,6 +20,7 @@ angular.module('partyDJ')
       .then((resp) => {
         this.title = '';
         this.newPopup = false;
+        console.log(resp);
         Playlist.getPlaylists()
           .then((resp) => {
             this.playlists = resp;
