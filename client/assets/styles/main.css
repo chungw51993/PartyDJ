@@ -139,6 +139,17 @@ input.search {
 
 div.trackItem {
   margin-bottom: 20px;
+  animation: 1s 0s slidein;
+  -webkit-animation: slidein 1s;
+}
+
+@keyframes slidein {
+ 0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 img.trackImg {
@@ -157,6 +168,7 @@ div.searchItem {
 }
 
 /*Music Player Style*/
+
 div.player {
   margin-bottom: 20px;
   background-color: black;
