@@ -124,7 +124,7 @@ angular.module('partyDJ')
           </div>
         </marquee>
         <div ng-if="isAdmin">
-          <button class="play col-lg-2 col-md-2 col-sm-2 col-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="playTrack(current)" ng-if="!playing"><img src="client/assets/image/play.svg" />Play</button>
+          <button class="play col-lg-2 col-md-2 col-sm-2 col-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="playTrack(current)" ng-if="!playing" ng-disabled="current.name === 'Title'"><img src="client/assets/image/play.svg" />Play</button>
           <button class="pause col-lg-2 col-md-2 col-sm-2 col-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="pauseTrack(current)" ng-if="playing"><img src="client/assets/image/pause.svg" />Pause</button>
           <div class="time col-lg-1 col-md-1 col-sm-1 col-1">0:00</div>
           <div class="col-lg-6 col-md-6 col-sm-6 col-4" >
@@ -133,7 +133,7 @@ angular.module('partyDJ')
             </div>
           </div>
           <div class="time col-lg-1 col-md-1 col-sm-1 col-1">{{ duration }}</div>
-          <button class="next col-lg-2 col-md-2 col-sm-2 col-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="nextTrack()"><img src="client/assets/image/next.svg" /> Next</button>
+          <button class="next col-lg-2 col-md-2 col-sm-2 col-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="nextTrack()" ng-disabled="current.name === 'Title'"><img src="client/assets/image/next.svg" /> Next</button>
         </div>
         <div ng-if="!isAdmin">
           <div class="time col-lg-1 col-md-1 col-sm-1 col-1">0:00</div>

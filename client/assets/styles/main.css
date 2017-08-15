@@ -205,6 +205,11 @@ button.play, button.pause, button.next, button.gong {
   margin-bottom: .5px;
 }
 
+button.play[disabled][disabled], button.pause[disabled][disabled], button.next[disabled][disabled], button.gong[disabled][disabled] {
+  opacity: .3 !important;
+  background-color: grey;
+}
+
 span.label {
   border-style: solid;
   border-radius: 15px;
