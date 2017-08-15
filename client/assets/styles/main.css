@@ -161,6 +161,8 @@ div.player {
   margin-bottom: 20px;
   background-color: black;
   color: white;
+  box-shadow: 5px 5px 5px #888888;
+  border-radius: 3px;
 }
 
 .marquee {
@@ -187,14 +189,8 @@ div.progressBar {
 
 button.play, button.pause, button.next, button.gong {
   color: black;
-  background-color: white;
-  background-size: 20%;
-  height: 30px;
-}
-
-button.play:hover, button.pause:hover, button.next:hover, button.gong:hover {
-  opacity: 0.5;
-  cursor: pointer;
+  background-color: grey;
+  margin-bottom: .5px;
 }
 
 span.label {
