@@ -115,6 +115,13 @@ div.error {
 }
 
 /*Playlist Detail Page Style*/
+
+div.detail-title {
+  font-size: 50px;
+  line-height: 1;
+  margin: 20px 0;
+}
+
 a.list-login {
   position: fixed;
   right: 50px;

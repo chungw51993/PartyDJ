@@ -1,6 +1,7 @@
 <div class="container">
   <a class="back" ng-href="/playlist" ng-if="ctrl.user">Back to List</a>
-  <h1 class="detail-title">{{ ctrl.playlist.name }}</h1>
+  <div class="detail-title">{{ ctrl.playlist.name }}</div>
+  <div class="detail-sub">This playlist is currently empty please use the plus button to add a song.</div>
   <a class="spotify-login list-login" ng-href="/api/user/login" ng-if="!ctrl.user" target="_self">Login with Spotify</a>
 
   <music-player current="ctrl.currentSong" tracks="ctrl.tracks" next="ctrl.nextTrack" user="ctrl.user" playlist="ctrl.playlist"></music-player>
