@@ -3,9 +3,9 @@ angular.module('partyDJ')
 .controller('PlaylistDetailCtrl', function($scope, $stateParams, Playlist, Track, Auth, socket, user, playlist) {
   socket.reconnect();
   const leftOff = JSON.parse(window.localStorage.getItem(playlist.name));
-
   this.user = user;
   this.playlist = playlist;
+  this.admin = Auth.checkIfAdmin(this);
   const current = playlist.Tracks.shift();
 
   if (leftOff) {

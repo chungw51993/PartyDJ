@@ -122,10 +122,15 @@ div.detail-title {
   margin: 20px 0;
 }
 
+div.detail-sub {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
 a.list-login {
   position: fixed;
   right: 50px;
-  top: 40px;
+  top: 20px;
 }
 
 input.search {
