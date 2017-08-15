@@ -80,7 +80,10 @@ angular.module('partyDJ')
   };
 
   this.nextTrack = () => {
-    this.played.push(this.currentSong);
+    if (this.currentSong.name !== 'Title') {
+      this.played.push(this.currentSong);
+    }
+
     socket.emit('skip:track', this.currentSong.id);
 
     if (this.tracks.length > 0) {

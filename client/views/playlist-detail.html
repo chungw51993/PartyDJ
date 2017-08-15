@@ -1,11 +1,13 @@
 <div class="container">
   <a class="back" ng-href="/playlist" ng-if="ctrl.user">Back to List</a>
+
   <div class="detail-title">{{ ctrl.playlist.name }}</div>
-  <div class="detail-sub" ng-if="ctrl.currentSong.name === 'Title'" ng-show="ctrl.admin">This playlist is currently empty please use the plus button to add a song.</div>
 
-  <div class="detail-sub" ng-if="ctrl.currentSong.name === 'Title" ng-show="!ctrl.admin">This playlist is currently empty, if you wish to add song to this playlist please signin using your Spotify login.</div>
+  <div class="detail-sub" ng-if="ctrl.currentSong.name === 'Title' && ctrl.played.length === 0" ng-show="ctrl.admin">This playlist is currently empty please use the plus button to add a song and start jamming!</div>
+  <div class="detail-sub" ng-if="ctrl.currentSong.name === 'Title' && ctrl.played.length !== 0" ng-show="ctrl.admin">There aren't any songs to play on this playlist. If you wish to keep the party going please use the plus button to add more songs to this playlist.</div>
 
-  <a class="spotify-login list-login" ng-href="/api/user/login" ng-if="!ctrl.user" target="_self">Login with Spotify</a>
+  <div class="detail-sub" ng-if="ctrl.currentSong.name === 'Title' && ctrl.played.length === 0" ng-show="!ctrl.admin">This playlist is currently empty if you wish to add a song to this playlist please sign in using your Spotify login.</div>
+  <div class="detail-sub" ng-if="ctrl.currentSong.name === 'Title' && ctrl.played.length !== 0" ng-show="!ctrl.admin">There aren't any more songs to play on this playlist. If you wish to keep the party going please sign in using your Spotify login to add songs.</div>
 
   <music-player current="ctrl.currentSong" tracks="ctrl.tracks" next="ctrl.nextTrack" user="ctrl.user" playlist="ctrl.playlist"></music-player>
 
@@ -35,3 +37,5 @@
     <button class="cancel" ng-click="ctrl.cancelAdd()">Cancel</button>
   </div>
 </div>
+
+<a class="spotify-login list-login" ng-href="/api/user/login" ng-if="!ctrl.user" target="_self">Login with Spotify</a>
