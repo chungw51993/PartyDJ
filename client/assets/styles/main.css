@@ -120,14 +120,21 @@ div.backButton {
   margin-top: 5px;
 }
 
+div.backButton:hover {
+  cursor: pointer;
+}
+
 img.back {
   width: 20px;
   margin-top: -3px;
 }
 
+img.back:hover {
+  opacity: .7;
+}
+
 a.back {
   text-decoration: none;
-  margin-top: 5px;
 }
 
 div.detail-title {
@@ -139,6 +146,7 @@ div.detail-title {
 div.detail-sub {
   font-size: 20px;
   margin-bottom: 20px;
+  text-align: justify;
 }
 
 a.list-login {
@@ -201,12 +209,12 @@ span.description {
 }
 
 div.time {
-  margin-top: 5px;
+  margin-top: 7px;
   text-align: center;
 }
 
 div.progressBar {
-  margin-top: 7px;
+  margin-top: 10px;
   width: 100%;
   background-color: white;
   height: 15px;
