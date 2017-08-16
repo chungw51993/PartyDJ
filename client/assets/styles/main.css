@@ -224,13 +224,13 @@ div.progressBar {
 
 button.play, button.pause, button.next, button.gong {
   color: black;
-  background-color: grey;
+  background-color: white;
   margin-bottom: .5px;
 }
 
 button.play[disabled][disabled], button.pause[disabled][disabled], button.next[disabled][disabled], button.gong[disabled][disabled] {
   opacity: .3 !important;
-  background-color: grey;
+  background-color: white;
 }
 
 span.label {
