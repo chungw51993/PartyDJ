@@ -133,7 +133,7 @@ angular.module('partyDJ')
             </div>
           </div>
           <div class="time col-lg-1 col-md-1 col-sm-1 col-1">{{ duration }}</div>
-          <button class="next col-lg-2 col-md-2 col-sm-2 col-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="nextTrack()" ng-disabled="current.name === 'Title'"><img src="client/assets/image/next.svg" /> Next</button>
+          <button class="next col-lg-2 col-md-2 col-sm-2 col-2 mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="nextTrack()" ng-disabled="tracks.length === 0"><img src="client/assets/image/next.svg" /> Next</button>
         </div>
         <div ng-if="!isAdmin">
           <div class="time col-lg-1 col-md-1 col-sm-1 col-1">0:00</div>

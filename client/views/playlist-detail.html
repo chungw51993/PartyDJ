@@ -37,12 +37,17 @@
 
 <div class="popup" ng-if="ctrl.showAddTrack">
   <div class="mdl-card mdl-shadow--8dp">
-    <h4>Search by the song name</h4>
-    <input class="search" ng-model="ctrl.query" placeholder="Search" ng-change="ctrl.searchTrack(ctrl.query)">
+    <div class="popupMsg">Search By The Song Title</div>
+    <div class="search mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input class="mdl-textfield__input" ng-model="ctrl.query" ng-change="ctrl.searchTrack(ctrl.query)" type="text" id="songSearch">
+      <label class="mdl-textfield__label" for="songSearch">Song Title</label>
+    </div>
     <div class="searchItem">
       <search-item ng-if="ctrl.showSearchList" ng-repeat="song in ctrl.search track by $index" track="song" add="ctrl.addTrack"></search-item>
     </div>
-    <button class="cancel" ng-click="ctrl.cancelAdd()">Cancel</button>
+    <div class="buttons">
+      <button class="cancel mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="ctrl.cancelAdd()">Cancel</button>
+    </div>
   </div>
 </div>
 
