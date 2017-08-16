@@ -116,6 +116,10 @@ div.error {
 
 /*Playlist Detail Page Style*/
 
+a.back {
+  text-decoration: none;
+}
+
 div.detail-title {
   font-size: 50px;
   line-height: 1;
