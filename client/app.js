@@ -26,7 +26,7 @@ angular.module('partyDJ', [
       templateUrl: '/client/views/landing.html'
     })
     .state('playlists', {
-      url: '/playlist',
+      url: '/playlists',
       templateUrl: '/client/views/playlist.html',
       controller: 'PlaylistCtrl',
       controllerAs: 'ctrl',

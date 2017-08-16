@@ -116,8 +116,18 @@ div.error {
 
 /*Playlist Detail Page Style*/
 
+div.backButton {
+  margin-top: 5px;
+}
+
+img.back {
+  width: 20px;
+  margin-top: -3px;
+}
+
 a.back {
   text-decoration: none;
+  margin-top: 5px;
 }
 
 div.detail-title {

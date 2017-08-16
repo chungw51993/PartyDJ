@@ -1,5 +1,9 @@
 <div class="container">
-  <a class="back" ng-href="/playlist" ng-if="ctrl.user">Back to List</a>
+
+  <div class="backButton" ng-click="ctrl.goBack()" ng-if="ctrl.admin">
+    <img class="back" src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Circle_arrow_left_font_awesome.svg">
+    <a class="back">Back to List</a>
+  </div>
 
   <div class="detail-title">{{ ctrl.playlist.name }}</div>
 
@@ -16,11 +20,15 @@
     <track-item class="trackItem" track="ctrl.currentSong" service="ctrl.deleteTrack"></track-item>
   </div>
 
-  <h3>Upcoming Songs</h3>
-  <track-item class="trackItem" ng-repeat="track in ctrl.tracks track by $index" track="track" user="ctrl.user" service="ctrl.deleteTrack" playlist="ctrl.playlist" status="false"></track-item>
+  <div ng-if="ctrl.tracks.length !== 0">
+    <h3>Upcoming Songs</h3>
+    <track-item class="trackItem" ng-repeat="track in ctrl.tracks track by $index" track="track" user="ctrl.user" service="ctrl.deleteTrack" playlist="ctrl.playlist" status="false"></track-item>
+  </div>
 
-  <h3>Songs Already Played</h3>
-  <track-item class="trackItem" ng-repeat="track in ctrl.played track by $index" track="track" user="ctrl.user" service="ctrl.deleteTrack" playlist="ctrl.playlist" status="true"></track-item>
+  <div ng-if="ctrl.played.length !== 0">
+    <h3>Songs Already Played</h3>
+    <track-item class="trackItem" ng-repeat="track in ctrl.played track by $index" track="track" user="ctrl.user" service="ctrl.deleteTrack" playlist="ctrl.playlist" status="true"></track-item>
+  </div>
 
   <button ng-if="ctrl.user" class="add mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" ng-click="ctrl.showAddTrackPopup()">
     <i class="material-icons">add</i>

@@ -17,7 +17,7 @@ module.exports = (passport) => {
       const redirectUrl = `${req.protocol}://${req.get('host')}/${req.session.returnTo}`;
       res.redirect(redirectUrl);
     } else {
-      res.redirect('/playlist');
+      res.redirect('/playlists');
     }
   });
 

@@ -1,6 +1,6 @@
 angular.module('partyDJ')
 
-.controller('PlaylistDetailCtrl', function($scope, $stateParams, Playlist, Track, Auth, socket, user, playlist) {
+.controller('PlaylistDetailCtrl', function($scope, $stateParams, $location, Playlist, Track, Auth, socket, user, playlist) {
   socket.reconnect();
   const leftOff = JSON.parse(window.localStorage.getItem(playlist.name));
   this.user = user;
@@ -135,6 +135,10 @@ angular.module('partyDJ')
 
   this.cancelAdd = () => {
     this.showAddTrack = false;
+  };
+
+  this.goBack = () => {
+    $location.path('/playlists');
   };
 
   socket.on('add:track', (data) => {
