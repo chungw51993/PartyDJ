@@ -43,6 +43,7 @@
       <label class="mdl-textfield__label" for="songSearch">Song Title</label>
     </div>
     <div class="searchList">
+      <div class="loadingSearch" ng-if="ctrl.loadingSearch">Searching...</div>
       <search-item ng-if="ctrl.showSearchList" ng-repeat="song in ctrl.search track by $index" track="song" add="ctrl.addTrack"></search-item>
     </div>
     <div class="buttons">

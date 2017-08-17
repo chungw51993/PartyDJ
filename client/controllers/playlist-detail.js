@@ -31,13 +31,15 @@ angular.module('partyDJ')
 
   this.showAddTrack = false;
   this.searchList = false;
+  this.loadingSearch = false;
 
   this.searchTrack = (query) => {
     if (query !== '') {
-      this.showSearchList = true;
+      this.loadingSearch = true;
       Track.searchTrack(query)
         .then((resp) => {
           this.search = resp;
+          this.showSearchList = true;
         });
     } else {
       this.showSearchList = false;

@@ -193,7 +193,19 @@ div.searchList {
 div.searchItem {
   margin: auto;
   display: flex;
-  flex-direction: vertical;
+  margin: 0 0 5px 5px;
+}
+
+img.searchImage {
+  margin-right: 8px;
+}
+
+div.searchTitle, div.searchArtist, div.searchAlbum {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 230px;
+  font-size: 13px;
 }
 
 /*Music Player Style*/
