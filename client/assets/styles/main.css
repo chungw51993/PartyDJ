@@ -188,12 +188,26 @@ div.searchList {
   height: 200px;
   overflow-y: scroll;
   margin-bottom: 65px;
+  display: flex;
+  flex-direction: column;
 }
+
+div.loadingSearch {
+  margin: auto;
+}
+
+img.loadingGif {
+  width: 20px;
+  margin-right: 5px;
+}
+
+/* Search Item Styling */
 
 div.searchItem {
   margin: auto;
   display: flex;
   margin: 0 0 5px 5px;
+  border-style: solid;
 }
 
 img.searchImage {

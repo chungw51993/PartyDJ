@@ -38,7 +38,10 @@ angular.module('partyDJ')
       this.loadingSearch = true;
       Track.searchTrack(query)
         .then((resp) => {
-          this.search = resp;
+          this.loadingSearch = false;
+          this.search = resp.filter((song, i) => {
+            return resp.indexOf(song) === i;
+          });
           this.showSearchList = true;
         });
     } else {
