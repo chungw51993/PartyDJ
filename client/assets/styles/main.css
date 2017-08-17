@@ -204,9 +204,8 @@ img.loadingGif {
 /* Search Item Styling */
 
 div.searchItem {
-  margin: auto;
   display: flex;
-  margin: 0 0 5px 5px;
+  margin: 0 3px 5px 5px;
   border-style: solid;
 }
 
@@ -220,6 +219,11 @@ div.searchTitle, div.searchArtist, div.searchAlbum {
   overflow: hidden;
   width: 230px;
   font-size: 13px;
+}
+
+div.searchTitle:hover {
+  cursor: pointer;
+  opacity: .7;
 }
 
 /*Music Player Style*/

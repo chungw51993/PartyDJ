@@ -39,9 +39,16 @@ angular.module('partyDJ')
       Track.searchTrack(query)
         .then((resp) => {
           this.loadingSearch = false;
-          this.search = resp.filter((song, i) => {
-            return resp.indexOf(song) === i;
-          });
+          const reference = {};
+          this.search = resp.reduce((acc, song) => {
+            if (!reference[song.name] && song.name !== undefined) {
+              reference[song.name] = 1;
+              acc.push(song);
+              return acc;
+            } else {
+              return acc;
+            }
+          }, []);
           this.showSearchList = true;
         });
     } else {
