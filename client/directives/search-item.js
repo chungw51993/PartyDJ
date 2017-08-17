@@ -13,12 +13,13 @@ angular.module('partyDJ')
       };
     },
     template: `
-      <div>
+      <div class="searchItem">
         <img ng-src="{{ track.album.images[2].url }}">
-        <div ng-click="addTrack(track)">Title: {{ track.name }}</div>
-        <div>Artist: {{ track.artists[0].name }}</div>
-        <div>Album: {{ track.album.name }}</div>
-        <hr>
+        <div ng-click="addTrack(track)">
+          Title: {{ track.name }} <wbr>
+          Artist: {{ track.artists[0].name }} <wbr>
+          Album: {{ track.album.name }}
+        </div>
       </div>
     `
   };

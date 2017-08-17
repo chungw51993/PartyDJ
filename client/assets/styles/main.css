@@ -184,10 +184,16 @@ div.trackName {
   font-weight: bold;
 }
 
-div.searchItem {
+div.searchList {
   height: 200px;
   overflow-y: scroll;
   margin-bottom: 65px;
+}
+
+div.searchItem {
+  margin: auto;
+  display: flex;
+  flex-direction: vertical;
 }
 
 /*Music Player Style*/

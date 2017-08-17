@@ -42,7 +42,7 @@
       <input class="mdl-textfield__input" ng-model="ctrl.query" ng-change="ctrl.searchTrack(ctrl.query)" type="text" id="songSearch">
       <label class="mdl-textfield__label" for="songSearch">Song Title</label>
     </div>
-    <div class="searchItem">
+    <div class="searchList">
       <search-item ng-if="ctrl.showSearchList" ng-repeat="song in ctrl.search track by $index" track="song" add="ctrl.addTrack"></search-item>
     </div>
     <div class="buttons">
