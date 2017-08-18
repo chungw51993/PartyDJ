@@ -78,6 +78,7 @@ angular.module('partyDJ')
 
     Track.addTrack($stateParams.id, album, artist, track)
       .then((resp) => {
+        console.log(resp);
         this.showAddTrack = false;
         this.showSearchList = false;
         this.query = '';
