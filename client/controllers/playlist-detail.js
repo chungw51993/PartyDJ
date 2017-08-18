@@ -78,7 +78,6 @@ angular.module('partyDJ')
 
     Track.addTrack($stateParams.id, album, artist, track)
       .then((resp) => {
-        console.log(resp);
         this.showAddTrack = false;
         this.showSearchList = false;
         this.query = '';
@@ -86,7 +85,18 @@ angular.module('partyDJ')
         if (this.tracks.length === 0 && this.currentSong.name === 'Title') {
           this.currentSong = resp;
         } else {
-          this.tracks.push(resp);
+          const allSongsInPL = this.tracks.concat(this.currentSong, this.played);
+          const alreadyOnPL = allSongsInPL.reduce((acc, song) => {
+            if (song.id === resp.id) {
+              return true;
+            } else {
+              return false;
+            }
+          }, false);
+
+          if (resp.id !== this.currentSong.id && !alreadyOnPL) {
+            this.tracks.push(resp);
+          }
         }
         socket.emit('new:track', resp);
       });
@@ -155,11 +165,20 @@ angular.module('partyDJ')
   };
 
   socket.on('add:track', (data) => {
+    const allSongsInPL = this.tracks.concat(this.currentSong, this.played);
+    const alreadyOnPL = allSongsInPL.reduce((acc, song) => {
+      if (song.id === data.id) {
+        return true;
+      } else {
+        return false;
+      }
+    }, false);
+
     if (this.tracks.length > 0) {
-      if (data.id !== this.tracks[this.tracks.length - 1].id) {
+      if (data.id !== this.tracks[this.tracks.length - 1].id && !alreadyOnPL) {
         this.tracks.push(data);
       }
-    } else {
+    } else if (this.currentSong.name === 'Title') {
       this.currentSong = data;
     }
   });
