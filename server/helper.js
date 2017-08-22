@@ -6,7 +6,7 @@ exports.authenticated = (req, res, next) => {
 };
 
 exports.checkReturnTo = (req, res, next) => {
-  var returnTo = req.headers.referer.split('/')[3];
+  const returnTo = req.headers.referer.split('/')[3];
 
   if (returnTo !== '') {
     req.session.returnTo = returnTo;
