@@ -19,16 +19,21 @@ angular.module('partyDJ')
       scope.newName = scope.name ? scope.name : '';
 
       scope.handleClick = () => {
-        if (scope.newName === '' && scope.name !== undefined) {
+        if (!scope.newName && !scope.name && !scope.current) {
+          // Name shouldn't be empty
           scope.error = true;
-        } else if (scope.current && scope.name === undefined) {
+        } else if (scope.current && !scope.name) {
+          // DELETE Service
           scope.service(scope.current.id);
         } else if (scope.current && scope.newName) {
+          // EDIT Service
           scope.service(scope.current.id, scope.newName);
         } else if (scope.disable) {
+          // COPY Service
           new Clipboard('.copy');
           scope.button = 'Copied';
         } else {
+          // New Service
           scope.service(scope.newName);
         }
       };
