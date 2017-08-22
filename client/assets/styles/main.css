@@ -24,8 +24,18 @@ a.spotify-login {
 }
 
 /*Playlist Page Style*/
+div.main-title {
+  font-size: 50px;
+  line-height: 50px;
+  margin: 20px 0 20px 0;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
 div.subHead {
   text-align: justify;
+  font-size: 16px;
+  line-height: 20px;
+  font-family: 'Roboto', sans-serif;
 }
 
 div.playlist-item {
@@ -44,17 +54,21 @@ button.deletePL {
   margin-right: 20px;
 }
 
-div.title {
+div.playlist-title {
   font-size: 20px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: bold;
+  width: 100%;
 }
 
-div.title:hover {
+div.playlist-title:hover {
   cursor: pointer;
   opacity: .7;
 }
 
-div.date {
+div.playlist-date {
   margin-top: 2px;
+  font-family: 'Roboto', sans-serif;
 }
 
 /*Popup Style*/

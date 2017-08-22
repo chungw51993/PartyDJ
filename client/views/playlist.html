@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Playlists</h1>
+  <div class="main-title">Playlists </div>
   <div class="subHead">This is where your playlists are listed. If you don't have any playlist yet just simply press the plus button on the bottom right hand sign and enter a name for your playlist. After you create your playlist you just need to simply share the URL and start jamming!</div>
 
   <playlist-item ng-repeat="playlist in ctrl.playlists track by $index" playlist="playlist" redirect="ctrl.goToDetail" show-edit="ctrl.showEditPopup" show-delete="ctrl.showDeletePopup" show-share="ctrl.showSharePopup"></playlist-item>
