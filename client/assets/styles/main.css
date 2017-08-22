@@ -9,8 +9,8 @@ div.landing {
 
 div.landingTitle {
   font-size: 50px;
-  margin-bottom: 20px;
-  font-family: 'Poiret One', cursive;
+  margin: 0 0 20px -25px;
+  line-height: 50px;
 }
 
 a.spotify-login {
@@ -87,10 +87,15 @@ div.popupMsg {
   line-height: 35px;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-family: 'Playfair Display', serif;
+  padding: 0 10px;
 }
 
 div.popupSub {
   margin-top: 15px;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: justify;
+  padding: 0 10px;
 }
 
 div.playlistname {
