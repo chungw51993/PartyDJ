@@ -13,11 +13,6 @@ div.landingTitle {
   font-family: 'Poiret One', cursive;
 }
 
-img.logo {
-  width: 50px;
-  margin-right: 10px;
-}
-
 a.spotify-login {
   border-style: solid;
   padding: 10px 5px 10px 5px;
