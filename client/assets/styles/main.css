@@ -7,6 +7,17 @@ div.landing {
   margin-left: -100px;
 }
 
+div.landingTitle {
+  font-size: 50px;
+  margin-bottom: 20px;
+  font-family: 'Poiret One', cursive;
+}
+
+img.logo {
+  width: 50px;
+  margin-right: 10px;
+}
+
 a.spotify-login {
   border-style: solid;
   padding: 10px 5px 10px 5px;
