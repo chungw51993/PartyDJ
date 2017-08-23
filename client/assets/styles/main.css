@@ -141,7 +141,6 @@ div.detail-sub {
   font-size: 20px;
   margin-bottom: 20px;
   text-align: justify;
-  color: white;
 }
 
 h3.detail-headings {
@@ -159,6 +158,7 @@ div.search {
 }
 
 div.trackItem {
+  color: white;
   margin-bottom: 20px;
   animation: 1s 0s slidein;
   -webkit-animation: slidein 1s;
