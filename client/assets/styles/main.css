@@ -1,4 +1,10 @@
 /*Landing Page Style*/
+body {
+  background-color: rgba(0, 80, 199, 0.86);
+  width: 100%;
+  height: 100%;
+}
+
 div.landing {
   position: fixed;
   top: 50%;
