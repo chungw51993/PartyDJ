@@ -1,8 +1,6 @@
 /*Landing Page Style*/
 body {
-  background-color: rgba(0, 80, 199, 0.86);
-  width: 100%;
-  height: 100%;
+  background-color: rgba(0, 0, 0, 0.82);
 }
 
 div.landing {
@@ -14,9 +12,11 @@ div.landing {
 }
 
 div.landingTitle {
+  font-family: 'Roboto', sans-serif;
   font-size: 50px;
   margin: 0 0 20px -25px;
   line-height: 50px;
+  color: white;
 }
 
 a.spotify-login {
@@ -30,11 +30,24 @@ a.spotify-login {
 }
 
 /*Playlist Page Style*/
+button.add {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 2;
+  background-color: grey;
+}
+
+button.add:hover {
+  background-color: grey;
+}
+
 div.main-title {
   font-size: 50px;
   line-height: 50px;
   margin: 20px 0 20px 0;
   font-family: 'Roboto Condensed', sans-serif;
+  color: white;
 }
 
 div.subHead {
@@ -42,10 +55,21 @@ div.subHead {
   font-size: 16px;
   line-height: 20px;
   font-family: 'Roboto', sans-serif;
+  color: white;
 }
 
 div.playlist-item {
   margin: 20px 0 20px 0;
+  padding-top: 7px;
+  border-style: solid;
+  border-color: white;
+  background-color: white;
+  height: 60px;
+  border-radius: 3px;
+}
+
+div.playlist-buttons {
+  margin-top: 2px;
 }
 
 button.sharePL, button.editPL, button.deletePL {
@@ -103,18 +127,25 @@ img.back:hover {
 
 a.back {
   text-decoration: none;
+  color: white;
 }
 
 div.detail-title {
   font-size: 50px;
-  line-height: 1;
+  line-height: 50px;
   margin: 20px 0;
+  color: white;
 }
 
 div.detail-sub {
   font-size: 20px;
   margin-bottom: 20px;
   text-align: justify;
+  color: white;
+}
+
+h3.detail-headings {
+  color: white;
 }
 
 a.list-login {
@@ -150,6 +181,7 @@ img.trackImg {
 
 div.trackName {
   font-weight: bold;
+  color: white;
 }
 
 div.searchList {

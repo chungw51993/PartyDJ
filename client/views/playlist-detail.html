@@ -16,21 +16,21 @@
   <music-player current="ctrl.currentSong" tracks="ctrl.tracks" next="ctrl.nextTrack" user="ctrl.user" playlist="ctrl.playlist"></music-player>
 
   <div ng-if="ctrl.currentSong.name !== 'Title'">
-    <h3>Current Song</h3>
+    <h3 class="detail-headings">Current Song</h3>
     <track-item class="trackItem" track="ctrl.currentSong" service="ctrl.deleteTrack"></track-item>
   </div>
 
   <div ng-if="ctrl.tracks.length !== 0">
-    <h3>Upcoming Songs</h3>
+    <h3 class="detail-headings">Upcoming Songs</h3>
     <track-item class="trackItem" ng-repeat="track in ctrl.tracks track by $index" track="track" user="ctrl.user" service="ctrl.deleteTrack" playlist="ctrl.playlist" status="false"></track-item>
   </div>
 
   <div ng-if="ctrl.played.length !== 0">
-    <h3>Songs Already Played</h3>
+    <h3 class="detail-headings">Songs Already Played</h3>
     <track-item class="trackItem" ng-repeat="track in ctrl.played track by $index" track="track" user="ctrl.user" service="ctrl.deleteTrack" playlist="ctrl.playlist" status="true"></track-item>
   </div>
 
-  <button ng-if="ctrl.user" class="add mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored" ng-click="ctrl.showAddTrackPopup()">
+  <button ng-if="ctrl.user" class="add mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect" ng-click="ctrl.showAddTrackPopup()">
     <i class="material-icons">add</i>
   </button>
 </div>

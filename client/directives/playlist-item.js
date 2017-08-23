@@ -38,9 +38,11 @@ angular.module('partyDJ')
           <div ng-click="goToDetail()" class="playlist-title">{{ playlist.name }}</div>
           <div class="playlist-date">Created on: {{ getDate() }}</div>
         </div>
-        <button class="deletePL mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="showDeletePopup()">Delete</button>
-        <button class="editPL mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="showEditPopup()">Edit</button>
-        <button class="sharePL mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="showSharePopup()">Share</button>
+        <div class="playlist-buttons">
+          <button class="deletePL mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" ng-click="showDeletePopup()">Delete</button>
+          <button class="editPL mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="showEditPopup()">Edit</button>
+          <button class="sharePL mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-click="showSharePopup()">Share</button>
+        </div>
       </div>
     `
   };

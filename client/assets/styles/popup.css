@@ -43,13 +43,6 @@ div.playlistname {
   margin: 0 auto -8px auto;
 }
 
-button.add {
-  position: fixed;
-  bottom: 50px;
-  right: 50px;
-  z-index: 2;
-}
-
 button.submit, button.copy {
   margin-right: 8px;
 }
