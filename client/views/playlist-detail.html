@@ -17,7 +17,9 @@
 
   <div ng-if="ctrl.currentSong.name !== 'Title'">
     <h3 class="detail-headings">Current Song</h3>
-    <track-item class="trackItem" track="ctrl.currentSong" service="ctrl.deleteTrack"></track-item>
+    <div class="current">
+      <track-item class="trackItem" track="ctrl.currentSong" service="ctrl.deleteTrack"></track-item>
+    </div>
   </div>
 
   <div ng-if="ctrl.tracks.length !== 0">
