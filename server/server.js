@@ -16,7 +16,7 @@ const db = require('./db/index');
 
 require('./socket.js')(io);
 
-const port = 5678;
+const port = 8000;
 
 server.listen(port, () => {
   console.log('Server is listening on ', port);
