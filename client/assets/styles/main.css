@@ -1,6 +1,6 @@
 /*Landing Page Style*/
 body {
-  background-color: rgba(0, 0, 0, 0.82);
+  background: linear-gradient(black, white);
 }
 
 div.landing {
